@@ -1,5 +1,7 @@
-# Node.js
+# Directories
 node_modules/
+dist/
+test/
 
 # OS generated files
 .DS_Store
