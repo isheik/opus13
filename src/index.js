@@ -14,8 +14,21 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" onChange = { this.onChange.bind(this) } />
-                <p>{ this.state.message }</p>
+                <div>
+                    <input type="text" onChange = { this.onChange.bind(this) } />
+                    <p>{ this.state.message }</p>
+                </div>
+                <div>
+                    <h1>Simple app</h1>
+                    <ul className="header">
+                        <li>Home</li>
+                        <li>Stuff</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+                <div className="content">
+                
+                </div>
             </div>
         );
     }

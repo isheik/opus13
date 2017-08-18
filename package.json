@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
+    "build": "webpack .",
     "lint": "eslint src"
   },
   "keywords": [],
