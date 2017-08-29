@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import SideMenu from "./SideMenu";
+import Main from "./Main";
 
 // class App extends React.Component {
 //     constructor(props) { 
@@ -38,6 +39,7 @@ import SideMenu from "./SideMenu";
 const App = () => (
     <div>
         <SideMenu />
+        <Main />
     </div>
 );
 
