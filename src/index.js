@@ -1,11 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-// import { Router, Route, Switch, hashHistory, IndexRoute, IndexLink, Link } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 
-render((
+const router = (
     <BrowserRouter>
         <App />
-    </BrowserRouter>),
-document.getElementById("app"));
+    </BrowserRouter>
+);
+
+render(router, document.getElementById("app"));

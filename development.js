@@ -1,7 +1,7 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const src  = path.resolve(__dirname, "src");
+const src = path.resolve(__dirname, "src");
 const dist = path.resolve(__dirname, "dist");
 
 export default {
@@ -13,11 +13,15 @@ export default {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
@@ -25,11 +29,11 @@ export default {
     resolve: {
         extensions: ["*", ".js"]
     },
-  
+
     node: {
         fs: "empty"
     },
-  
+
     plugins: [
         new HtmlWebpackPlugin({
             template: src + "/index.html",

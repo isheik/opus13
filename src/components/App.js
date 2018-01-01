@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import SideMenu from "./SideMenu";
 import Main from "./Main";
+import css from "../styles/base.css";
 
 // class App extends React.Component {
 //     constructor(props) { 
@@ -37,10 +38,10 @@ import Main from "./Main";
 // }
 
 const App = () => (
-    <div>
+    <div className="app" >
         <SideMenu />
         <Main />
-    </div>
+    </div >
 );
 
 export default App;

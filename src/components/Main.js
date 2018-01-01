@@ -4,13 +4,13 @@ import Home from "./Home";
 import Test from "./Test";
 
 const Main = () => (
-    <main>
+    <div>
         <Switch>
             {window.location.pathname.includes('index.html') && <Redirect to="/" />}
-            <Route exact path='/' component={Home}/>
-            <Route path='/test' component={Test}/>
+            <Route exact path='/' component={Home} />
+            <Route path='/test' component={Test} />
         </Switch>
-    </main>
+    </div>
 );
 
 export default Main;

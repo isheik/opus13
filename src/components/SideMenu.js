@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SideMenu = () => (
-    <header>
+    <div id="test">
         <nav>
             <ul>
                 <li>
@@ -13,7 +13,7 @@ const SideMenu = () => (
                 </li>
             </ul>
         </nav>
-    </header>
+    </div>
 );
 
 export default SideMenu;
