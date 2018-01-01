@@ -4,7 +4,7 @@ import Home from "./Home";
 import Test from "./Test";
 
 const Main = () => (
-    <div>
+    <div className="contents">
         <Switch>
             {window.location.pathname.includes('index.html') && <Redirect to="/" />}
             <Route exact path='/' component={Home} />

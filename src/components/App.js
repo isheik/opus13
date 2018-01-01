@@ -2,7 +2,8 @@ import React from "react";
 import { render } from "react-dom";
 import SideMenu from "./SideMenu";
 import Main from "./Main";
-import css from "../styles/base.css";
+import "../styles/base.css";
+import "../styles/reset.css";
 
 // class App extends React.Component {
 //     constructor(props) { 
