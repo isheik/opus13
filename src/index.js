@@ -9,4 +9,4 @@ const router = (
     </BrowserRouter>
 );
 
-render(router, document.getElementById("app"));
+render(router, document.getElementById("root"));
