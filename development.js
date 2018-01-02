@@ -1,5 +1,6 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import webpack from "webpack";
 
 const src = path.resolve(__dirname, "src");
 const dist = path.resolve(__dirname, "dist");
@@ -12,6 +13,11 @@ export default {
         filename: "bundle.js"
     },
 
+    devServer: {
+        contentBase: "./dist",
+        hot: true
+    },
+
     module: {
         rules: [
             {
@@ -21,7 +27,7 @@ export default {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ["style-loader", "css-loader"]
             }
         ]
     },
@@ -38,7 +44,9 @@ export default {
         new HtmlWebpackPlugin({
             template: src + "/index.html",
             filename: "index.html"
-        })
+        }),
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };
 

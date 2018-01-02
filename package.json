@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve -o ./dist",
+    "start": "webpack-dev-server --open 'Google Chrome'",
     "ec": "electron .",
     "build": "webpack .",
     "lint": "eslint src"
@@ -30,7 +30,7 @@
     "serve": "^6.4.3",
     "style-loader": "^0.19.1",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "react": "^15.6.1",
