@@ -35,9 +35,11 @@ export default {
     resolve: {
         extensions: ["*", ".js"]
     },
-
+    target: 'web',
     node: {
-        fs: "empty"
+        fs: "empty",
+        net: "empty",
+        tls: "empty"
     },
 
     plugins: [
