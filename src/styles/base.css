@@ -37,6 +37,7 @@ body {
 
 .contents {
     flex: 2 1 auto;
+    overflow: scroll;
     width: 100%;
     padding: 20px;
     background-color: #002b36;

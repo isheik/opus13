@@ -1,5 +1,4 @@
 import React from 'react';
-// import { render } from "react-dom";
 import SideMenu from './SideMenu';
 import Main from './Main';
 
@@ -44,4 +43,3 @@ const App = () => (
 );
 
 export default App;
-

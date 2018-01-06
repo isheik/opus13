@@ -1,7 +1,10 @@
 import React from 'react';
+import TweetList from './TweetList';
 
 const Home = () => (
-    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut voluptates repellat dolore, minus, totam ad eaque reprehenderit odit assumenda nam, aliquam delectus porro eum. Natus amet necessitatibus minima quod delectus.</div>
+    <div>
+        <TweetList />
+    </div>
 );
 
 export default Home;
