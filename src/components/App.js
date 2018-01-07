@@ -35,11 +35,16 @@ import Main from './Main';
 //     }
 // }
 
-const App = () => (
-    <div className="app" >
-        <SideMenu />
-        <Main />
-    </div>
-);
+// probaably have to bind this, u changed store.js too, so work on it too.
+class App extends React.Component {
+    render() {
+        return (
+            <div className="app" >
+                <SideMenu />
+                <Main props={this.props.tweets} />
+            </div>
+        );
+    }
+}
 
 export default App;

@@ -3,7 +3,7 @@ import TweetList from './TweetList';
 
 const Home = () => (
     <div>
-        <TweetList />
+        <TweetList {...this.props} />
     </div>
 );
 
