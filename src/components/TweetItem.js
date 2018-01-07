@@ -1,8 +1,9 @@
 import React from 'react';
 
-const TweetItem = () => (
+const TweetItem = (props) => (
     <div>
-        {this.props.tweet}
+        {console.log(props)}
+        {props.tweet.text}
     </div>
 );
 

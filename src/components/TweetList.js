@@ -1,9 +1,9 @@
 import React from 'react';
 import TweetItem from './TweetItem';
 
-const TweetList = () => (
+const TweetList = (props) => (
     <div>
-        {this.props.tweets.map((tweet, index) => <TweetItem key={index} tweet={tweet} />)}
+        {props.tweets.map((tweet, index) => <TweetItem {...props} key={index} tweet={tweet} />)}
     </div>
 );
 

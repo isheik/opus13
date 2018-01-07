@@ -1,9 +1,9 @@
 import React from 'react';
 import TweetList from './TweetList';
 
-const Home = () => (
+const Home = (props) => (
     <div>
-        <TweetList {...this.props} />
+        <TweetList {...props} />
     </div>
 );
 

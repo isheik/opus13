@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history';
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import reducer from './reducers/reducer';
+import rootReducer from './reducers/index';
 
 import tweets from './data/tweets';
 
@@ -15,11 +15,11 @@ const defaultState = {
 // Re consider this file contents later
 // especially, rootReducer should be difined and combine reducers in reducers dir
 
-const rootReducer = combineReducers({
-    tweets, routing: routerReducer
-});
+// const rootReducer = combineReducers({
+//     tweets, routing: routerReducer
+// });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, defaultState);
 
 export const history = syncHistoryWithStore(createBrowserHistory(), store);
 
