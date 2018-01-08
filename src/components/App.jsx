@@ -3,7 +3,7 @@ import SideMenu from './SideMenu';
 import Main from './Main';
 
 // class App extends React.Component {
-//     constructor(props) { 
+//     constructor(props) {
 //         super(props);
 //         this.state = { message: "something" };
 //     }
@@ -36,12 +36,15 @@ import Main from './Main';
 // }
 
 // probaably have to bind this, u changed store.js too, so work on it too.
+// If you use this.props inside App module, you have to change this expression
+// from anonymous function to class or using React.CreaateClass
+// Otherwise, your 'this' will indicate window object
 const App = props => (
-    <div className="app" >
-        {console.log(props)}
-        <SideMenu />
-        <Main {...props} />
-    </div>
+  <div className="app">
+    {console.log(props)}
+    <SideMenu />
+    <Main {...props} />
+  </div>
 );
 
 export default App;
