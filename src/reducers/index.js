@@ -5,7 +5,7 @@ import tweets from './tweets';
 
 // combine reducers. but each reducers have their own states.
 const rootReducer = combineReducers({
-    tweets, routing: routerReducer
+  tweets, routing: routerReducer,
 });
 
 export default rootReducer;
