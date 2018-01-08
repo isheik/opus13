@@ -1,6 +1,6 @@
 
-const twreducer = (state = [], action) => {
-    return state;
-};
+const twreducer = (state = [], action) => (
+  state
+);
 
 export default twreducer;

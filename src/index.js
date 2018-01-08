@@ -8,15 +8,15 @@ import './styles/reset.css';
 import store from './store';
 
 const router = (
-    <Provider store={store}>
-        <Router>
-            <AppContainer />
-        </Router>
-    </Provider>
+  <Provider store={store}>
+    <Router>
+      <AppContainer />
+    </Router>
+  </Provider>
 );
 
 render(router, document.getElementById('root'));
 
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept();
 }

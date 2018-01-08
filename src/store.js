@@ -1,15 +1,13 @@
 import { createStore, compose } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 
 import rootReducer from './reducers/index';
 
 import tweets from './data/tweets';
 
 const defaultState = {
-    tweets
+  tweets,
 };
 
 // Re consider this file contents later

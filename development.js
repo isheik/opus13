@@ -6,49 +6,49 @@ const src = path.resolve(__dirname, 'src');
 const dist = path.resolve(__dirname, 'dist');
 
 export default {
-    entry: src + '/index.js',
+  entry: src + '/index.js',
 
-    output: {
-        path: dist,
-        filename: 'bundle.js',
-    },
+  output: {
+    path: dist,
+    filename: 'bundle.js',
+  },
 
-    devServer: {
-        contentBase: './dist',
-        hot: true,
-    },
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+  },
 
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
-            },
-        ],
-    },
-
-    resolve: {
-        extensions: ['*', '.js', '.jsx'],
-    },
-    target: 'web',
-    node: {
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-    },
-
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: src + '/index.html',
-            filename: 'index.html',
-        }),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
+  },
+
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
+  target: 'web',
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: src + '/index.html',
+      filename: 'index.html',
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
 
