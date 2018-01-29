@@ -25,6 +25,7 @@ class Authentication {
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Date.now(),
       oauth_nonce: this.generateOAuthNonce(),
+      oauth_version: '1.0',
     };
 
     console.log(params);
