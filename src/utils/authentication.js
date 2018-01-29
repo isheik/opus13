@@ -24,9 +24,20 @@ class Authentication {
       oauth_consumer_key: this.APP_KEY,
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Date.now(),
-      // oauth_nonce:
+      oauth_nonce: this.generateOAuthNonce(),
     };
+
+    console.log(params);
+  }
+
+  generateOAuthNonce() {
+    const nonWordChar = /[=+-]/gi;
+    const base64Str = btoa(`${this.APP_KEY}:${Date.now()}`);
+    const wordOnlyStr = base64Str.replace(nonWordChar, '');
+
+    return wordOnlyStr;
   }
 }
 
 export default Authentication;
+
