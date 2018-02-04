@@ -28,7 +28,12 @@ class Authentication {
       oauth_version: '1.0',
     };
 
-    console.log(params);
+    // for (let param of params) {
+    //   console.log(param);
+    // }
+    console.log("tset");
+
+
   }
 
   // Generate random string for Oauth 1.0 oauth_nonce

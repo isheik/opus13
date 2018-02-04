@@ -4,9 +4,18 @@ import { withRouter } from 'react-router-dom';
 import App from '../components/App';
 import Actions from '../actions/AppActions';
 
+import Authentication from '../utils/authentication';
+
 const mapStateToProps = state => (
   { tweets: state.tweets }
 );
+
+const authtest = () => {
+  const testauth = new Authentication();
+  testauth.generateSignature();
+};
+
+authtest();
 
 const mapDispatchToProps = dispatch => (
   {
