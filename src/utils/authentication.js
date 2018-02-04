@@ -31,6 +31,7 @@ class Authentication {
     console.log(params);
   }
 
+  // Generate random string for Oauth 1.0 oauth_nonce
   generateOAuthNonce() {
     const nonWordChar = /[=+-]/gi;
     const base64Str = btoa(`${this.APP_KEY}:${Date.now()}`);
