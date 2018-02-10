@@ -28,10 +28,12 @@ class Authentication {
       oauth_version: '1.0',
     };
 
-    // for (let param of params) {
-    //   console.log(param);
-    // }
-    console.log("tset");
+    params.map((element) => {
+      console.log(element);
+    });
+    for (let i = 0; i < params.length; i += 1) {
+      console.log(params[i]);
+    }
 
 
   }
@@ -47,4 +49,3 @@ class Authentication {
 }
 
 export default Authentication;
-
