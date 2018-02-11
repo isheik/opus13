@@ -30,6 +30,12 @@ class Authentication {
       oauth_nonce: this.generateOAuthNonce(),
       oauth_version: '1.0',
     };
+
+    let keyArray = Object.keys(params);
+
+    for (let i = 0; i < keyArray.length; i += 1) {
+      console.log(params[keyArray[i]]);
+    }
   }
 
   // Generate random string for Oauth 1.0 oauth_nonce
