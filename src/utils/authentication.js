@@ -1,6 +1,5 @@
 // import twitter from 'node-twitter-api';
 
-
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
   static APP_SECRET_KEY = 'qfEF4Z89AN9WBn80dO91WpBowmUs8AmMLPTTqhA4s14Fyl1AGz';
@@ -9,14 +8,18 @@ class Authentication {
   static REQUEST_METHOD = 'POST';
   static ACCESS_TOKEN_SECRET = '';
 
+  constructor() {
+
+  }
+
   test() {
     this.retstr = 'test';
     return 'testa';
   }
 
-  generateSignature() {
+  static generateSignature() {
     // Generate Key
-    let signatureKey = `${encodeURI(this.APP_SECRET_KEY)} & ${encodeURI(this.ACCESS_TOKEN_SECRET)}`;
+    let signatureKey = `${encodeURI(this.APP_SECRET_KEY)}&${encodeURI(this.ACCESS_TOKEN_SECRET)}`;
 
     // Generate Data
     let params = {
@@ -27,19 +30,10 @@ class Authentication {
       oauth_nonce: this.generateOAuthNonce(),
       oauth_version: '1.0',
     };
-
-    params.map((element) => {
-      console.log(element);
-    });
-    for (let i = 0; i < params.length; i += 1) {
-      console.log(params[i]);
-    }
-
-
   }
 
   // Generate random string for Oauth 1.0 oauth_nonce
-  generateOAuthNonce() {
+  static generateOAuthNonce() {
     const nonWordChar = /[=+-]/gi;
     const base64Str = btoa(`${this.APP_KEY}:${Date.now()}`);
     const wordOnlyStr = base64Str.replace(nonWordChar, '');

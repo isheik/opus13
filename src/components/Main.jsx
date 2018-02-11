@@ -5,7 +5,6 @@ import Test from './Test';
 
 const Main = props => (
   <div className="contents">
-    {console.log(props)}
     <Switch>
       {window.location.pathname.includes('index.html') && <Redirect to="/" />}
       <Route exact path="/" render={() => <Home {...props} />} />

@@ -40,7 +40,6 @@ import Main from './Main';
 // Otherwise, your 'this' will indicate window object
 const App = props => (
   <div className="app">
-    {console.log(props)}
     <SideMenu />
     <Main {...props} />
   </div>

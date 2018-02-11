@@ -11,8 +11,7 @@ const mapStateToProps = state => (
 );
 
 const authtest = () => {
-  const testauth = new Authentication();
-  testauth.generateSignature();
+  Authentication.generateSignature();
 };
 
 authtest();
