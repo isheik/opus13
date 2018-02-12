@@ -1,4 +1,6 @@
 // import twitter from 'node-twitter-api';
+import HmacSHA1 from 'crypto-js/hmac-sha1';
+import Base64 from 'crypto-js/enc-base64';
 
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
@@ -38,7 +40,10 @@ class Authentication {
       signatureData += `&${params[i].key}=${params[i].value}`;
     }
 
-    console.log(signatureData);
+    const hash = HmacSHA1(signatureData, signatureKey);
+    const signature = Base64.stringify(hash);
+
+    console.log(signature);
   }
 
   // Generate random string for Oauth 1.0 oauth_nonce
