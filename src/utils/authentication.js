@@ -17,6 +17,7 @@ class Authentication {
   static generateSignature() {
     // Generate Key
     const signatureKey = `${encodeURI(this.APP_SECRET_KEY)}&${encodeURI(this.ACCESS_TOKEN_SECRET)}`;
+    let signatureData = `${this.REQUEST_METHOD}&${this.REQUEST_URL}`;
 
     // Generate Data
     let params = [
@@ -28,23 +29,25 @@ class Authentication {
       { key: 'oauth_version', value: '1.0' },
     ];
 
-    for (let i = 0; i < params.length; i++) {
-      if (params[i].key !== 'oauth_callback') {
-        params[i].value = encodeURIComponent(params[i].value);
-      }
-    }
-
     params.sort((a, b) => (
       a.key.localeCompare(b.key)
     ));
 
-    console.log(params);
+    for (let i = 0; i < params.length; i++) {
+      params[i].value = encodeURIComponent(params[i].value);
+      signatureData += `&${params[i].key}=${params[i].value}`;
+    }
+
+    console.log(signatureData);
   }
 
   // Generate random string for Oauth 1.0 oauth_nonce
   static generateOAuthNonce() {
+    // removed chars from the last result
     const nonWordChar = /[=+-]/gi;
-    const base64Str = btoa(`${this.APP_KEY}:${Date.now()}`);
+    const base64Str = btoa(`${this.APP_KEY}: ${Date.now()} `);
+
+    // remove non word chars from the base64 result
     const wordOnlyStr = base64Str.replace(nonWordChar, '');
 
     return wordOnlyStr;
