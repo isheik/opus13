@@ -22,7 +22,7 @@ class Authentication {
     let signatureData = `${this.REQUEST_METHOD}&${this.REQUEST_URL}`;
 
     // Generate Data
-    let params = [
+    const params = [
       { key: 'oauth_callback', value: this.CALLBACK_URL },
       { key: 'oauth_consumer_key', value: this.APP_KEY },
       { key: 'oauth_signature_method', value: 'HMAC-SHA1' },
