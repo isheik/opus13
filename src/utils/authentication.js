@@ -8,9 +8,6 @@ class Authentication {
   static REQUEST_METHOD = 'POST';
   static ACCESS_TOKEN_SECRET = '';
 
-  constructor() {
-
-  }
 
   test() {
     this.retstr = 'test';
@@ -22,22 +19,45 @@ class Authentication {
     const signatureKey = `${encodeURI(this.APP_SECRET_KEY)}&${encodeURI(this.ACCESS_TOKEN_SECRET)}`;
 
     // Generate Data
-    const params = {
-      oauth_callback: this.CALLBACK_URL,
-      oauth_consumer_key: this.APP_KEY,
-      oauth_signature_method: 'HMAC-SHA1',
-      oauth_timestamp: Date.now(),
-      oauth_nonce: this.generateOAuthNonce(),
-      oauth_version: '1.0',
-    };
+    let params = [
+      { key: 'oauth_callback', value: this.CALLBACK_URL },
+      { key: 'oauth_consumer_key', value: this.APP_KEY },
+      { key: 'oauth_signature_method', value: 'HMAC-SHA1' },
+      { key: 'oauth_timestamp', value: Date.now() },
+      { key: 'oauth_nonce', value: this.generateOAuthNonce() },
+      { key: 'oauth_version', value: '1.0' },
+    ];
+    // let params = {
+    //   oauth_callback: this.CALLBACK_URL,
+    //   oauth_consumer_key: this.APP_KEY,
+    //   oauth_signature_method: 'HMAC-SHA1',
+    //   oauth_timestamp: Date.now(),
+    //   oauth_nonce: this.generateOAuthNonce(),
+    //   oauth_version: '1.0',
+    // };
 
     // Encode parameters
-    Object.keys(params)
-      .forEach((key) => {
-        if (key !== 'oauth_callback') {
-          params[key] = encodeURIComponent(params[key]);
-        }
-      });
+    // params = params.map((element, index, array) => {
+    //   array[index] = 1;
+    //   console.log(element);
+    // });
+
+    for (let i = 0; i < params.length; i++) {
+      if (params[i].key !== 'oauth_callback') {
+        params[i].value = encodeURIComponent(params[i].value);
+      }
+    }
+
+    params.sort((a, b) => (
+      a.key.localeCompare(b.key)
+    ));
+
+    // Object.keys(params)
+    //   .forEach((key) => {
+    //     if (key !== 'oauth_callback') {
+    //       params[key] = encodeURIComponent(params[key]);
+    //     }
+    //   });
 
     console.log(params);
   }
