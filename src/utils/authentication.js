@@ -19,10 +19,10 @@ class Authentication {
 
   static generateSignature() {
     // Generate Key
-    let signatureKey = `${encodeURI(this.APP_SECRET_KEY)}&${encodeURI(this.ACCESS_TOKEN_SECRET)}`;
+    const signatureKey = `${encodeURI(this.APP_SECRET_KEY)}&${encodeURI(this.ACCESS_TOKEN_SECRET)}`;
 
     // Generate Data
-    let params = {
+    const params = {
       oauth_callback: this.CALLBACK_URL,
       oauth_consumer_key: this.APP_KEY,
       oauth_signature_method: 'HMAC-SHA1',
@@ -31,11 +31,15 @@ class Authentication {
       oauth_version: '1.0',
     };
 
-    let keyArray = Object.keys(params);
+    // Encode parameters
+    Object.keys(params)
+      .forEach((key) => {
+        if (key !== 'oauth_callback') {
+          params[key] = encodeURIComponent(params[key]);
+        }
+      });
 
-    for (let i = 0; i < keyArray.length; i += 1) {
-      console.log(params[keyArray[i]]);
-    }
+    console.log(params);
   }
 
   // Generate random string for Oauth 1.0 oauth_nonce
