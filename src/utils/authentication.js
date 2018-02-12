@@ -27,20 +27,6 @@ class Authentication {
       { key: 'oauth_nonce', value: this.generateOAuthNonce() },
       { key: 'oauth_version', value: '1.0' },
     ];
-    // let params = {
-    //   oauth_callback: this.CALLBACK_URL,
-    //   oauth_consumer_key: this.APP_KEY,
-    //   oauth_signature_method: 'HMAC-SHA1',
-    //   oauth_timestamp: Date.now(),
-    //   oauth_nonce: this.generateOAuthNonce(),
-    //   oauth_version: '1.0',
-    // };
-
-    // Encode parameters
-    // params = params.map((element, index, array) => {
-    //   array[index] = 1;
-    //   console.log(element);
-    // });
 
     for (let i = 0; i < params.length; i++) {
       if (params[i].key !== 'oauth_callback') {
@@ -51,13 +37,6 @@ class Authentication {
     params.sort((a, b) => (
       a.key.localeCompare(b.key)
     ));
-
-    // Object.keys(params)
-    //   .forEach((key) => {
-    //     if (key !== 'oauth_callback') {
-    //       params[key] = encodeURIComponent(params[key]);
-    //     }
-    //   });
 
     console.log(params);
   }
