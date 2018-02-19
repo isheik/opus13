@@ -1,22 +1,23 @@
 'use strict';
 
 var electron = require('electron');
+// import electron from 'electron';
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
 
 var mainWindow = null;
 
-app.on('window-all-closed', function() {
+app.on('window-all-closed', function () {
   if (process.platform != 'darwin')
     app.quit();
 });
 
-app.on('ready', function() {
+app.on('ready', function () {
 
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({ width: 800, height: 600 });
   mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
 
-  mainWindow.on('closed', function() {
+  mainWindow.on('closed', function () {
     mainWindow = null;
   });
 });
