@@ -2,7 +2,7 @@
   "name": "opus13",
   "version": "0.0.1",
   "description": "Twitter Client",
-  "main": "./src/index.jsx",
+  "main": "./main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open 'Google Chrome'",

@@ -1,7 +1,7 @@
 // import twitter from 'node-twitter-api';
-import HmacSHA1 from 'crypto-js/hmac-sha1';
-import Base64 from 'crypto-js/enc-base64';
-import OAuth from 'oauth';
+// import HmacSHA1 from 'crypto-js/hmac-sha1';
+// import Base64 from 'crypto-js/enc-base64';
+// import OAuth from 'oauth';
 import Request from 'request';
 
 class Authentication {
@@ -20,26 +20,26 @@ class Authentication {
   }
 
   static getRequrestToken() {
-    let oauth = new OAuth.OAuth(
-      this.REQUEST_TOKEN_URL,
-      this.ACCESS_TOKEN_URL,
-      this.APP_KEY,
-      this.APP_SECRET_KEY,
-      '1.0A',
-      null,
-      'HMAC-SHA1',
-    );
+    // let oauth = new OAuth.OAuth(
+    //   this.REQUEST_TOKEN_URL,
+    //   this.ACCESS_TOKEN_URL,
+    //   this.APP_KEY,
+    //   this.APP_SECRET_KEY,
+    //   '1.0A',
+    //   null,
+    //   'HMAC-SHA1',
+    // );
     // let rtoken = oauth.getOAuthRequestToken(function () {
-    //   console.log("tet");
+    // console.log("tet");
     // });
-    // let oauth = {
-    //   callback: this.CALLBACK_URL,
-    //   consumer_key: this.APP_KEY,
-    //   consumer_secret: this.APP_SECRET_KEY,
-    // };
-    // Request.post({ url: this.REQUEST_TOKEN_URL, oauth: { oauth } }, function (e, r, body) {
-    //   console.log(body);
-    // });
+    let oauth = {
+      callback: 'oob',
+      consumer_key: this.APP_KEY,
+      consumer_secret: this.APP_SECRET_KEY,
+    };
+    Request.post({ url: this.REQUEST_TOKEN_URL, oauth: oauth }, function (e, r, body) {
+      console.log(body);
+    });
 
 
   }
