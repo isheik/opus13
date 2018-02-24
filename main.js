@@ -1,10 +1,18 @@
-'use strict';
+// 'use strict';
 
-var electron = require('electron');
+// console.log(require.resolve('electron'));
+// var electron = require('electron').remote;
+const { app, BrowserWindow } = require('electron');
+// console.log(electron);
 // import electron from 'electron';
-var app = electron.app;
-var BrowserWindow = electron.BrowserWindow;
+// import inde from './src/index.jsx';
+// var app = electron.app;
+// var app = require('electron').remote.app;
+// console.log(app);
+// var BrowserWindow = electron.BrowserWindow;
+// var BrowserWindow = require('electron').remote.BrowserWindow;
 
+// console.log(BrowserWindow);
 var mainWindow = null;
 
 app.on('window-all-closed', function () {
@@ -13,7 +21,6 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-
   mainWindow = new BrowserWindow({ width: 800, height: 600 });
   mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
 

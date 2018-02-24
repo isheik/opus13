@@ -37,9 +37,9 @@ class Authentication {
       consumer_key: this.APP_KEY,
       consumer_secret: this.APP_SECRET_KEY,
     };
-    Request.post({ url: this.REQUEST_TOKEN_URL, oauth: oauth }, function (e, r, body) {
-      console.log(body);
-    });
+    // Request.post({ url: this.REQUEST_TOKEN_URL, oauth: oauth }, function (e, r, body) {
+    //   console.log(body);
+    // });
 
 
   }
