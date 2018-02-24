@@ -13,7 +13,7 @@ const { app, BrowserWindow } = require('electron');
 // var BrowserWindow = require('electron').remote.BrowserWindow;
 
 // console.log(BrowserWindow);
-var mainWindow = null;
+let mainWindow = null;
 
 app.on('window-all-closed', function () {
   if (process.platform != 'darwin')

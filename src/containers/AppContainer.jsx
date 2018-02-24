@@ -10,9 +10,10 @@ const mapStateToProps = state => (
   { tweets: state.tweets }
 );
 
-const authtest = () => {
+const authtest = async () => {
   // Authentication.generateSignature();
-  Authentication.getRequrestToken();
+  await Authentication.getRequrestToken();
+  // console.log("test3");
 };
 
 authtest();

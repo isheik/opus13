@@ -2,7 +2,8 @@
 // import HmacSHA1 from 'crypto-js/hmac-sha1';
 // import Base64 from 'crypto-js/enc-base64';
 // import OAuth from 'oauth';
-import Request from 'request';
+// import Request from 'request';
+import Request from 'request-promise-native';
 
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
@@ -19,7 +20,7 @@ class Authentication {
     return 'testa';
   }
 
-  static getRequrestToken() {
+  static async getRequrestToken() {
     // let oauth = new OAuth.OAuth(
     //   this.REQUEST_TOKEN_URL,
     //   this.ACCESS_TOKEN_URL,
@@ -32,17 +33,38 @@ class Authentication {
     // let rtoken = oauth.getOAuthRequestToken(function () {
     // console.log("tet");
     // });
-    let oauth = {
+    const oauth = {
       callback: 'oob',
       consumer_key: this.APP_KEY,
       consumer_secret: this.APP_SECRET_KEY,
     };
-    // Request.post({ url: this.REQUEST_TOKEN_URL, oauth: oauth }, function (e, r, body) {
-    //   console.log(body);
-    // });
 
+    const requestOptions = {
+      method: 'POST',
+      uri: this.REQUEST_TOKEN_URL,
+      oauth,
+    };
+
+    // ** Callback way **
+    // Request.post({ url: this.REQUEST_TOKEN_URL, oauth: oauth }, function (e, r, body) {
+    // the following test 2 is displayed first since async
+    // console.log(body);
+    // });
+    // console.log("test2");
+
+    // ** Promise way **
+    // Request(requestOptions)
+    //   .then(() => {
+    //     console.log('great');
+    //   })
+    //   .catch(() => {
+    //     console.log('OMG');
+    //   });
+    console.log(await Request(requestOptions));
+    // console.log("test2");
 
   }
+
 
   static generateSignature() {
     // Generate Key
