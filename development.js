@@ -6,7 +6,7 @@ const src = path.resolve(__dirname, 'src');
 const dist = path.resolve(__dirname, 'dist');
 
 export default {
-  entry: src + '/index.js',
+  entry: `${src}/index.jsx`,
 
   output: {
     path: dist,
@@ -32,19 +32,28 @@ export default {
     ],
   },
 
+  externals: {
+    // electron: "require('electron')",
+    // child_process: "require('child_process')",
+    // fs: "require('fs')",
+    // path: "require('path')"
+  },
+
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
-  target: 'web',
+  // target: 'electron-main',
+  target: 'electron',
+  // target: 'electron-renderer',
   node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
+    // fs: 'empty',
+    // net: 'empty',
+    // tls: 'empty',
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: src + '/index.html',
+      template: `${src}/index.html`,
       filename: 'index.html',
     }),
     new webpack.NamedModulesPlugin(),

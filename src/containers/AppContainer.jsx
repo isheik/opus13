@@ -10,8 +10,10 @@ const mapStateToProps = state => (
   { tweets: state.tweets }
 );
 
-const authtest = () => {
-  Authentication.generateSignature();
+const authtest = async () => {
+  // Authentication.generateSignature();
+  await Authentication.getRequrestToken();
+  // console.log("test3");
 };
 
 authtest();
@@ -25,3 +27,4 @@ const mapDispatchToProps = dispatch => (
 );
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+
