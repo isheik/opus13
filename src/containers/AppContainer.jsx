@@ -12,7 +12,7 @@ const mapStateToProps = state => (
 
 const authtest = async () => {
   // Authentication.generateSignature();
-  await Authentication.getRequrestToken();
+  await Authentication.authenticate();
   // console.log("test3");
 };
 

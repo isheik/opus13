@@ -1,9 +1,11 @@
 // import twitter from 'node-twitter-api';
 // import HmacSHA1 from 'crypto-js/hmac-sha1';
 // import Base64 from 'crypto-js/enc-base64';
-// import OAuth from 'oauth';
+// import OAuth from 'oauth'; -> uninstalal later
 // import Request from 'request';
 import Request from 'request-promise-native';
+import QueryStr from 'querystring';
+import { remote } from 'electron';
 
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
@@ -14,10 +16,17 @@ class Authentication {
   static REQUEST_METHOD = 'POST';
   static ACCESS_TOKEN_SECRET = '';
 
+  static async authenticate() {
+    let reqToken = await this.getRequrestToken();
 
-  test() {
-    this.retstr = 'test';
-    return 'testa';
+    let authBaseURL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
+    let authURL = `${authBaseURL}${reqToken.oauth_token}`;
+    console.log(authURL);
+    let authWindow = new remote.BrowserWindow({
+      width: 800,
+      height: 600,
+    });
+    authWindow.loadURL(authURL);
   }
 
   static async getRequrestToken() {
@@ -60,7 +69,14 @@ class Authentication {
     //   .catch(() => {
     //     console.log('OMG');
     //   });
-    console.log(await Request(requestOptions));
+
+    // TODO: Error handling
+    const requestToken = QueryStr.parse(await Request(requestOptions));
+    return requestToken;
+    // const keys = Object.keys(requestToken);
+    // for (let i = 0; i < keys.length; i++) {
+    // console.log(requestToken[keys[i]]);
+    // }
     // console.log("test2");
 
   }
