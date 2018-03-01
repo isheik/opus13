@@ -5,7 +5,12 @@
 // import Request from 'request';
 import Request from 'request-promise-native';
 import QueryStr from 'querystring';
-import { BrowserWindow } from 'electron';
+// import { BrowserWindow } from 'electron';
+import { remote } from 'electron';
+import electron from 'electron';
+const BrowserWindow = electron.remote.BrowserWindow;
+
+let authWindow = null;
 
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
@@ -22,7 +27,7 @@ class Authentication {
     let authBaseURL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
     let authURL = `${authBaseURL}${reqToken.oauth_token}`;
     console.log(authURL);
-    let authWindow = new BrowserWindow({
+    authWindow = new BrowserWindow({
       width: 800,
       height: 600,
       webPreferences: {

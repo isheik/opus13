@@ -64,6 +64,7 @@ export default {
     new HtmlWebpackPlugin({
       template: `${src}/index.html`,
       filename: 'index.html',
+      chunks: ['bundle'],
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
