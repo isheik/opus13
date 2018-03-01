@@ -2,12 +2,12 @@
   "name": "opus13",
   "version": "0.0.1",
   "description": "Twitter Client",
-  "main": "main.js",
+  "main": "./dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open 'Google Chrome'",
     "ec": "npm run build && electron .",
-    "build": "webpack src",
+    "build": "webpack",
     "lint": "eslint src"
   },
   "keywords": [],
@@ -23,7 +23,6 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.1",
     "css-loader": "^0.28.9",
-    "electron": "^1.8.2",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-class-property": "^1.1.0",
@@ -41,6 +40,7 @@
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
+    "electron": "^1.8.2",
     "node-twitter-api": "^1.8.0",
     "oauth": "^0.9.15",
     "react": "^15.6.1",

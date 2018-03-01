@@ -5,14 +5,16 @@ import App from '../components/App';
 import Actions from '../actions/AppActions';
 
 import Authentication from '../utils/authentication';
+import { ipcRenderer } from 'electron';
 
 const mapStateToProps = state => (
   { tweets: state.tweets }
 );
 
-const authtest = async () => {
+const authtest = () => {
   // Authentication.generateSignature();
-  await Authentication.authenticate();
+  // ipcRenderer.send('auth-start');
+  Authentication.authenticate();
   // console.log("test3");
 };
 

@@ -2,7 +2,8 @@
 
 // console.log(require.resolve('electron'));
 // var electron = require('electron').remote;
-const { app, BrowserWindow } = require('electron');
+// const { app, BrowserWindow, ipcMain } = require('electron');
+import { app, BrowserWindow, ipcMain } from 'electron';
 // console.log(electron);
 // import electron from 'electron';
 // import inde from './src/index.jsx';
@@ -11,6 +12,11 @@ const { app, BrowserWindow } = require('electron');
 // console.log(app);
 // var BrowserWindow = electron.BrowserWindow;
 // var BrowserWindow = require('electron').remote.BrowserWindow;
+// const Authentication = require('./src/utils/authentication');
+// import Authentication from './src/utils/authentication';
+import path from 'path';
+let base = path.resolve(__dirname);
+console.log(base);
 
 // console.log(BrowserWindow);
 let mainWindow = null;
@@ -22,9 +28,13 @@ app.on('window-all-closed', function () {
 
 app.on('ready', function () {
   mainWindow = new BrowserWindow({ width: 800, height: 600 });
-  mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
 });
+
+// ipcMain.on('auth-start', () => {
+  // Authentication.authenticate();
+// });
