@@ -34,6 +34,17 @@ class Authentication {
         nodeIntegration: false,
       },
     });
+
+    authWindow.webContents.on('will-navigate', (event, url) => {
+      const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
+      if (matchesArray) {
+        console.log(matchesArray);
+      } else {
+        console.log('failed auth');
+      }
+      authWindow.close();
+    });
+
     authWindow.loadURL(authURL);
   }
 
