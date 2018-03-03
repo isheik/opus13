@@ -35,6 +35,7 @@ class Authentication {
       },
     });
 
+    // Hook navigate event to go back from Twitter Auth window to the original app window
     authWindow.webContents.on('will-navigate', (event, url) => {
       const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
       if (matchesArray) {
