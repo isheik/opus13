@@ -13,8 +13,9 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 // var BrowserWindow = electron.BrowserWindow;
 // var BrowserWindow = require('electron').remote.BrowserWindow;
 // const Authentication = require('./src/utils/authentication');
-// import Authentication from './src/utils/authentication';
 import path from 'path';
+import Authentication from './utils/authentication';
+
 let base = path.resolve(__dirname);
 console.log(base);
 
@@ -22,6 +23,7 @@ console.log(base);
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null;
+let twitterAuthWindow = null;
 
 app.on('window-all-closed', function () {
   if (process.platform != 'darwin')
@@ -36,6 +38,30 @@ app.on('ready', function () {
     mainWindow = null;
   });
 });
+
+// Hook navigate event to go back from Twitter Auth window to the original app window
+ipcMain.on('twitter-auth-start', async () => {
+  twitterAuthWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    parent: mainWindow,
+    modal: true,
+  });
+
+  const authURL = await Authentication.getTwitterAuthURL();
+
+  twitterAuthWindow.webContents.on('will-navigate', (event, url) => {
+    const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
+    if (matchesArray) {
+      console.log(matchesArray);
+    } else {
+      console.log('failed auth');
+    }
+    twitterAuthWindow.close();
+  });
+  twitterAuthWindow.loadURL(authURL);
+});
+
 
 // ipcMain.on('auth-start', () => {
   // Authentication.authenticate();

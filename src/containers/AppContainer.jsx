@@ -13,8 +13,8 @@ const mapStateToProps = state => (
 
 const authtest = () => {
   // Authentication.generateSignature();
-  // ipcRenderer.send('auth-start');
-  Authentication.authenticate();
+  ipcRenderer.send('twitter-auth-start');
+  // Authentication.authenticate();
   // console.log("test3");
 };
 

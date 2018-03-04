@@ -6,11 +6,11 @@
 import Request from 'request-promise-native';
 import QueryStr from 'querystring';
 // import { BrowserWindow } from 'electron';
-import { remote } from 'electron';
+// import { remote } from 'electron';
 import electron from 'electron';
-const BrowserWindow = electron.remote.BrowserWindow;
+// const BrowserWindow = electron.remote.BrowserWindow;
 
-let authWindow = null;
+// let authWindow = null;
 
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
@@ -20,33 +20,41 @@ class Authentication {
   static ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token';
   static REQUEST_METHOD = 'POST';
   static ACCESS_TOKEN_SECRET = '';
+  static REQ_AUTH_BASE_URL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
+  static requestToken;
 
   static async authenticate() {
-    let reqToken = await this.getRequrestToken();
+    // let reqToken = await this.getRequrestToken();
 
-    let authBaseURL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
-    let authURL = `${authBaseURL}${reqToken.oauth_token}`;
-    console.log(authURL);
-    authWindow = new BrowserWindow({
-      width: 800,
-      height: 600,
-      webPreferences: {
-        nodeIntegration: false,
-      },
-    });
+    // let authBaseURL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
+    // let authURL = `${authBaseURL}${reqToken.oauth_token}`;
+    // console.log(authURL);
+    // authWindow = new BrowserWindow({
+    //   width: 800,
+    //   height: 600,
+    //   webPreferences: {
+    //     nodeIntegration: false,
+    //   },
+    // });
 
-    // Hook navigate event to go back from Twitter Auth window to the original app window
-    authWindow.webContents.on('will-navigate', (event, url) => {
-      const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
-      if (matchesArray) {
-        console.log(matchesArray);
-      } else {
-        console.log('failed auth');
-      }
-      authWindow.close();
-    });
+    // // Hook navigate event to go back from Twitter Auth window to the original app window
+    // authWindow.webContents.on('will-navigate', (event, url) => {
+    //   const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
+    //   if (matchesArray) {
+    //     console.log(matchesArray);
+    //   } else {
+    //     console.log('failed auth');
+    //   }
+    //   authWindow.close();
+    // });
 
-    authWindow.loadURL(authURL);
+    // authWindow.loadURL(authURL);
+  }
+
+  static async getTwitterAuthURL() {
+    this.requestToken = await this.getRequrestToken();
+    const authURL = `${this.REQ_AUTH_BASE_URL}${this.requestToken.oauth_token}`;
+    return authURL;
   }
 
   static async getRequrestToken() {
