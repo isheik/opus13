@@ -46,6 +46,7 @@ ipcMain.on('twitter-auth-start', async () => {
     height: 600,
     parent: mainWindow,
     modal: true,
+    show: false,
   });
 
   const authURL = await Authentication.getTwitterAuthURL();
@@ -58,6 +59,9 @@ ipcMain.on('twitter-auth-start', async () => {
       console.log('failed auth');
     }
     twitterAuthWindow.close();
+  });
+  twitterAuthWindow.on('ready-to-show', () => {
+    twitterAuthWindow.show();
   });
   twitterAuthWindow.loadURL(authURL);
 });
