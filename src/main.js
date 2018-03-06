@@ -51,6 +51,7 @@ ipcMain.on('twitter-auth-start', async () => {
   const authURL = await Authentication.getTwitterAuthURL();
 
   // Hook navigate event to go back from Twitter Auth window to the original app window
+  // Callback to local file is not allowed. This is an alternative to using Callback.
   twitterAuthWindow.webContents.on('will-navigate', (event, url) => {
     const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
     if (matchesArray) {
@@ -59,6 +60,7 @@ ipcMain.on('twitter-auth-start', async () => {
       console.log('failed auth');
     }
     twitterAuthWindow.close();
+    console.log(Authentication.requestToken);
   });
 
   // Prevent blank window from being displayed
