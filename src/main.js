@@ -39,7 +39,6 @@ app.on('ready', function () {
   });
 });
 
-// Hook navigate event to go back from Twitter Auth window to the original app window
 ipcMain.on('twitter-auth-start', async () => {
   twitterAuthWindow = new BrowserWindow({
     width: 800,
@@ -51,6 +50,7 @@ ipcMain.on('twitter-auth-start', async () => {
 
   const authURL = await Authentication.getTwitterAuthURL();
 
+  // Hook navigate event to go back from Twitter Auth window to the original app window
   twitterAuthWindow.webContents.on('will-navigate', (event, url) => {
     const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
     if (matchesArray) {
@@ -60,9 +60,12 @@ ipcMain.on('twitter-auth-start', async () => {
     }
     twitterAuthWindow.close();
   });
+
+  // Prevent blank window from being displayed
   twitterAuthWindow.on('ready-to-show', () => {
     twitterAuthWindow.show();
   });
+
   twitterAuthWindow.loadURL(authURL);
 });
 
