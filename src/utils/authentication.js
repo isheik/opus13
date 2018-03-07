@@ -108,17 +108,27 @@ class Authentication {
 
   }
 
-  static async getAccessToken() {
-    if (this.requestToken) {
+  // TODO: Think about this process design
+  static async getAccessToken(authData) {
+    if (authData) {
       const oauth = {
         consumer_key: this.APP_KEY,
         consumer_secret: this.APP_SECRET_KEY,
-        token: this.requestToken.oauth_token,
-        token_secret: this.requestToken
+        token: authData.oauth_token,
+        token_secret: this.requestToken.oauth_token_secret,
+        verifier: authData.oauth_verifier,
+      };
 
+      const requestOptions = {
+        method: 'POST',
+        uri: this.ACCESS_TOKEN_URL,
+        oauth,
+      };
 
-      }
+      const accessToken = QueryStr.parse(await Request(requestOptions));
+      console.log(accessToken);
     }
+  }
 
   static generateSignature() {
     // Generate Key
