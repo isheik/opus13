@@ -108,6 +108,17 @@ class Authentication {
 
   }
 
+  static async getAccessToken() {
+    if (this.requestToken) {
+      const oauth = {
+        consumer_key: this.APP_KEY,
+        consumer_secret: this.APP_SECRET_KEY,
+        token: this.requestToken.oauth_token,
+        token_secret: this.requestToken
+
+
+      }
+    }
 
   static generateSignature() {
     // Generate Key

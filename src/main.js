@@ -54,9 +54,11 @@ ipcMain.on('twitter-auth-start', async () => {
   // Callback to local file is not allowed. This is an alternative to using Callback.
   twitterAuthWindow.webContents.on('will-navigate', (event, url) => {
     const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
+
     if (matchesArray) {
       console.log(matchesArray);
     } else {
+      // TODO: Need error handling
       console.log('failed auth');
     }
     twitterAuthWindow.close();
@@ -71,7 +73,6 @@ ipcMain.on('twitter-auth-start', async () => {
   twitterAuthWindow.loadURL(authURL);
 });
 
-
 // ipcMain.on('auth-start', () => {
-  // Authentication.authenticate();
+// Authentication.authenticate();
 // });
