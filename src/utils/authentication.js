@@ -22,6 +22,7 @@ class Authentication {
   static ACCESS_TOKEN_SECRET = '';
   static REQ_AUTH_BASE_URL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
   static requestToken;
+  static accessToken;
 
   static async authenticate() {
     // let reqToken = await this.getRequrestToken();
@@ -125,8 +126,8 @@ class Authentication {
         oauth,
       };
 
-      const accessToken = QueryStr.parse(await Request(requestOptions));
-      console.log(accessToken);
+      this.accessToken = QueryStr.parse(await Request(requestOptions));
+      console.log(this.accessToken);
     }
   }
 
