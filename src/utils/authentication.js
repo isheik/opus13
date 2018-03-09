@@ -7,10 +7,12 @@ import Request from 'request-promise-native';
 import QueryStr from 'querystring';
 // import { BrowserWindow } from 'electron';
 // import { remote } from 'electron';
-import electron from 'electron';
+import { BrowserWindow } from 'electron';
+// import electron from 'electron';
 // const BrowserWindow = electron.remote.BrowserWindow;
 
 // let authWindow = null;
+let twitterAuthWindow = null;
 
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
@@ -50,12 +52,6 @@ class Authentication {
     // });
 
     // authWindow.loadURL(authURL);
-  }
-
-  static async getTwitterAuthURL() {
-    this.requestToken = await this.getRequrestToken();
-    const authURL = `${this.REQ_AUTH_BASE_URL}${this.requestToken.oauth_token}`;
-    return authURL;
   }
 
   static async getRequrestToken() {
@@ -99,36 +95,68 @@ class Authentication {
     //   });
 
     // TODO: Error handling
-    const requestToken = QueryStr.parse(await Request(requestOptions));
-    return requestToken;
+    this.requestToken = QueryStr.parse(await Request(requestOptions));
+    return this.requestToken;
     // const keys = Object.keys(requestToken);
     // for (let i = 0; i < keys.length; i++) {
     // console.log(requestToken[keys[i]]);
     // }
     // console.log("test2");
-
   }
 
   // TODO: Think about this process design
-  static async getAccessToken(authData) {
-    if (authData) {
-      const oauth = {
-        consumer_key: this.APP_KEY,
-        consumer_secret: this.APP_SECRET_KEY,
-        token: authData.oauth_token,
-        token_secret: this.requestToken.oauth_token_secret,
-        verifier: authData.oauth_verifier,
+  static async getAccessToken() {
+    twitterAuthWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      modal: true,
+      show: false,
+    });
+    // parent: mainWindow,
+
+    // c    this.requestToken = await this.getRequrestToken();
+    const authURL = `${this.REQ_AUTH_BASE_URL}${this.requestToken.oauth_token}`;
+
+    // Hook navigate event to go back from Twitter Auth window to the original app window
+    // Callback to local file is not allowed. This is an alternative to using Callback.
+    twitterAuthWindow.webContents.on('will-navigate', async (event, url) => {
+      const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
+      const authData = {
+        oauth_token: matchesArray[1],
+        oauth_verifier: matchesArray[2],
       };
 
-      const requestOptions = {
-        method: 'POST',
-        uri: this.ACCESS_TOKEN_URL,
-        oauth,
-      };
+      if (matchesArray) {
+        // Authentication.getAccessToken(authData);
+        const oauth = {
+          consumer_key: this.APP_KEY,
+          consumer_secret: this.APP_SECRET_KEY,
+          token: authData.oauth_token,
+          token_secret: this.requestToken.oauth_token_secret,
+          verifier: authData.oauth_verifier,
+        };
 
-      this.accessToken = QueryStr.parse(await Request(requestOptions));
-      console.log(this.accessToken);
-    }
+        const requestOptions = {
+          method: 'POST',
+          uri: this.ACCESS_TOKEN_URL,
+          oauth,
+        };
+
+        this.accessToken = QueryStr.parse(await Request(requestOptions));
+        console.log(this.accessToken);
+      } else {
+        // TODO: Need error handling
+        console.log('failed auth');
+      }
+      twitterAuthWindow.close();
+    });
+
+    // Prevent blank window from being displayed
+    twitterAuthWindow.on('ready-to-show', () => {
+      twitterAuthWindow.show();
+    });
+
+    twitterAuthWindow.loadURL(authURL);
   }
 
   static generateSignature() {

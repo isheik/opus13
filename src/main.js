@@ -23,7 +23,6 @@ console.log(base);
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null;
-let twitterAuthWindow = null;
 
 app.on('window-all-closed', function () {
   if (process.platform != 'darwin')
@@ -40,40 +39,8 @@ app.on('ready', function () {
 });
 
 ipcMain.on('twitter-auth-start', async () => {
-  twitterAuthWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    parent: mainWindow,
-    modal: true,
-    show: false,
-  });
-
-  const authURL = await Authentication.getTwitterAuthURL();
-
-  // Hook navigate event to go back from Twitter Auth window to the original app window
-  // Callback to local file is not allowed. This is an alternative to using Callback.
-  twitterAuthWindow.webContents.on('will-navigate', (event, url) => {
-    const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
-    const authData = {
-      oauth_token: matchesArray[1],
-      oauth_verifier: matchesArray[2],
-    };
-
-    if (matchesArray) {
-      Authentication.getAccessToken(authData);
-    } else {
-      // TODO: Need error handling
-      console.log('failed auth');
-    }
-    twitterAuthWindow.close();
-  });
-
-  // Prevent blank window from being displayed
-  twitterAuthWindow.on('ready-to-show', () => {
-    twitterAuthWindow.show();
-  });
-
-  twitterAuthWindow.loadURL(authURL);
+  await Authentication.getRequrestToken();
+  await Authentication.getAccessToken();
 });
 
 // ipcMain.on('auth-start', () => {
