@@ -23,36 +23,35 @@ class Authentication {
   static REQUEST_METHOD = 'POST';
   static ACCESS_TOKEN_SECRET = '';
   static REQ_AUTH_BASE_URL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
-  static requestToken;
-  static accessToken;
+  // static accessToken;
 
-  static async authenticate() {
-    // let reqToken = await this.getRequrestToken();
+  // static async authenticate() {
+  // let reqToken = await this.getRequrestToken();
 
-    // let authBaseURL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
-    // let authURL = `${authBaseURL}${reqToken.oauth_token}`;
-    // console.log(authURL);
-    // authWindow = new BrowserWindow({
-    //   width: 800,
-    //   height: 600,
-    //   webPreferences: {
-    //     nodeIntegration: false,
-    //   },
-    // });
+  // let authBaseURL = 'https://api.twitter.com/oauth/authorize?oauth_token=';
+  // let authURL = `${authBaseURL}${reqToken.oauth_token}`;
+  // console.log(authURL);
+  // authWindow = new BrowserWindow({
+  //   width: 800,
+  //   height: 600,
+  //   webPreferences: {
+  //     nodeIntegration: false,
+  //   },
+  // });
 
-    // // Hook navigate event to go back from Twitter Auth window to the original app window
-    // authWindow.webContents.on('will-navigate', (event, url) => {
-    //   const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
-    //   if (matchesArray) {
-    //     console.log(matchesArray);
-    //   } else {
-    //     console.log('failed auth');
-    //   }
-    //   authWindow.close();
-    // });
+  // // Hook navigate event to go back from Twitter Auth window to the original app window
+  // authWindow.webContents.on('will-navigate', (event, url) => {
+  //   const matchesArray = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/);
+  //   if (matchesArray) {
+  //     console.log(matchesArray);
+  //   } else {
+  //     console.log('failed auth');
+  //   }
+  //   authWindow.close();
+  // });
 
-    // authWindow.loadURL(authURL);
-  }
+  // authWindow.loadURL(authURL);
+  // }
 
   static async getRequrestToken() {
     // let oauth = new OAuth.OAuth(
@@ -95,8 +94,8 @@ class Authentication {
     //   });
 
     // TODO: Error handling
-    this.requestToken = QueryStr.parse(await Request(requestOptions));
-    return this.requestToken;
+    const requestToken = QueryStr.parse(await Request(requestOptions));
+    return requestToken;
     // const keys = Object.keys(requestToken);
     // for (let i = 0; i < keys.length; i++) {
     // console.log(requestToken[keys[i]]);
@@ -104,18 +103,38 @@ class Authentication {
     // console.log("test2");
   }
 
+  static async getAccessToken(authData, requestToken) {
+    const oauth = {
+      consumer_key: this.APP_KEY,
+      consumer_secret: this.APP_SECRET_KEY,
+      token: authData.oauth_token,
+      token_secret: requestToken.oauth_token_secret,
+      verifier: authData.oauth_verifier,
+    };
+
+    const requestOptions = {
+      method: 'POST',
+      uri: this.ACCESS_TOKEN_URL,
+      oauth,
+    };
+
+    const accessToken = QueryStr.parse(await Request(requestOptions));
+    return accessToken;
+  }
+
   // TODO: Think about this process design
-  static async getAccessToken() {
+  static async authenticate() {
+    const requestToken = await this.getRequrestToken();
     twitterAuthWindow = new BrowserWindow({
       width: 800,
       height: 600,
+      parent: global.mainWindow,
       modal: true,
       show: false,
     });
-    // parent: mainWindow,
 
     // c    this.requestToken = await this.getRequrestToken();
-    const authURL = `${this.REQ_AUTH_BASE_URL}${this.requestToken.oauth_token}`;
+    const authURL = `${this.REQ_AUTH_BASE_URL}${requestToken.oauth_token}`;
 
     // Hook navigate event to go back from Twitter Auth window to the original app window
     // Callback to local file is not allowed. This is an alternative to using Callback.
@@ -128,22 +147,23 @@ class Authentication {
 
       if (matchesArray) {
         // Authentication.getAccessToken(authData);
-        const oauth = {
-          consumer_key: this.APP_KEY,
-          consumer_secret: this.APP_SECRET_KEY,
-          token: authData.oauth_token,
-          token_secret: this.requestToken.oauth_token_secret,
-          verifier: authData.oauth_verifier,
-        };
+        // const oauth = {
+        //   consumer_key: this.APP_KEY,
+        //   consumer_secret: this.APP_SECRET_KEY,
+        //   token: authData.oauth_token,
+        //   token_secret: requestToken.oauth_token_secret,
+        //   verifier: authData.oauth_verifier,
+        // };
 
-        const requestOptions = {
-          method: 'POST',
-          uri: this.ACCESS_TOKEN_URL,
-          oauth,
-        };
+        // const requestOptions = {
+        //   method: 'POST',
+        //   uri: this.ACCESS_TOKEN_URL,
+        //   oauth,
+        // };
 
-        this.accessToken = QueryStr.parse(await Request(requestOptions));
-        console.log(this.accessToken);
+        const accessToken = await this.getAccessToken(authData, requestToken);
+        // this.accessToken = QueryStr.parse(await Request(requestOptions));
+        console.log(accessToken);
       } else {
         // TODO: Need error handling
         console.log('failed auth');

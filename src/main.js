@@ -22,7 +22,7 @@ console.log(base);
 // console.log(BrowserWindow);
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow = null;
+global.mainWindow = null;
 
 app.on('window-all-closed', function () {
   if (process.platform != 'darwin')
@@ -38,9 +38,8 @@ app.on('ready', function () {
   });
 });
 
-ipcMain.on('twitter-auth-start', async () => {
-  await Authentication.getRequrestToken();
-  await Authentication.getAccessToken();
+ipcMain.on('twitter-auth-start', () => {
+  Authentication.authenticate();
 });
 
 // ipcMain.on('auth-start', () => {
