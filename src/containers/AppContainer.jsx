@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { ipcRenderer } from 'electron';
 
 import App from '../components/App';
 import Actions from '../actions/AppActions';
-
-import Authentication from '../utils/authentication';
-import { ipcRenderer } from 'electron';
 
 const mapStateToProps = state => (
   { tweets: state.tweets }
