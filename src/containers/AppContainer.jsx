@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { ipcRenderer } from 'electron';
 
+
 import App from '../components/App';
 import Actions from '../actions/AppActions';
+
 
 const mapStateToProps = state => (
   { tweets: state.tweets }
@@ -25,6 +27,11 @@ const mapDispatchToProps = dispatch => (
     },
   }
 );
+
+ipcRenderer.on('twitter-auth-finish', () => {
+
+
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 

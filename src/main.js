@@ -36,9 +36,12 @@ app.on('ready', () => {
   });
 });
 
-ipcMain.on('twitter-auth-start', () => {
+ipcMain.on('twitter-auth-start', (event) => {
   Authentication.authenticate();
+  event.sender.send('twitter-auth-finish');
+
 });
+
 
 // ipcMain.on('auth-start', () => {
 // Authentication.authenticate();

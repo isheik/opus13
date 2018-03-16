@@ -3,10 +3,12 @@
 // import Base64 from 'crypto-js/enc-base64';
 // import OAuth from 'oauth'; -> uninstalal later
 // import Request from 'request';
-import Request from 'request-promise-native';
-import QueryStr from 'querystring';
+import request from 'request-promise-native';
+import querystring from 'querystring';
 // import { BrowserWindow } from 'electron';
 // import { remote } from 'electron';
+import Twitter from 'twitter';
+
 import { BrowserWindow } from 'electron';
 // import electron from 'electron';
 // const BrowserWindow = electron.remote.BrowserWindow;
@@ -94,7 +96,7 @@ class Authentication {
     //   });
 
     // TODO: Error handling
-    const requestToken = QueryStr.parse(await Request(requestOptions));
+    const requestToken = querystring.parse(await request(requestOptions));
     return requestToken;
     // const keys = Object.keys(requestToken);
     // for (let i = 0; i < keys.length; i++) {
@@ -118,7 +120,7 @@ class Authentication {
       oauth,
     };
 
-    const accessToken = QueryStr.parse(await Request(requestOptions));
+    const accessToken = querystring.parse(await request(requestOptions));
     return accessToken;
   }
 
@@ -162,13 +164,19 @@ class Authentication {
         // };
 
         const accessToken = await this.getAccessToken(authData, requestToken);
-        // this.accessToken = QueryStr.parse(await Request(requestOptions));
-        console.log(accessToken);
-      } else {
-        // TODO: Need error handling
-        console.log('failed auth');
+        // this.accessToken = querystring.parse(await Request(requestOptions));
+        twitterAuthWindow.close();
+        return new Twitter({
+          consumer_key: this.APP_KEY,
+          consumer_secret: this.APP_SECRET_KEY,
+          access_token_key: accessToken.oauth_token,
+          access_token_secret: accessToken.oauth_token_secret,
+        });
       }
+      // TODO: Need error handling
+      console.log('failed auth');
       twitterAuthWindow.close();
+      return 'b';
     });
 
     // Prevent blank window from being displayed
