@@ -18,4 +18,5 @@ class FileManager {
     return fs.writeFileSync(filePath, JSON.stringify(data));
   }
 }
+
 export default FileManager;

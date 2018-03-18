@@ -14,7 +14,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 // var BrowserWindow = require('electron').remote.BrowserWindow;
 // const Authentication = require('./src/utils/authentication');
 // import path from 'path';
-import Authentication from './utils/authentication';
+import Authentication from './utils/Authentication';
 
 // console.log(BrowserWindow);
 // Keep a global reference of the window object, if you don't, the window will
