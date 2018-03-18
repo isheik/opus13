@@ -148,21 +148,6 @@ class Authentication {
       };
 
       if (matchesArray) {
-        // Authentication.getAccessToken(authData);
-        // const oauth = {
-        //   consumer_key: this.APP_KEY,
-        //   consumer_secret: this.APP_SECRET_KEY,
-        //   token: authData.oauth_token,
-        //   token_secret: requestToken.oauth_token_secret,
-        //   verifier: authData.oauth_verifier,
-        // };
-
-        // const requestOptions = {
-        //   method: 'POST',
-        //   uri: this.ACCESS_TOKEN_URL,
-        //   oauth,
-        // };
-
         const accessToken = await this.getAccessToken(authData, requestToken);
         // this.accessToken = querystring.parse(await Request(requestOptions));
         twitterAuthWindow.close();

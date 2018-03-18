@@ -30,7 +30,6 @@ const mapDispatchToProps = dispatch => (
 
 ipcRenderer.on('twitter-auth-finish', () => {
 
-
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

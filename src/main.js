@@ -39,7 +39,6 @@ app.on('ready', () => {
 ipcMain.on('twitter-auth-start', (event) => {
   Authentication.authenticate();
   event.sender.send('twitter-auth-finish');
-
 });
 
 
