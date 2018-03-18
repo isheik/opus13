@@ -5,7 +5,7 @@ import fs from 'fs';
 class FileManager {
   static userDataPath = (electron.app || electron.remote.app).getPath('userData');
 
-  static readHome(name) {
+  static readProperty(name) {
     const filePath = path.join(this.userDataPath, name);
     if (!fs.existSync(filePath)) {
       return null;
@@ -13,7 +13,8 @@ class FileManager {
     return JSON.parse(fs.readFileSync(filePath));
   }
 
-  // static writeHome(name, data) {
-// 
-  // }
+  static writeProperty(name, data) {
+    const filePath = path.join(this.userDataPath, name);
+    return fs.writeFileSync(filePath, JSON.stringify(data));
+  }
 }
