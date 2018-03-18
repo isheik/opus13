@@ -6,9 +6,14 @@ class FileManager {
   static userDataPath = (electron.app || electron.remote.app).getPath('userData');
 
   static readHome(name) {
-    if (!fs.existSync(`${this.userDataPath}${name}`)) {
+    const filePath = path.join(this.userDataPath, name);
+    if (!fs.existSync(filePath)) {
       return null;
     }
-    return JSON.parse(fs.readFileSync(`${this.userDataPath}${name}`));
+    return JSON.parse(fs.readFileSync(filePath));
   }
+
+  // static writeHome(name, data) {
+// 
+  // }
 }
