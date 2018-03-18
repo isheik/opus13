@@ -7,7 +7,7 @@ class FileManager {
 
   static readProperty(name) {
     const filePath = path.join(this.userDataPath, name);
-    if (!fs.existSync(filePath)) {
+    if (!fs.existsSync(filePath)) {
       return null;
     }
     return JSON.parse(fs.readFileSync(filePath));

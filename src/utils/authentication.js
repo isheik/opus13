@@ -10,6 +10,7 @@ import querystring from 'querystring';
 import Twitter from 'twitter';
 
 import { BrowserWindow } from 'electron';
+import FileManager from './FileManager';
 // import electron from 'electron';
 // const BrowserWindow = electron.remote.BrowserWindow;
 
@@ -151,6 +152,10 @@ class Authentication {
         const accessToken = await this.getAccessToken(authData, requestToken);
         // this.accessToken = querystring.parse(await Request(requestOptions));
         twitterAuthWindow.close();
+        // console.log(accessToken);
+        // FileManager.writeProperty('.opus13', accessToken);
+        // console.log(FileManager.readProperty('.opus13'));
+
         return new Twitter({
           consumer_key: this.APP_KEY,
           consumer_secret: this.APP_SECRET_KEY,
