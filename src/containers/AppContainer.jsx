@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { ipcRenderer } from 'electron';
+
 
 import App from '../components/App';
 import Actions from '../actions/AppActions';
 
-import Authentication from '../utils/authentication';
 
 const mapStateToProps = state => (
   { tweets: state.tweets }
 );
 
-const authtest = async () => {
+const authtest = () => {
   // Authentication.generateSignature();
-  await Authentication.getRequrestToken();
+  ipcRenderer.send('twitter-auth-start');
+  // Authentication.authenticate();
   // console.log("test3");
 };
 
@@ -25,6 +27,10 @@ const mapDispatchToProps = dispatch => (
     },
   }
 );
+
+ipcRenderer.on('twitter-auth-finish', () => {
+
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
