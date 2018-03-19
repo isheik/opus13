@@ -38,11 +38,31 @@ import Main from './Main';
 // If you use this.props inside App module, you have to change this expression
 // from anonymous function to class or using React.CreaateClass
 // Otherwise, your 'this' will indicate window object
-const App = props => (
-  <div className="app">
-    <SideMenu />
-    <Main {...props} />
-  </div>
-);
+// const App = props => (
+//   <div className="app">
+//     <SideMenu />
+//     <Main {...props} />
+//   </div>
+// );
+
+class App extends React.Component {
+  // constructor(props) {
+  // super(props);
+  // }
+
+  componentDidMount() {
+    this.props.subscribeIpcEvent();
+    this.props.init();
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <SideMenu />
+        <Main {...this.props} />
+      </div>
+    );
+  }
+}
 
 export default App;
