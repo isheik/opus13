@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { ipcRenderer } from 'electron';
-
+import Twitter from 'twitter';
 
 import App from '../components/App';
 import Actions from '../actions/AppActions';
@@ -32,7 +32,20 @@ const mapDispatchToProps = dispatch => (
     subscribeIpcEvent: () => {
       ipcRenderer.on('twitter-auth-finish', () => {
         const accounts = FileManager.readProperty('.opus13');
-        console.log(accounts);
+        console.log(accounts.oauth_token);
+        let twitterClient = new Twitter({
+          consumer_key: '9kyGvxw2hN6RUwQ2MZ9h3WBtV',
+          consumer_secret: 'qfEF4Z89AN9WBn80dO91WpBowmUs8AmMLPTTqhA4s14Fyl1AGz',
+          access_token_key: accounts.oauth_token,
+          access_token_secret: accounts.oauth_token_secret,
+        });
+
+        let params = { screen_name: accounts.screen_name };
+        twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+          if (!error) {
+            console.log(tweets);
+          }
+        });
       });
     },
   }
