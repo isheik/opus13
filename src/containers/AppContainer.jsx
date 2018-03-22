@@ -7,6 +7,7 @@ import App from '../components/App';
 import Actions from '../actions/AppActions';
 
 import FileManager from '../utils/FileManager';
+import Authentication from '../utils/Authentication';
 
 const mapStateToProps = state => (
   { tweets: state.tweets }
