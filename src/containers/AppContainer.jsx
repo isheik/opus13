@@ -34,14 +34,14 @@ const mapDispatchToProps = dispatch => (
       ipcRenderer.on('twitter-auth-finish', () => {
         const accounts = FileManager.readProperty('.opus13');
         console.log(accounts.oauth_token);
-        let twitterClient = new Twitter({
-          consumer_key: '9kyGvxw2hN6RUwQ2MZ9h3WBtV',
-          consumer_secret: 'qfEF4Z89AN9WBn80dO91WpBowmUs8AmMLPTTqhA4s14Fyl1AGz',
+        const twitterClient = new Twitter({
+          consumer_key: Authentication.APP_KEY,
+          consumer_secret: Authentication.APP_SECRET_KEY,
           access_token_key: accounts.oauth_token,
           access_token_secret: accounts.oauth_token_secret,
         });
 
-        let params = { screen_name: accounts.screen_name };
+        const params = { screen_name: accounts.screen_name };
         twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
           if (!error) {
             console.log(tweets);
