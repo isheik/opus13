@@ -1,6 +1,6 @@
 
-const twreducer = (state = [], action) => (
+const tweets = (state = [], action) => (
   state
 );
 
-export default twreducer;
+export default tweets;
