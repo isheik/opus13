@@ -9,7 +9,7 @@ import querystring from 'querystring';
 // import { remote } from 'electron';
 import Twitter from 'twitter';
 
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, IpcRenderer, ipcMain } from 'electron';
 import FileManager from './FileManager';
 // import electron from 'electron';
 // const BrowserWindow = electron.remote.BrowserWindow;
@@ -126,7 +126,7 @@ class Authentication {
   }
 
   // TODO: Think about this process design
-  static async authenticate() {
+  static async authenticate(callback) {
     const requestToken = await this.getRequrestToken();
     twitterAuthWindow = new BrowserWindow({
       width: 800,
@@ -148,14 +148,17 @@ class Authentication {
         oauth_verifier: matchesArray[2],
       };
 
+      let accessToken;
+
       if (matchesArray) {
-        const accessToken = await this.getAccessToken(authData, requestToken);
+        accessToken = await this.getAccessToken(authData, requestToken);
         // this.accessToken = querystring.parse(await Request(requestOptions));
-        twitterAuthWindow.close();
+        // twitterAuthWindow.close();
         // console.log(accessToken);
         FileManager.writeProperty('.opus13', accessToken);
         // console.log(FileManager.readProperty('.opus13'));
-        return "warosu";
+        // twitterAuthWindow.sender.send('twitter-auth-finish', accessToken);
+        callback(accessToken);
       }
       // TODO: Need error handling
       twitterAuthWindow.close();
