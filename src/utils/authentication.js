@@ -153,20 +153,12 @@ class Authentication {
         // this.accessToken = querystring.parse(await Request(requestOptions));
         twitterAuthWindow.close();
         // console.log(accessToken);
-        // FileManager.writeProperty('.opus13', accessToken);
+        FileManager.writeProperty('.opus13', accessToken);
         // console.log(FileManager.readProperty('.opus13'));
-
-        return new Twitter({
-          consumer_key: this.APP_KEY,
-          consumer_secret: this.APP_SECRET_KEY,
-          access_token_key: accessToken.oauth_token,
-          access_token_secret: accessToken.oauth_token_secret,
-        });
+        return "warosu";
       }
       // TODO: Need error handling
-      console.log('failed auth');
       twitterAuthWindow.close();
-      return 'b';
     });
 
     // Prevent blank window from being displayed
