@@ -4,7 +4,7 @@ import { ipcRenderer } from 'electron';
 import Twitter from 'twitter';
 
 import App from '../components/App';
-import Actions from '../actions/AppActions';
+import Actions from '../actions/actionCreators';
 
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
