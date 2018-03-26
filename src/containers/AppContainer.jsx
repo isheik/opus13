@@ -4,13 +4,16 @@ import { ipcRenderer } from 'electron';
 import Twitter from 'twitter';
 
 import App from '../components/App';
-import tweetsActions from '../actions/tweets';
+import * as accountActions from '../actions/account';
 
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
 
 const mapStateToProps = state => (
-  { tweets: state.tweets }
+  {
+    tweets: state.tweets,
+    accounts: state.accounts,
+  }
 );
 
 // const authtest = () => {
@@ -33,7 +36,7 @@ const mapDispatchToProps = dispatch => (
     subscribeIpcEvent: () => {
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
         // const accounts = FileManager.readProperty('.opus13');
-        // dispatch(tweetsActions.addAccount());
+        dispatch(accountActions.addAccount(token));
         // console.log(accounts.oauth_token);
         console.log(token);
         const twitterClient = new Twitter({

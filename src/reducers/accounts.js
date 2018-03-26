@@ -1,4 +1,4 @@
-const account = (state = [], action) => {
+const accounts = (state = [], action) => {
   switch (action.type) {
     case 'ADD_ACCOUNT':
       return [
@@ -10,4 +10,4 @@ const account = (state = [], action) => {
   }
 };
 
-export default account;
+export default accounts;
