@@ -3,6 +3,7 @@ import { Redirect, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Test from './Test';
 
+// TODO: check Route component props... how to pass props
 const Main = props => (
   <div className="contents">
     <Switch>
