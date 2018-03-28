@@ -10,3 +10,10 @@ export const deleteAccount = () => (
     type: 'DELETE_ACCOUNT',
   }
 );
+
+export const changeActiveAccount = account => (
+  {
+    type: 'CHANGE_ACTIVE_ACCOUNT',
+    account,
+  }
+);
