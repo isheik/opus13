@@ -11,9 +11,9 @@ export const deleteAccount = () => (
   }
 );
 
-export const changeActiveAccount = account => (
+export const changeActiveAccount = index => (
   {
     type: 'CHANGE_ACTIVE_ACCOUNT',
-    account,
+    index,
   }
 );
