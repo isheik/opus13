@@ -16,20 +16,8 @@ const mapStateToProps = state => (
   }
 );
 
-// const authtest = () => {
-// Authentication.generateSignature();
-// ipcRenderer.send('twitter-auth-start');
-// Authentication.authenticate();
-// console.log("test3");
-// };
-
-// authtest();
-
 const mapDispatchToProps = dispatch => (
   {
-    // handleTodoAdd(value) {
-    // dispatch(Actions.addTodo(value));
-    // },
     init: () => {
       ipcRenderer.send('twitter-auth-start');
     },
@@ -37,6 +25,7 @@ const mapDispatchToProps = dispatch => (
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
         // const accounts = FileManager.readProperty('.opus13');
         dispatch(accountActions.addAccount(token));
+        dispatch(accountActions.changeActiveAccount())
         // console.log(accounts.oauth_token);
         // console.log(token);
         // TODO: Fix here
