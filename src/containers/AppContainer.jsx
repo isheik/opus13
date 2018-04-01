@@ -13,6 +13,7 @@ const mapStateToProps = state => (
   {
     tweets: state.tweets,
     accounts: state.accounts,
+    activeAccount: state.activeAccountIndex,
   }
 );
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => (
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
         // const accounts = FileManager.readProperty('.opus13');
         dispatch(accountActions.addAccount(token));
-        dispatch(accountActions.changeActiveAccount())
+        dispatch(accountActions.changeActiveAccount());
         // console.log(accounts.oauth_token);
         // console.log(token);
         // TODO: Fix here
