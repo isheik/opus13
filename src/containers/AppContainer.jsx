@@ -9,6 +9,7 @@ import * as accountActions from '../actions/account';
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
 
+// Reducer function names are corresponding to each state property name since redux do so
 const mapStateToProps = state => (
   {
     tweets: state.tweets,
