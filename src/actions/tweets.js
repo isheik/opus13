@@ -1,6 +1,7 @@
-export const loadHome = account => (
+export const storeHomeTimeline = tweets => (
   {
-    type: 'LOAD_HOME',
+    type: 'storeHomeTimeline',
+    tweets,
   }
 );
 
@@ -12,4 +13,3 @@ export const addTweetToTab = (tweets, tab) => (
   }
 );
 
-export default loadHome;
