@@ -18,6 +18,7 @@ const mapStateToProps = state => (
   }
 );
 
+// NEXT: Implement home timeline display
 const mapDispatchToProps = dispatch => (
   {
     init: () => {
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => (
         dispatch(accountActions.changeActiveAccount());
         // console.log(accounts.oauth_token);
         // console.log(token);
+
         // TODO: Fix here
         const twitterClient = new Twitter({
           consumer_key: Authentication.APP_KEY,
