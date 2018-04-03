@@ -1,8 +1,8 @@
-const loadHome = account => (
+export const addTweetToTab = (tweets, tab) => (
   {
-    type: 'LOAD_HOME',
+    type: 'ADD_TWEET_TO_TAB',
+    tweets,
+    tab,
   }
 );
 
-
-export default loadHome;

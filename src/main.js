@@ -36,9 +36,19 @@ app.on('ready', () => {
   });
 });
 
-ipcMain.on('twitter-auth-start', async (event) => {
-  await Authentication.authenticate();
-  event.sender.send('twitter-auth-finish');
+ipcMain.on('twitter-auth-start', (event) => {
+  // const token = await Authentication.authenticate();
+  Authentication.authenticate((token) => {
+    // console.log(token);
+    event.sender.send('twitter-auth-finish', token);
+  });
+  // console.log(token);
+  // console.log("test");
+  // event.sender.send('twitter-auth-finish', token);
+});
+
+ipcMain.on('twitter-auth-finish', (event) => {
+  console.log('test');
 });
 
 
