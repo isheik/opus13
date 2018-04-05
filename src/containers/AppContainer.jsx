@@ -4,7 +4,8 @@ import { ipcRenderer } from 'electron';
 import Twitter from 'twitter';
 
 import App from '../components/App';
-import * as accountActions from '../actions/account';
+// import * as accountActions from '../actions/account';
+import actions from '../actions';
 
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
@@ -26,9 +27,11 @@ const mapDispatchToProps = dispatch => (
     },
     subscribeIpcEvent: () => {
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
-        // const accounts = FileManager.readProperty('.opus13');
-        dispatch(accountActions.addAccount(token));
-        dispatch(accountActions.changeActiveAccount());
+        const accounts = FileManager.readProperty('.opus13');
+        // dispatch(accountActions.addAccount(token));
+        // dispatch(accountActions.changeActiveAccount());
+        dispatch(actions.addAccount(token));
+        dispatch(actions.changeActiveAccount());
         // console.log(accounts.oauth_token);
         // console.log(token);
 
@@ -44,6 +47,7 @@ const mapDispatchToProps = dispatch => (
         twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
           if (!error) {
             console.log(tweets);
+            dispatch(actions.addTweetToTab(tweets, 'home'));
           }
         });
       });
