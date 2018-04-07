@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Twitter from 'twitter';
-import Home from '../components/Home';
+import SideMenu from '../components/SideMenu';
 import actions from '../actions/';
 
 
@@ -17,8 +17,8 @@ const mapDispatchToProps = dispatch => (
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
-        access_token_key: accounts.oauth_token,
-        access_token_secret: accounts.oauth_token_secret,
+        access_token_key: account.oauth_token,
+        access_token_secret: account.oauth_token_secret,
       });
 
       const params = { screen_name: accounts.screen_name };
@@ -28,9 +28,8 @@ const mapDispatchToProps = dispatch => (
           dispatch(actions.addTweetToTab(tweets, 'home'));
         }
       });
-
     },
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);
