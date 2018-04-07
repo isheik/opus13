@@ -11,6 +11,7 @@ const mapStateToProps = state => (
   }
 );
 
+// from presentation... call getTweets on click using accounts[index]
 const mapDispatchToProps = dispatch => (
   {
     getTweets: (account) => {
