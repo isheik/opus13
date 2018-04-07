@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import Twitter from 'twitter';
 import SideMenu from '../components/SideMenu';
 import actions from '../actions/';
-
+import Authentication from '../utils/Authentication';
 
 const mapStateToProps = state => (
   {
-    accounts: state.account,
+    accounts: state.accounts,
     activeAccountIndex: state.activeAccountIndex,
   }
 );
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => (
         access_token_secret: account.oauth_token_secret,
       });
 
-      const params = { screen_name: accounts.screen_name };
+      const params = { screen_name: account.screen_name };
       twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
         if (!error) {
           console.log(tweets);
