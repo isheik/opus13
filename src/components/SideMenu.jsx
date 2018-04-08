@@ -6,7 +6,7 @@ const SideMenu = () => (
     <nav className="app-global-nav">
       <ul className="app-nav-menu">
         <li className="app-nav-items">
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={console.log('test')}>Home</Link>
         </li>
         <li className="app-nav-items">
           <Link to="/test">Test</Link>
