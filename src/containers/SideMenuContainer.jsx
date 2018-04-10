@@ -15,6 +15,7 @@ const mapStateToProps = state => (
 const mapDispatchToProps = dispatch => (
   {
     getTweets: (account) => {
+      console.log(account);
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
