@@ -52,6 +52,26 @@ const mapDispatchToProps = dispatch => (
         });
       });
     },
+    getTweets: (account) => {
+      if (account) {
+        const twitterClient = new Twitter({
+          consumer_key: Authentication.APP_KEY,
+          consumer_secret: Authentication.APP_SECRET_KEY,
+          access_token_key: account.oauth_token,
+          access_token_secret: account.oauth_token_secret,
+        });
+
+        const params = { screen_name: account.screen_name };
+        console.log(twitterClient);
+        console.log(account);
+        twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+          if (!error) {
+            console.log('test');
+            dispatch(actions.addTweetToTab(tweets, 'home'));
+          }
+        });
+      }
+    },
   }
 );
 

@@ -8,6 +8,7 @@ const mapStateToProps = state => (
   {
     accounts: state.accounts,
     activeAccountIndex: state.activeAccountIndex,
+    tweets: state.tweets,
   }
 );
 
@@ -15,7 +16,6 @@ const mapStateToProps = state => (
 const mapDispatchToProps = dispatch => (
   {
     getTweets: (account) => {
-      console.log(account);
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
@@ -24,9 +24,10 @@ const mapDispatchToProps = dispatch => (
       });
 
       const params = { screen_name: account.screen_name };
+      // console.log(twitterClient);
       twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
         if (!error) {
-          console.log(tweets);
+          console.log('test');
           dispatch(actions.addTweetToTab(tweets, 'home'));
         }
       });

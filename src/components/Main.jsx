@@ -8,7 +8,7 @@ const Main = props => (
   <div className="contents">
     <Switch>
       {window.location.pathname.includes('index.html') && <Redirect to="/" />}
-      <Route exact path="/" render={() => <Home {...props} />} />
+      <Route exact path="/" render={() => <Home {...props} onClick={props.getTweets(props.accounts[0])} />} />
       <Route path="/test" component={Test} />
     </Switch>
   </div>
