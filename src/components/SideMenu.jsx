@@ -16,17 +16,24 @@ import { Link } from 'react-router-dom';
 //   </div>
 // );
 class SideMenu extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
+    this.clicko = this.clicko.bind(this);
   }
+
+  clicko() {
+    console.log('test');
+    this.props.getTweets(this.props.accounts[0]);
+  }
+
   render() {
     return (
       <div className="sidebar">
         <nav className="app-global-nav">
           <ul className="app-nav-menu">
             <li className="app-nav-items">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={this.clicko} >Home</Link>
             </li>
             <li className="app-nav-items">
               <Link to="/test">Test</Link>
