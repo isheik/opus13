@@ -46,7 +46,7 @@ const mapDispatchToProps = dispatch => (
         const params = { screen_name: accounts.screen_name };
         twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
           if (!error) {
-            for (tweet of tweets) {
+            for (let tweet of tweets) {
               dispatch(actions.addTweetToTab(accounts, 'home', tweet));
             }
           }
@@ -68,7 +68,10 @@ const mapDispatchToProps = dispatch => (
         twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
           if (!error) {
             console.log('test');
-            dispatch(actions.addTweetToTab(tweets, 'home'));
+            for (let tweet of tweets) {
+              dispatch(actions.addTweetToTab(account, 'home', tweet));
+            }
+            // dispatch(actions.addTweetToTab(tweets, 'home'));
           }
         });
       }
