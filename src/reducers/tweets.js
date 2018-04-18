@@ -1,5 +1,5 @@
 
-export const tweets = (state = [], action) => {
+export const tweets = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_TWEET_TO_TAB':
       return Object.assign(
