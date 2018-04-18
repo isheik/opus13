@@ -1,8 +1,9 @@
-export const addTweetToTab = (tweets, tab) => (
+export const addTweetToTab = (account, tab, tweet) => (
   {
     type: 'ADD_TWEET_TO_TAB',
-    tweets,
+    account,
     tab,
+    tweet,
   }
 );
 

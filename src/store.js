@@ -7,7 +7,7 @@ import rootReducer from './reducers/index';
 import tweets from './data/tweets';
 
 const defaultState = {
-  tweets,
+  // tweets,
 };
 
 // Re consider this file contents later

@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <SideMenu />
+        <SideMenu {...this.props} />
         <Main {...this.props} />
       </div>
     );
