@@ -28,6 +28,7 @@ const mapDispatchToProps = dispatch => (
     subscribeIpcEvent: () => {
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
         const accounts = FileManager.readProperty('.opus13');
+        console.log(accounts);
         // dispatch(accountActions.addAccount(token));
         // dispatch(accountActions.changeActiveAccount());
         dispatch(actions.addAccount(token));
