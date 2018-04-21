@@ -1,5 +1,5 @@
 
-export const tweets = (state = [], action) => {
+export const tweets = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_TWEET_TO_TAB':
       // return [...state, {
@@ -10,10 +10,12 @@ export const tweets = (state = [], action) => {
       return Object.assign(
         {},
         state,
-        [action.account.user_id]: {
-          state[action.account.user_id] || {},
-          [action.tab]: action.tweet,
-        }
+        {
+          [action.account.user_id]: {
+            [state[action.account.user_id]]: state[action.account.user_id],
+            [action.tab]: action.tweet,
+          }
+        },
       );
 
     //   return Object.assign(
