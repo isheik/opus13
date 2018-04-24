@@ -15,7 +15,6 @@ export const tweets = (state = {}, action) => {
         state,
         {
           [action.account.user_id]: {
-            // [state[action.account.user_id]]: state[action.account.user_id],
             [action.tab]: addTweet(
               (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
               action.tweet,

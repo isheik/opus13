@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
-import { TweetList } from '../components/TweetList';
+import TweetList from '../components/TweetList';
 
-const mapStateToProps = state => (
-  {
-    tweets: state.tweets,
-  }
-);
+const mapStateToProps = (state, props) => {
+  let tweetData = state.tweets['2195738078'];
 
-const mapDispatchToProps = dispatch => (
-  {
-    
+  return {
+    tweets: (tweetData[props.tab] || []),
+  };
+};
 
-  }
-);
+// const mapDispatchToProps = dispatch => (
+//   {
 
-export default connect(mapStateToProps, mapDispatchToProps)(TweetList);
+//   }
+// );
+
+// export default connect(mapStateToProps, mapDispatchToProps)(TweetList);
+export default connect(mapStateToProps, {})(TweetList);

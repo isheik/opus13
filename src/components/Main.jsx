@@ -14,6 +14,7 @@ const Main = props => (
   </div>
 );
 
+// <Route exact path="/" render={() => <Home {...props} />} />
 const Home2 = props => (
   <Home {...props} />
 );

@@ -6,8 +6,9 @@ const TweetList = props => (
     {console.log(props.tweets)}
   </div>
 );
-
-//{props.tweets.map(tweetObj => <TweetItem {...props} key={tweetObj.tweet.id_str} tweet={tweetObj.tweet} />)}
+// {props.tweets['home'].map(tweetObj => <TweetItem {...props} key={tweetObj.tweet.id_str} tweet={tweetObj.tweet} />)}
+// {console.log((props.tweets['home']))}
+//2195738078
 // {props.accounts.map(account => console.log(account))}
 // {console.log(props.tweets)}
 // {props.tweets.map(tweet => console.log(tweet))}
