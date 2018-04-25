@@ -3,7 +3,6 @@ import TweetItem from './TweetItem';
 
 const TweetList = props => (
   <div>
-    {console.log(props.tweets)}
     {props.tweets.map(tweet => <TweetItem {...props} key={tweet.id_str} tweet={tweet} />)}
   </div>
 );

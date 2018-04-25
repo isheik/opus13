@@ -2,15 +2,17 @@ import { connect } from 'react-redux';
 import TweetList from '../components/TweetList';
 
 const mapStateToProps = (state, props) => {
-  let tweetData = state.tweets['2195738078'];
+  let tweetData = (state.tweets && state.tweets[(props.account && props.account.user_id)]) || null;
+  // let tweetData = state.tweets['2195738078'];
   // let tweetsa = (tweetData && tweetData[props.tab]) || [];
-  let tweetsa = (tweetData && tweetData[props.tab]) || [];
+  let tweets = (tweetData && tweetData[props.tab]) || [];
 
   return {
     // tweets: (tweetData[props.tab] || []),
-    tweets: tweetsa,
+    tweets: tweets,
   };
 };
+// "2195738078"
 
 // const mapDispatchToProps = dispatch => (
 //   {

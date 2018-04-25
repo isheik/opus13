@@ -1,6 +1,8 @@
+
 const addTweet = (tweetSet, tweet) => {
+  // TODO: Disallow to put duplicated tweets.
   return [...tweetSet, tweet];
-}
+};
 
 export const tweets = (state = {}, action) => {
   switch (action.type) {
