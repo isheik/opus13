@@ -17,7 +17,7 @@ const mapStateToProps = state => (
   {
     // tweets: state.tweets['2195738078'],
     accounts: state.accounts,
-    activeAccount: state.activeAccountIndex,
+    activeAccountIndex: state.activeAccountIndex,
   }
 );
 
@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => (
         // dispatch(accountActions.addAccount(token));
         // dispatch(accountActions.changeActiveAccount());
         dispatch(actions.addAccount(token));
-        dispatch(actions.changeActiveAccount());
+        dispatch(actions.changeActiveAccount(0));
         // console.log(accounts.oauth_token);
         // console.log(token);
 

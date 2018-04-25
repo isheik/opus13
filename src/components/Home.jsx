@@ -4,8 +4,9 @@ import TweetListContainer from '../containers/TweetListContainer';
 
 const Home = props => (
   <div>
-    <TweetListContainer {...props} tab="home" />
+    {console.log(props.activeAccountIndex)}
+    <TweetListContainer {...props} account={props.accounts['0']} tab="home" />
   </div>
 );
-
+// props.activeAccountIndex
 export default Home;
