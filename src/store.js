@@ -7,7 +7,13 @@ import rootReducer from './reducers/index';
 import tweets from './data/tweets';
 
 const defaultState = {
-  // tweets,
+  // tweets: {
+  //   '2195738078': {
+  //     'home': {
+
+  //     }
+  //   }
+  // }
 };
 
 // Re consider this file contents later

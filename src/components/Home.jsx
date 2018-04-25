@@ -1,9 +1,10 @@
 import React from 'react';
-import TweetList from './TweetList';
+// import TweetList from './TweetList';
+import TweetListContainer from '../containers/TweetListContainer';
 
 const Home = props => (
   <div>
-    <TweetList {...props} />
+    <TweetListContainer {...props} tab="home" />
   </div>
 );
 

@@ -10,10 +10,12 @@ import actions from '../actions';
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
 
+import tweets from '../reducers/tweets';
+
 // Reducer function names are corresponding to each state property name since redux do so
 const mapStateToProps = state => (
   {
-    tweets: state.tweets,
+    // tweets: state.tweets['2195738078'],
     accounts: state.accounts,
     activeAccount: state.activeAccountIndex,
   }
@@ -28,6 +30,7 @@ const mapDispatchToProps = dispatch => (
     subscribeIpcEvent: () => {
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
         const accounts = FileManager.readProperty('.opus13');
+        // console.log(accounts);
         // dispatch(accountActions.addAccount(token));
         // dispatch(accountActions.changeActiveAccount());
         dispatch(actions.addAccount(token));
@@ -63,11 +66,11 @@ const mapDispatchToProps = dispatch => (
         });
 
         const params = { screen_name: account.screen_name };
-        console.log(twitterClient);
-        console.log(account);
+        // console.log(twitterClient);
+        // console.log(account);
         twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
           if (!error) {
-            console.log('test');
+            // console.log('test');
             for (let tweet of tweets) {
               dispatch(actions.addTweetToTab(account, 'home', tweet));
             }

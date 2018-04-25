@@ -27,7 +27,6 @@ const mapDispatchToProps = dispatch => (
       // console.log(twitterClient);
       twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
         if (!error) {
-          console.log('test');
           dispatch(actions.addTweetToTab(tweets, 'home'));
         }
       });
