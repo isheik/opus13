@@ -3,9 +3,12 @@ import TweetList from '../components/TweetList';
 
 const mapStateToProps = (state, props) => {
   let tweetData = state.tweets['2195738078'];
+  // let tweetsa = (tweetData && tweetData[props.tab]) || [];
+  let tweetsa = (tweetData && tweetData[props.tab]) || [];
 
   return {
-    tweets: (tweetData[props.tab] || []),
+    // tweets: (tweetData[props.tab] || []),
+    tweets: tweetsa,
   };
 };
 
