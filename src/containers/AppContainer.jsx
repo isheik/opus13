@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => (
         // dispatch(accountActions.addAccount(token));
         // dispatch(accountActions.changeActiveAccount());
         dispatch(actions.addAccount(token));
-        dispatch(actions.changeActiveAccount(1));
+        dispatch(actions.changeActiveAccount(0));
         // console.log(accounts.oauth_token);
         // console.log(token);
 
