@@ -17,7 +17,7 @@ const mapStateToProps = state => (
   {
     // tweets: state.tweets['2195738078'],
     accounts: state.accounts,
-    activeAccountIndex: state.activeAccount,
+    activeAccountIndex: state.activeAccountIndex,
   }
 );
 
