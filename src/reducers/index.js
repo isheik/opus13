@@ -3,11 +3,11 @@ import { routerReducer } from 'react-router-redux';
 
 import tweets from './tweets';
 import accounts from './accounts';
-import activeAccount from './activeAccount';
+import activeAccountIndex from './activeAccountIndex';
 
 // combine reducers. but each reducers have their own states.
 const rootReducer = combineReducers({
-  tweets, accounts, activeAccount, routing: routerReducer,
+  tweets, accounts, activeAccountIndex, routing: routerReducer,
 });
 
 export default rootReducer;
