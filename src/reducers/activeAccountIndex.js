@@ -1,4 +1,4 @@
-const activeAccount = (state = 0, action) => {
+const activeAccountIndex = (state = 0, action) => {
   switch (action.type) {
     case 'CHANGE_ACTIVE_ACCOUNT':
       return action.index;
@@ -7,4 +7,4 @@ const activeAccount = (state = 0, action) => {
   }
 };
 
-export default activeAccount;
+export default activeAccountIndex;
