@@ -23,6 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.1",
     "css-loader": "^0.28.9",
+    "electron-devtools-installer": "^2.2.3",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-class-property": "^1.1.0",
