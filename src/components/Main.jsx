@@ -9,11 +9,12 @@ const Main = props => (
     <Switch>
       {window.location.pathname.includes('index.html') && <Redirect to="/" />}
       <Route exact path="/" render={() => <Home {...props} />} />
-      <Route path="/test" component={Test} />
+      <Route path="/test" render={() => <Test {...props} />} />
     </Switch>
   </div>
 );
 
+// <Route path="/test" component={Test} />
 // <Route exact path="/" render={() => <Home {...props} />} />
 const Home2 = props => (
   <Home {...props} />
