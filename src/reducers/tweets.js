@@ -1,12 +1,22 @@
 
 const addTweet = (tweetSet, tweet) => {
-  // TODO: Think about faster way
-  for (let i = 0; i < tweetSet.length; i++) {
-    if (tweetSet[i].id_str === tweet.id_str) {
+  // Twitter response is a last come first serve basis (latest -> index 0)
+  // TODO: Think about faster way.
+
+  const tweetSetLength = tweetSet.length;
+  for (let i = 0; i < tweetSetLength; i++) {
+    const result = tweetSet[i].id_str.localeCompare(tweet.id_str);
+    if (result === -1) {
+      // Prepend if the given tweet was posted later than tweetSet[i]
+      return [...tweetSet.slice(0, i), tweet, ...tweetSet.slice(i)];
+    } else if (result === 0) {
+      // Just return the current set if the given tweet already exists
+      // return [...tweetSet.slice(0, i), tweet, ...tweetSet.slice(i).slice(1)];
       return [...tweetSet];
     }
   }
 
+  // Append if the given tweet was posted the earlier than others in set
   return [...tweetSet, tweet];
 };
 
