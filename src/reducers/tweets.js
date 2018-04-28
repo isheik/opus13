@@ -1,6 +1,12 @@
 
 const addTweet = (tweetSet, tweet) => {
-  // TODO: Disallow to put duplicated tweets.
+  // TODO: Think about faster way
+  for (let i = 0; i < tweetSet.length; i++) {
+    if (tweetSet[i].id_str === tweet.id_str) {
+      return [...tweetSet];
+    }
+  }
+
   return [...tweetSet, tweet];
 };
 
