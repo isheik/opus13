@@ -33,6 +33,7 @@ export const tweets = (state = {}, action) => {
         state,
         {
           [action.account.user_id]: {
+            ...state[action.account.user_id],
             [action.tab]: addTweet(
               (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
               action.tweet,
@@ -40,6 +41,17 @@ export const tweets = (state = {}, action) => {
           }
         },
       );
+
+    // {
+    //   [action.account.user_id]: {
+    //     [action.tab]: addTweet(
+    //       (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
+    //       action.tweet,
+    //     ),
+    //   }
+    // },
+
+
 
     // [state[action.account.user_id]]: state[action.account.user_id],
     //   return Object.assign(
