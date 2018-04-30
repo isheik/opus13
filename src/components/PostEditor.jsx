@@ -1,13 +1,14 @@
 import React from 'react';
 
-class PostEditor extends Component {
+class PostEditor extends React.Component {
   state = {
-    text: "",
+    text: '',
   }
   render() {
     return (
       <div>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <div>iconimg</div>
+        <textarea name="" id="" cols="30" rows="5" />
         <button>POST</button>
       </div>
     );
