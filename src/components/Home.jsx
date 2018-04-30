@@ -1,11 +1,11 @@
 import React from 'react';
 // import TweetList from './TweetList';
-import PostEditor from './PostEditor';
+import Editor from './Editor';
 import TweetListContainer from '../containers/TweetListContainer';
 
 const Home = props => (
   <div>
-    <PostEditor />
+    <Editor />
     <TweetListContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="home" />
   </div>
 );
