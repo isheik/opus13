@@ -46,8 +46,9 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: accounts.oauth_token_secret,
         });
 
-        const params = { screen_name: accounts.screen_name };
-        twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        // const params = { screen_name: accounts.screen_name };
+        // twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
           if (!error) {
             for (let tweet of tweets) {
               dispatch(actions.addTweetToTab(accounts, 'home', tweet));
@@ -65,14 +66,15 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: account.oauth_token_secret,
         });
 
-        const params = { screen_name: account.screen_name };
+        // const params = { screen_name: account.screen_name };
         // console.log(twitterClient);
         // console.log(account);
-        twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        // twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
           if (!error) {
             // console.log('test');
             for (let tweet of tweets) {
-              dispatch(actions.addTweetToTab(account, 'test', tweet));
+              dispatch(actions.addTweetToTab(account, 'home', tweet));
             }
             // dispatch(actions.addTweetToTab(tweets, 'home'));
           }
