@@ -6,9 +6,9 @@ class Editor extends React.Component {
   }
   render() {
     return (
-      <div>
+      <form>
         <textarea name="" id="" cols="30" rows="5" />
-      </div>
+      </form>
     );
   }
 }
