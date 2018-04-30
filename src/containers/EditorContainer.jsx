@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import actions from '../actions/';
 import Editor from '../components/Editor';
 
-const mapStateToProps = () => (
-  {}
+const mapStateToProps = (state, props) => (
+  {
+    accounts: props.accounts,
+  }
 );
 
-const mapDispatchToProps = () => (
+const mapDispatchToProps = dispatch => (
   {
     handleKeyPress: (event) => {
-      console.log(event.key);
+      event.preventDefault();
     },
   }
 );
