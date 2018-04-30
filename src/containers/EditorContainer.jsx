@@ -7,7 +7,11 @@ const mapStateToProps = () => (
 );
 
 const mapDispatchToProps = () => (
-  {}
+  {
+    handleKeyPress: (event) => {
+      console.log(event.key);
+    },
+  }
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

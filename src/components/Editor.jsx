@@ -7,7 +7,7 @@ class Editor extends React.Component {
   render() {
     return (
       <form>
-        <textarea name="" id="" cols="30" rows="5" />
+        <textarea name="" id="" cols="30" rows="5" onKeyDown={this.props.handleKeyPress} />
       </form>
     );
   }
