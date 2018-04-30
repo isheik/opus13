@@ -3,7 +3,9 @@ import TweetItem from './TweetItem';
 
 const TweetList = props => (
   <div>
-    {props.tweets.map(tweet => <TweetItem {...props} key={tweet.id_str} tweet={tweet} />)}
+    <ul>
+      {props.tweets.map(tweet => <TweetItem {...props} key={tweet.id_str} tweet={tweet} />)}
+    </ul>
   </div>
 );
 // {console.log((props.tweets['home']))}

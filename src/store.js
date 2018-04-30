@@ -23,7 +23,9 @@ const defaultState = {
 //     tweets, routing: routerReducer
 // });
 
-const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, defaultState, compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f,
+));
 
 export const history = syncHistoryWithStore(createBrowserHistory(), store);
 

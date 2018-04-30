@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => (
     subscribeIpcEvent: () => {
       ipcRenderer.on('twitter-auth-finish', (event, token) => {
         const accounts = FileManager.readProperty('.opus13');
-        // console.log(accounts);
+        console.log(accounts);
         // dispatch(accountActions.addAccount(token));
         // dispatch(accountActions.changeActiveAccount());
         dispatch(actions.addAccount(token));
@@ -46,8 +46,9 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: accounts.oauth_token_secret,
         });
 
-        const params = { screen_name: accounts.screen_name };
-        twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        // const params = { screen_name: accounts.screen_name };
+        // twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
           if (!error) {
             for (let tweet of tweets) {
               dispatch(actions.addTweetToTab(accounts, 'home', tweet));
@@ -65,10 +66,11 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: account.oauth_token_secret,
         });
 
-        const params = { screen_name: account.screen_name };
+        // const params = { screen_name: account.screen_name };
         // console.log(twitterClient);
         // console.log(account);
-        twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        // twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+        twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
           if (!error) {
             // console.log('test');
             for (let tweet of tweets) {

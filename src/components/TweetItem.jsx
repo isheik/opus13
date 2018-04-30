@@ -1,9 +1,9 @@
 import React from 'react';
 
 const TweetItem = props => (
-  <div>
+  <li>
     {props.tweet.text}
-  </div>
+  </li>
 );
 
 export default TweetItem;

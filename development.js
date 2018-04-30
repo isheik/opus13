@@ -21,6 +21,8 @@ export default {
     filename: '[name].js',
   },
 
+  devtool: 'source-map',
+
   devServer: {
     contentBase: './dist',
     hot: true,
