@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => (
           if (!error) {
             // console.log('test');
             for (let tweet of tweets) {
-              dispatch(actions.addTweetToTab(account, 'home', tweet));
+              dispatch(actions.addTweetToTab(account, 'test', tweet));
             }
             // dispatch(actions.addTweetToTab(tweets, 'home'));
           }

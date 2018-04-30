@@ -28,29 +28,37 @@ export const tweets = (state = {}, action) => {
       //   tab: action.tab,
       //   tweet: action.tweet,
       // }];
-      return Object.assign(
-        {},
-        state,
-        {
-          [action.account.user_id]: {
-            ...state[action.account.user_id],
-            [action.tab]: addTweet(
-              (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
-              action.tweet,
-            ),
-          }
+      // return Object.assign(
+      // {},
+      return {
+        ...state,
+        [action.account.user_id]: {
+          ...state[action.account.user_id],
+          [action.tab]: addTweet(
+            (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
+            action.tweet,
+          ),
         },
-      );
+      };
+    // );
 
-    // {
-    //   [action.account.user_id]: {
-    //     [action.tab]: addTweet(
-    //       (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
-    //       action.tweet,
-    //     ),
-    //   }
-    // },
+    // return Object.assign(
+    //   {},
+    //   state,
+    //   {
+    //     [state[action.account.user_id]]: (Object.assign(
+    //       state[action.account.user_id],
+    //       {
+    //         [action.tab]: addTweet(
+    //           (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
+    //           action.tweet,
+    //         ),
+    //       },
+    //     )),
+    //   },
+    // );
 
+    // [state[action.account.user_id]]: state.action.account.user_id,
 
 
     // [state[action.account.user_id]]: state[action.account.user_id],
