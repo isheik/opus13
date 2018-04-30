@@ -23,13 +23,6 @@ const addTweet = (tweetSet, tweet) => {
 export const tweets = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_TWEET_TO_TAB':
-      // return [...state, {
-      //   account: action.account,
-      //   tab: action.tab,
-      //   tweet: action.tweet,
-      // }];
-      // return Object.assign(
-      // {},
       return {
         ...state,
         [action.account.user_id]: {
@@ -40,13 +33,13 @@ export const tweets = (state = {}, action) => {
           ),
         },
       };
-    // );
 
     // return Object.assign(
     //   {},
     //   state,
     //   {
-    //     [state[action.account.user_id]]: (Object.assign(
+    //     [action.account.user_id]: (Object.assign(
+    //       {},
     //       state[action.account.user_id],
     //       {
     //         [action.tab]: addTweet(
@@ -58,20 +51,6 @@ export const tweets = (state = {}, action) => {
     //   },
     // );
 
-    // [state[action.account.user_id]]: state.action.account.user_id,
-
-
-    // [state[action.account.user_id]]: state[action.account.user_id],
-    //   return Object.assign(
-    //     {},
-    //     state,
-    //     {
-    //       [action.tweet.id_str]: {
-    //         account: action.account,
-    //         tab: action.tab,
-    //         tweet: action.tweet,
-    //       },
-    //     });
     default:
       return state;
   }
