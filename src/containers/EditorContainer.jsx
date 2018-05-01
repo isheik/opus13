@@ -20,7 +20,11 @@ const mapDispatchToProps = dispatch => (
         access_token_key: account.oauth_token,
         access_token_secret: account.oauth_token_secret,
       });
-      twitterClient.post('statuses/update', tweetText, (error, tweet, response) => {
+
+      const params = {
+        status: tweetText,
+      };
+      twitterClient.post('statuses/update', params, (error, tweet, response) => {
         if (!error) {
           console.log(tweet);
         }
