@@ -14,7 +14,7 @@ const mapStateToProps = (state, props) => (
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    postTweet: (tweetText) => {
+    postTweet: async (tweetText) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
@@ -28,6 +28,15 @@ const mapDispatchToProps = (dispatch, props) => (
       twitterClient.post('statuses/update', params, (error, tweet, response) => {
         if (!error) {
           console.log(tweet);
+          twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
+            if (!error) {
+              // console.log('test');
+              for (let tweet of tweets) {
+                dispatch(actions.addTweetToTab(props.account, 'home', tweet));
+              }
+              // dispatch(actions.addTweetToTab(tweets, 'home'));
+            }
+          });
         }
       });
     },
