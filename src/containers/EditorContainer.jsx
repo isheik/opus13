@@ -38,6 +38,8 @@ const mapDispatchToProps = (dispatch, props) => (
           //     // dispatch(actions.addTweetToTab(tweets, 'home'));
           //   }
           // });
+        } else {
+          console.log(error);
         }
       });
     },
