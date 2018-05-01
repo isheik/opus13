@@ -15,6 +15,7 @@ class Editor extends React.Component {
 
     if (event.key === 'Enter') {
       this.props.postTweet(this.state.text);
+      this.setState({ text: '' });
     }
   }
   render() {
