@@ -14,7 +14,7 @@ const mapStateToProps = (state, props) => (
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    postTweet: async (tweetText) => {
+    postTweet: (tweetText) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
