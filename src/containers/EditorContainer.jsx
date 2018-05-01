@@ -7,18 +7,19 @@ import Editor from '../components/Editor';
 
 const mapStateToProps = (state, props) => (
   {
-    accounts: props.accounts,
+    // account: props.account,
+    // activeAccountIndex: props.activeAccountIndex,
   }
 );
 
-const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = (dispatch, props) => (
   {
-    postTweet: (account, tweetText) => {
+    postTweet: (tweetText) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
-        access_token_key: account.oauth_token,
-        access_token_secret: account.oauth_token_secret,
+        access_token_key: props.account.oauth_token,
+        access_token_secret: props.account.oauth_token_secret,
       });
 
       const params = {
@@ -29,9 +30,6 @@ const mapDispatchToProps = dispatch => (
           console.log(tweet);
         }
       });
-    },
-    handleKeyPress: (event) => {
-      event.preventDefault();
     },
   }
 );

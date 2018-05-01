@@ -5,7 +5,7 @@ import TweetListContainer from '../containers/TweetListContainer';
 
 const Home = props => (
   <div>
-    <EditorContainer />
+    <EditorContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} />
     <TweetListContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="home" />
   </div>
 );
