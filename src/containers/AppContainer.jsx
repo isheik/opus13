@@ -77,6 +77,8 @@ const mapDispatchToProps = dispatch => (
               dispatch(actions.addTweetToTab(account, 'home', tweet));
             }
             // dispatch(actions.addTweetToTab(tweets, 'home'));
+          } else {
+            console.log(error);
           }
         });
       }
