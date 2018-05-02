@@ -11,9 +11,8 @@ class Editor extends React.Component {
     this.setState({ text: event.target.value });
   }
   handleKeyPress = (event) => {
-    // event.preventDefault();
-
     if (event.key === 'Enter') {
+      event.preventDefault();
       this.props.postTweet(this.state.text);
       this.setState({ text: '' });
     }
@@ -21,7 +20,7 @@ class Editor extends React.Component {
   render() {
     return (
       <form>
-        <textarea name="" id="" cols="30" rows="5" onChange={this.changeText} onKeyDown={this.handleKeyPress} />
+        <textarea name="" id="" cols="30" rows="5" value={this.state.text} onChange={this.changeText} onKeyDown={this.handleKeyPress} />
       </form>
     );
   }
