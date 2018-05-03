@@ -13,9 +13,15 @@ class Editor extends React.Component {
   handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
+      this.setState({ text: this.state.text.replace('\n', '<br>') });
       this.props.postTweet(this.state.text);
       this.setState({ text: '' });
     }
+    // if (event.key === 'Enter' && event.shiftKey) {
+    // event.preventDefault();
+    // this.setState({ text: `${this.state.text}` });
+    // event.preventDefault();
+    // }
   }
   render() {
     return (
