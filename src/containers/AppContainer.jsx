@@ -5,12 +5,13 @@ import Twitter from 'twitter';
 
 // import * as accountActions from '../actions/account';
 import ReactDOM from 'react-dom';
-import fontawesome from '@fortawesome/fontawesome'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import brands from '@fortawesome/fontawesome-free-brands'
+import fontawesome from '@fortawesome/fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import brands from '@fortawesome/fontawesome-free-brands'
 // import faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare'
 // import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
-import faStar from '@fortawesome/fontawesome-free-solid/faStar'
+// import faStar from '@fortawesome/fontawesome-free-solid/faStar'
+import solid from '@fortawesome/fontawesome-free-solid';
 
 import App from '../components/App';
 import actions from '../actions';
@@ -18,7 +19,7 @@ import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
 import tweets from '../reducers/tweets';
 
-fontawesome.library.add(brands, faCheckSquare, faCoffee)
+fontawesome.library.add(solid);
 
 // Reducer function names are corresponding to each state property name since redux do so
 const mapStateToProps = state => (
