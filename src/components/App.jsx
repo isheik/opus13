@@ -2,6 +2,8 @@ import React from 'react';
 import SideMenu from './SideMenu';
 import Main from './Main';
 
+
+
 // probaably have to bind this, u changed store.js too, so work on it too.
 // If you use this.props inside App module, you have to change this expression
 // from anonymous function to class or using React.CreaateClass

@@ -3,14 +3,21 @@ import { withRouter } from 'react-router-dom';
 import { ipcRenderer } from 'electron';
 import Twitter from 'twitter';
 
-import App from '../components/App';
 // import * as accountActions from '../actions/account';
-import actions from '../actions';
+import ReactDOM from 'react-dom';
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import brands from '@fortawesome/fontawesome-free-brands'
+import faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare'
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
 
+import App from '../components/App';
+import actions from '../actions';
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
-
 import tweets from '../reducers/tweets';
+
+fontawesome.library.add(brands, faCheckSquare, faCoffee)
 
 // Reducer function names are corresponding to each state property name since redux do so
 const mapStateToProps = state => (
