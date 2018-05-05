@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.7",
+    "@fortawesome/fontawesome-free-brands": "^5.0.12",
     "@fortawesome/react-fontawesome": "0.0.19",
     "crypto-js": "^3.1.9-1",
     "electron": "^1.8.2",
