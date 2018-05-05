@@ -8,8 +8,9 @@ import ReactDOM from 'react-dom';
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import brands from '@fortawesome/fontawesome-free-brands'
-import faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare'
-import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
+// import faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare'
+// import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
+import faStar from '@fortawesome/fontawesome-free-solid/faStar'
 
 import App from '../components/App';
 import actions from '../actions';
