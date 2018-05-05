@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 const Favorite = () => (
   <div>
-    <FontAwesomeIcon icon="star" />
+    <FontAwesomeIcon icon="star" color="yellow" />
   </div>
 );
 
