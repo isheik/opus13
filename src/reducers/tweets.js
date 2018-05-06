@@ -12,12 +12,15 @@ const addTweet = (tweetSet, tweet) => {
     } else if (result === 0) {
       // Just return the current set if the given tweet already exists
       // return [...tweetSet.slice(0, i), tweet, ...tweetSet.slice(i).slice(1)];
-      return [...tweetSet];
+      return [...tweetSet.slice(0, i), tweet, ...tweetSet.slice(i + 1)];
     }
   }
 
   // Append if the given tweet was posted the earlier than others in set
   return [...tweetSet, tweet];
+
+
+  //NEXT May 6 from here to update existing tweet
 };
 
 export const tweets = (state = {}, action) => {
