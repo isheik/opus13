@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Favorite from '../components/Favorite';
 
-const mapStateToProps = (state) => ({
-
+const mapStateToProps = (state, props) => ({
+  // favorited: props.favorited
 });
 
 const mapDispatchToProps = {

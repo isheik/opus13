@@ -1,9 +1,14 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
-const Favorite = () => (
+const Favorite = props => (
   <div>
-    <FontAwesomeIcon icon="star" color="yellow" />
+    {
+      console.log(props)}
+    {props.favorited
+      ? (<FontAwesomeIcon icon="star" color="yellow" />)
+      : (<FontAwesomeIcon icon="star" />)
+    }
   </div>
 );
 
