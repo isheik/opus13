@@ -12,6 +12,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
 // import faStar from '@fortawesome/fontawesome-free-solid/faStar'
 import solid from '@fortawesome/fontawesome-free-solid';
+import regular from '@fortawesome/fontawesome-free-regular';
 
 import App from '../components/App';
 import actions from '../actions';
@@ -19,7 +20,7 @@ import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
 import tweets from '../reducers/tweets';
 
-fontawesome.library.add(solid);
+fontawesome.library.add(solid, regular);
 
 // Reducer function names are corresponding to each state property name since redux do so
 const mapStateToProps = state => (
