@@ -16,14 +16,14 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 class Favorite extends React.Component {
   handleFavClick = () => {
     console.log('test');
-    this.props.toggleFavorited(this.props.favorited);
+    this.props.toggleFavorited(this.props.tweet);
   }
   render() {
     return (
       <div>
         {
           console.log(this.props)}
-        {this.props.favorited
+        {this.props.tweet.favorited
           ? (<FontAwesomeIcon icon="star" color="yellow" onClick={this.handleFavClick} />)
           : (<FontAwesomeIcon icon={['far', 'star']} onClick={this.handleFavClick} />)
         }

@@ -4,7 +4,7 @@ import FavoriteContainer from '../containers/FavoriteContainer';
 const TweetItem = props => (
   <li>
     {props.tweet.text}
-    <FavoriteContainer account={props.accounts[0]} favorited={props.tweet.favorited} />
+    <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
   </li>
 );
 

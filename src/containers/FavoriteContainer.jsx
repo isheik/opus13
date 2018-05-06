@@ -17,9 +17,15 @@ const mapDispatchToProps = (dispatch, props) => (
         access_token_secret: props.account.oauth_token_secret,
       });
 
+      const params = {
+        status: tweetText,
+      };
+      twitterClient.post('statuses/update', params, (error, tweet, response) => {
+      }
+
       favorited
-        ? twitterClient()
-        :;
+          ? twitterClient()
+          :;
 
     }
   }
