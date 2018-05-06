@@ -60,6 +60,13 @@ body {
   }
 }
 
+ul {
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
 li {
-  white-space: pre-wrap !important;
+  // white-space: pre-wrap !important;
+  white-space: pre-wrap;
 }
