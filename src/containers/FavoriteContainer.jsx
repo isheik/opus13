@@ -5,8 +5,12 @@ const mapStateToProps = (state, props) => ({
   // favorited: props.favorited
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps = dispatch => (
+  {
+    toggleFavorited: (favorited) => {
 
-};
+    }
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorite);
