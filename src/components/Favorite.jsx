@@ -7,7 +7,7 @@ const Favorite = props => (
       console.log(props)}
     {props.favorited
       ? (<FontAwesomeIcon icon="star" color="yellow" />)
-      : (<FontAwesomeIcon icon="star" />)
+      : (<FontAwesomeIcon icon={['far', 'star']} />)
     }
   </div>
 );
