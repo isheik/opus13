@@ -16,6 +16,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 class Favorite extends React.Component {
   handleFavClick = () => {
     console.log('test');
+    this.props.toggleFavorited(this.props.favorited);
   }
   render() {
     return (

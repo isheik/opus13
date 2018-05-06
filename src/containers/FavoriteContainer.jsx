@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Favorite from '../components/Favorite';
 
+import Twitter from 'twitter';
+
 const mapStateToProps = (state, props) => ({
   // favorited: props.favorited
 });
@@ -8,6 +10,9 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = dispatch => (
   {
     toggleFavorited: (favorited) => {
+      favorited
+        ?
+        :;
 
     }
   }
