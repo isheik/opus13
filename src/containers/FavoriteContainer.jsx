@@ -23,13 +23,13 @@ const mapDispatchToProps = (dispatch, props) => (
       };
 
       if (tweet.favorited) {
-        twitterClient.post('favorites/destroy', params, (error, rtweet, response) => {
+        twitterClient.post('favorites/destroy', params, (error, returnedTweet, response) => {
           // TODO: need to add tab info
-          dispatch(actions.addTweetToTab(props.account, 'home', rtweet));
+          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       } else {
-        twitterClient.post('favorites/create', params, (error, rtweet, response) => {
-          dispatch(actions.addTweetToTab(props.account, 'home', rtweet));
+        twitterClient.post('favorites/create', params, (error, returnedTweet, response) => {
+          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       }
     },
