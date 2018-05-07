@@ -26,7 +26,7 @@ class Editor extends React.Component {
   render() {
     return (
       <form>
-        <textarea name="" id="" cols="30" rows="5" value={this.state.text} onChange={this.changeText} onKeyPress={this.handleKeyPress} />
+        <textarea className="post-text-area" name="" id="" value={this.state.text} onChange={this.changeText} onKeyPress={this.handleKeyPress} />
       </form>
     );
   }
