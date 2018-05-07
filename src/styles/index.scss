@@ -61,11 +61,15 @@ body {
       margin-top: 20px;
       padding: 0;
       list-style-type: none;
-    }
-    .tweet-item {
-      display: flex; // white-space: pre-wrap !important;
-      margin-bottom: 20px;
-      white-space: pre-wrap;
+      .tweet-item {
+        display: flex; // white-space: pre-wrap !important;
+        margin-bottom: 20px;
+        white-space: pre-wrap;
+        .left-div {
+          margin-right: 10px;
+          padding-top: 5px;
+        }
+      }
     }
   }
 }

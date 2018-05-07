@@ -24,7 +24,7 @@ class Favorite extends React.Component {
         {
           console.log(this.props)}
         {this.props.tweet.favorited
-          ? (<FontAwesomeIcon icon="star" color="yellow" onClick={this.handleFavClick} />)
+          ? (<FontAwesomeIcon icon="star" color="#b58900" onClick={this.handleFavClick} />)
           : (<FontAwesomeIcon icon={['far', 'star']} onClick={this.handleFavClick} />)
         }
       </div>

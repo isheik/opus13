@@ -1,14 +1,15 @@
 import React from 'react';
 import FavoriteContainer from '../containers/FavoriteContainer';
 import ProfileImage from '../components/ProfileImage';
+import TweetHeader from '../components/TweetHeader';
 
 const TweetItem = props => (
   <li className="tweet-item">
-    <div class="left-div">
+    <div className="left-div">
       <ProfileImage profileImg={props.tweet.user.profile_image_url_https} />
     </div>
-    <div class="right-div">
-      {props.tweet.user.name}
+    <div className="right-div">
+      <TweetHeader userName={props.tweet.user.name} tweetTime={props.tweet.created_at} />
       {props.tweet.text}
       <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
     </div>
