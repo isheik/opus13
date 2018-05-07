@@ -8,9 +8,5 @@ const TweetList = props => (
     </ul>
   </div>
 );
-// {console.log((props.tweets['home']))}
-//2195738078
-// {props.accounts.map(account => console.log(account))}
-// {console.log(props.tweets)}
-// {props.tweets.map(tweet => console.log(tweet))}
+
 export default TweetList;
