@@ -63,7 +63,7 @@ body {
       list-style-type: none;
     }
     .tweet-item {
-      // white-space: pre-wrap !important;
+      display: flex; // white-space: pre-wrap !important;
       margin-bottom: 20px;
       white-space: pre-wrap;
     }

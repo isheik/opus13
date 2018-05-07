@@ -4,9 +4,14 @@ import ProfileImage from '../components/ProfileImage';
 
 const TweetItem = props => (
   <li className="tweet-item">
-    <ProfileImage profileImg={props.tweet.user.profile_image_url_https} />
-    {props.tweet.text}
-    <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
+    <div class="left-div">
+      <ProfileImage profileImg={props.tweet.user.profile_image_url_https} />
+    </div>
+    <div class="right-div">
+      {props.tweet.user.name}
+      {props.tweet.text}
+      <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
+    </div>
   </li>
 );
 
