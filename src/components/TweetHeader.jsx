@@ -2,8 +2,8 @@ import React from 'react'
 
 const TweetHeader = props => (
   <div>
-    {props.userName}
-    {props.tweetTime}
+    <span>{props.userName}</span>
+    <span>{props.tweetTime}</span>
   </div>
 );
 
