@@ -5,7 +5,7 @@ import React from 'react'
 const TweetHeader = props => (
   <div>
     <span className="header-username">{props.userName}</span>
-    <span>{props.tweetTime}</span>
+    <span className="header-time">{props.tweetTime}</span>
   </div>
 );
 
