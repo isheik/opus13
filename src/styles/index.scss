@@ -75,9 +75,16 @@ body {
           padding-top: 5px;
         }
         .right-div {
+          p {
+            margin: 0 0 5px;
+            color: $base1;
+            font-size: 14px;
+          }
           .header-username {
             margin-right: 10px;
-            color: $base2;
+            color: $base1;
+            font-size: 14px;
+            font-weight: 500;
           }
           .header-time {
             font-size: 12px;

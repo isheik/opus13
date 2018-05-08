@@ -10,7 +10,7 @@ const TweetItem = props => (
     </div>
     <div className="right-div">
       <TweetHeader userName={props.tweet.user.name} tweetTime={props.tweet.created_at} />
-      {props.tweet.text}
+      <p>{props.tweet.text}</p>
       <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
     </div>
   </li>
