@@ -1,12 +1,13 @@
 import React from 'react';
 import FavoriteContainer from '../containers/FavoriteContainer';
-import ProfileImage from '../components/ProfileImage';
 import TweetHeader from '../components/TweetHeader';
 
 const TweetItem = props => (
   <li className="tweet-item">
     <div className="left-div">
-      <ProfileImage profileImg={props.tweet.user.profile_image_url_https} />
+      <div>
+        <img className="profile-img" src={props.tweet.user.profile_image_url_https} alt="" />
+      </div>
     </div>
     <div className="right-div">
       <TweetHeader userName={props.tweet.user.name} tweetTime={props.tweet.created_at} />
@@ -16,5 +17,6 @@ const TweetItem = props => (
   </li>
 );
 
+// <ProfileImage profileImg={props.tweet.user.profile_image_url_https} />
 // <img src={props.tweet.user.profile_image_url_https} alt="" />
 export default TweetItem;
