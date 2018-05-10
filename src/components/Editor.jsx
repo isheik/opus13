@@ -14,6 +14,7 @@ class Editor extends React.Component {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       this.setState({ text: this.state.text.replace('\n', '<br>') });
+      // TODO: Transform URLs to Hyperlinks
       this.props.postTweet(this.state.text);
       this.setState({ text: '' });
     }
