@@ -14,6 +14,7 @@ const Home = props => (
         <EditorContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} />
       </div>
     </div>
+    <hr />
     <TweetListContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="home" />
   </div>
 );
