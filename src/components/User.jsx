@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ProfileImage = props => (
+const User = props => (
   <div>
-    <img src={props.profileImg} alt="" />
+    <img src={props.account && props.account.profile_img} alt="" />
   </div>
 );
 
-export default ProfileImage;
+export default User;
