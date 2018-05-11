@@ -21,7 +21,11 @@ class Retweet extends React.Component {
   render() {
     return (
       <div>
-        <FontAwesomeIcon icon="retweet" color="#839496" onClick={this.handleRetweetClick} />
+        {
+          this.props.tweet.retweeted
+            ? <FontAwesomeIcon icon="retweet" color="#859900" onClick={this.handleRetweetClick} />
+            : <FontAwesomeIcon icon="retweet" onClick={this.handleRetweetClick} />
+        }
       </div>
     );
   }
