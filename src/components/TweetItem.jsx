@@ -14,7 +14,7 @@ const TweetItem = props => (
       <TweetHeader userName={props.tweet.user.name} tweetTime={props.tweet.created_at} />
       <p>{props.tweet.text}</p>
       <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
-      <Retweet />
+      <Retweet tweet={props.tweet} />
     </div>
   </li>
 );
