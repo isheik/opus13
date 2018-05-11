@@ -14,16 +14,16 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 class Retweet extends React.Component {
-  handleFavClick = () => {
+  handleRetweetClick = () => {
     console.log('test');
     // this.props.toggleFavorited(this.props.tweet);
   }
   render() {
     return (
       <div>
-        {this.props.tweet.favorited
-          ? (<FontAwesomeIcon icon="star" color="#b58900" onClick={this.handleFavClick} />)
-          : (<FontAwesomeIcon icon={['far', 'star']} onClick={this.handleFavClick} />)
+        {this.props.tweet.retweeted
+          ? (<FontAwesomeIcon icon="retweet" color="#b58900" onClick={this.handleRetweetClick} />)
+          : (<FontAwesomeIcon icon="retweet" onClick={this.handleRetweetClick} />)
         }
       </div>
     );
