@@ -106,10 +106,12 @@ hr {
           // }
         }
         .right-div {
+          width: 100%;
           p {
             margin: 0 0 5px;
-            color: $base1;
+            word-break: break-all;
             font-size: 14px;
+            color: $base1;
           }
           .header-username {
             margin-right: 10px;
@@ -119,6 +121,12 @@ hr {
           }
           .header-time {
             font-size: 12px;
+          }
+          .tweet-footer {
+            display: flex;
+          }
+          .favorite {
+            margin-right: 8px;
           }
         }
       }
