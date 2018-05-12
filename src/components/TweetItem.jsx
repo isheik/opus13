@@ -1,7 +1,6 @@
 import React from 'react';
-import FavoriteContainer from '../containers/FavoriteContainer';
 import TweetHeader from '../components/TweetHeader';
-import Retweet from './Retweet';
+import TweetFooter from './TweetFooter';
 
 const TweetItem = props => (
   <li className="tweet-item">
@@ -13,8 +12,7 @@ const TweetItem = props => (
     <div className="right-div">
       <TweetHeader userName={props.tweet.user.name} tweetTime={props.tweet.created_at} />
       <p>{props.tweet.text}</p>
-      <FavoriteContainer account={props.accounts[0]} tweet={props.tweet} />
-      <Retweet tweet={props.tweet} />
+      <TweetFooter account={props.accounts[0]} tweet={props.tweet} />
     </div>
   </li>
 );
