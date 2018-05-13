@@ -23,13 +23,14 @@ const mapDispatchToProps = (dispatch, props) => (
       };
 
       if (tweet.retweeted) {
-        twitterClient.post('statuses/unretweet/:id', params, (error, returnedTweet, response) => {
+        twitterClient.post('statuses/unretweet', params, (error, returnedTweet, response) => {
           // TODO: need to add tab info
           // TODO: del unretweetec tweet
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       } else {
-        twitterClient.post('statuses/retweet/:id', params, (error, returnedTweet, response) => {
+        twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
+          console.log(returnedTweet);
           dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       }

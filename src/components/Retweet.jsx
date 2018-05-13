@@ -15,8 +15,9 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 class Retweet extends React.Component {
   handleRetweetClick = () => {
-    console.log('test');
+    console.log('ret');
     // this.props.toggleFavorited(this.props.tweet);
+    this.props.toggleRetweeted(this.props.tweet);
   }
   render() {
     return (
