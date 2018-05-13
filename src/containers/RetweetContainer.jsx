@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    toggleFavorited: (tweet) => {
+    toggleRetweeted: (tweet) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
@@ -22,13 +22,14 @@ const mapDispatchToProps = (dispatch, props) => (
         id: tweet.id_str,
       };
 
-      if (tweet.favorited) {
-        twitterClient.post('favorites/destroy', params, (error, returnedTweet, response) => {
+      if (tweet.retweeted) {
+        twitterClient.post('statuses/unretweet/:id', params, (error, returnedTweet, response) => {
           // TODO: need to add tab info
-          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+          // TODO: del unretweetec tweet
+          // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       } else {
-        twitterClient.post('favorites/create', params, (error, returnedTweet, response) => {
+        twitterClient.post('statuses/retweet/:id', params, (error, returnedTweet, response) => {
           dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       }
