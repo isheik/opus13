@@ -5,7 +5,7 @@ import Retweet from './Retweet';
 const TweetFooter = props => (
   <div className="tweet-footer">
     <FavoriteContainer account={props.account} tweet={props.tweet} />
-    <Retweet tweet={props.tweet} />
+    <RetweetContainer tweet={props.tweet} />
   </div>
 );
 
