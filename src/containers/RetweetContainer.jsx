@@ -18,6 +18,8 @@ const mapDispatchToProps = (dispatch, props) => (
         access_token_secret: props.account.oauth_token_secret,
       });
 
+      console.log('client1');
+      console.log(twitterClient);
       const params = {
         id: tweet.id_str,
       };
@@ -35,10 +37,12 @@ const mapDispatchToProps = (dispatch, props) => (
         // NEXT: fix here cant auth
         twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
           console.log(returnedTweet);
+
+          console.log('client2');
           console.log(twitterClient);
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
           const paramsa = {
-            status: returnedTweet,
+            status: returnedTweet.text,
           };
           twitterClient.post('statuses/update', paramsa, (error, tweet, response) => {
             if (!error) {
