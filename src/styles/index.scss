@@ -124,9 +124,9 @@ hr {
           }
           .tweet-footer {
             display: flex;
-          }
-          .favorite {
-            margin-right: 8px;
+            .tweet-item-icon {
+              margin-right: 8px;
+            }
           }
         }
       }

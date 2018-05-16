@@ -20,7 +20,7 @@ class Favorite extends React.Component {
   }
   render() {
     return (
-      <div className="favorite">
+      <div className="tweet-item-icon">
         {
           console.log(this.props)}
         {this.props.tweet.favorited

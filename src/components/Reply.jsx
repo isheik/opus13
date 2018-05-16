@@ -20,7 +20,7 @@ class Reply extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="tweet-item-icon">
         <FontAwesomeIcon icon="comment" onClick={this.handleRetweetClick} />
       </div>
     );
