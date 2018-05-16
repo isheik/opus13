@@ -13,16 +13,15 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // );
 
 
-class Retweet extends React.Component {
+class Reply extends React.Component {
   handleRetweetClick = () => {
-    console.log('ret');
+    console.log('comment');
     // this.props.toggleFavorited(this.props.tweet);
-    this.props.toggleRetweeted(this.props.tweet);
   }
   render() {
     return (
       <div>
-        <FontAwesomeIcon icon="retweet" onClick={this.handleRetweetClick} />
+        <FontAwesomeIcon icon="comment" onClick={this.handleRetweetClick} />
       </div>
     );
   }
@@ -36,4 +35,4 @@ class Retweet extends React.Component {
 
 
 
-export default Retweet;
+export default Reply;
