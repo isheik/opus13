@@ -18,8 +18,6 @@ const mapDispatchToProps = (dispatch, props) => (
         access_token_secret: props.account.oauth_token_secret,
       });
 
-      console.log('client1');
-      console.log(twitterClient);
       const params = {
         id: tweet.id_str,
       };
