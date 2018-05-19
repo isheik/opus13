@@ -36,7 +36,8 @@ export const tweets = (state = {}, action) => {
           ),
         },
       };
-
+    case 'SET_IN_REPLY_TO':
+      return action.tweet;
     // return Object.assign(
     //   {},
     //   state,
