@@ -13,3 +13,9 @@ export const setInReplyTo = tweet => (
     tweet,
   }
 );
+
+export const toggleFocus = () => (
+  {
+    type: 'TOGGLE_FOCUS',
+  }
+);

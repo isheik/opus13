@@ -54,6 +54,10 @@ export const tweets = (state = {}, action) => {
     //     )),
     //   },
     // );
+    // NEXT: MAY18 TOGGLE this way?
+    //  https://github.com/reduxjs/react-redux/issues/266
+    case 'TOGGLE_FOCUS':
+      return !state;
 
     default:
       return state;
