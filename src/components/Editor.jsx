@@ -3,6 +3,7 @@ import React from 'react';
 class Editor extends React.Component {
   constructor(props) {
     super(props);
+    this.editorRef = React.createRef();
     this.state = {
       text: '',
     };
