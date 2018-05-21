@@ -7,7 +7,7 @@ import Editor from '../components/Editor';
 
 const mapStateToProps = (state, props) => (
   {
-    text: state.text,
+    text: state.editorText,
     // account: props.account,
     // activeAccountIndex: props.activeAccountIndex,
   }

@@ -5,6 +5,6 @@ const editorText = (state = '', action) => {
     default:
       return state;
   }
-}
+};
 
 export default editorText;

@@ -9,14 +9,17 @@ class Editor extends React.Component {
   }
   changeText = (event) => {
     // this.setState({ text: event.target.value });
+    this.props.setText(event.target.value);
   }
   handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      this.setState({ text: this.state.text.replace('\n', '<br>') });
+      // this.setState({ text: this.state.text.replace('\n', '<br>') });
+      this.props.setText(this.props.text.replace('\n', '<br>'));
       // TODO: Transform URLs to Hyperlinks
-      this.props.postTweet(this.state.text);
-      this.setState({ text: '' });
+      this.props.postTweet(this.props.text);
+      // this.setState({ text: '' });
+      this.props.setText('');
     }
     // if (event.key === 'Enter' && event.shiftKey) {
     // event.preventDefault();
@@ -27,7 +30,7 @@ class Editor extends React.Component {
   render() {
     return (
       <form>
-        <textarea className="post-text-area" name="" id="" value={this.state.text} onChange={this.changeText} onKeyPress={this.handleKeyPress} />
+        <textarea className="post-text-area" name="" id="" value={this.props.text} onChange={this.changeText} onKeyPress={this.handleKeyPress} />
       </form>
     );
   }
