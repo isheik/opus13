@@ -1,4 +1,4 @@
-const editorText = (state = {}, action) {
+const editorText = (state = '', action) => {
   switch (action.type) {
     case 'SET_TEXT':
       return action.text;
@@ -6,3 +6,5 @@ const editorText = (state = {}, action) {
       return state;
   }
 }
+
+export default editorText;
