@@ -1,0 +1,3 @@
+const editorText = (state = {}) {
+
+}
