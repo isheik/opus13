@@ -7,15 +7,3 @@ export const addTweetToTab = (account, tab, tweet) => (
   }
 );
 
-export const setInReplyTo = tweet => (
-  {
-    type: 'SET_IN_REPLY_TO',
-    tweet,
-  }
-);
-
-export const toggleFocus = () => (
-  {
-    type: 'TOGGLE_FOCUS',
-  }
-);
