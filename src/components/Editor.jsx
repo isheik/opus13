@@ -3,12 +3,12 @@ import React from 'react';
 class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: '',
-    };
+    // this.state = {
+    // text: '',
+    // };
   }
   changeText = (event) => {
-    this.setState({ text: event.target.value });
+    // this.setState({ text: event.target.value });
   }
   handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {

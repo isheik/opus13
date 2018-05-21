@@ -44,6 +44,9 @@ const mapDispatchToProps = (dispatch, props) => (
         }
       });
     },
+    setText: (text) => {
+      dispatch(actions.setText(text));
+    },
   }
 );
 
