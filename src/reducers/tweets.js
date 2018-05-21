@@ -36,8 +36,6 @@ export const tweets = (state = {}, action) => {
           ),
         },
       };
-    case 'SET_IN_REPLY_TO':
-      return action.tweet;
     // return Object.assign(
     //   {},
     //   state,
@@ -56,9 +54,6 @@ export const tweets = (state = {}, action) => {
     // );
     // NEXT: MAY18 TOGGLE this way?
     //  https://github.com/reduxjs/react-redux/issues/266
-    case 'TOGGLE_FOCUS':
-      return !state;
-
     default:
       return state;
   }
