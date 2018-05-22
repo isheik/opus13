@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch, props) => (
   {
     editReply: (tweet) => {
       dispatch(actions.setInReplyTo(tweet));
+      dispatch(actions.setText(`@${tweet.user.screen_name} `));
     },
   }
 );
