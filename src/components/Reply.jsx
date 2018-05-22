@@ -15,7 +15,8 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 class Reply extends React.Component {
   handleRetweetClick = () => {
-    console.log('comment');
+    // console.log('comment');
+    this.props.editReply(this.props.tweet);
     // this.props.toggleFavorited(this.props.tweet);
   }
   render() {

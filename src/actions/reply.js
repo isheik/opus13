@@ -1,7 +1,7 @@
-export const setInReplyTo = tweet => (
+export const setInReplyTo = replyToID => (
   {
     type: 'SET_IN_REPLY_TO',
-    tweet,
+    replyToID,
   }
 );
 

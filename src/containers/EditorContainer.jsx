@@ -8,6 +8,7 @@ import Editor from '../components/Editor';
 const mapStateToProps = (state, props) => (
   {
     text: state.editorText,
+    replyToID: state.reply,
     // account: props.account,
     // activeAccountIndex: props.activeAccountIndex,
   }
@@ -15,7 +16,7 @@ const mapStateToProps = (state, props) => (
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    postTweet: (tweetText) => {
+    postTweet: (tweetText, replyToID) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
@@ -25,7 +26,9 @@ const mapDispatchToProps = (dispatch, props) => (
 
       const params = {
         status: tweetText,
+        in_reply_to_status_id: replyToID,
       };
+
       twitterClient.post('statuses/update', params, (error, tweet, response) => {
         if (!error) {
           console.log(tweet);

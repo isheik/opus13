@@ -17,10 +17,12 @@ class Editor extends React.Component {
       // this.setState({ text: this.state.text.replace('\n', '<br>') });
       this.props.setText(this.props.text.replace('\n', '<br>'));
       // TODO: Transform URLs to Hyperlinks
-      this.props.postTweet(this.props.text);
+      this.props.postTweet(this.props.text, this.props.replyToID);
       // this.setState({ text: '' });
       this.props.setText('');
+      // NEXT: initialize replyToID?
     }
+    console.log(this.props.replyToID);
     // if (event.key === 'Enter' && event.shiftKey) {
     // event.preventDefault();
     // this.setState({ text: `${this.state.text}` });
