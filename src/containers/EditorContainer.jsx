@@ -50,9 +50,6 @@ const mapDispatchToProps = (dispatch, props) => (
     setText: (text) => {
       dispatch(actions.setText(text));
     },
-    clearReplyContext: () => {
-      dispatch(actions.setInReplyTo({}));
-    },
   }
 );
 
