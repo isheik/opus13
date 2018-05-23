@@ -10,6 +10,9 @@ class Editor extends React.Component {
   changeText = (event) => {
     // this.setState({ text: event.target.value });
     this.props.setText(event.target.value);
+    if (!this.props.text) {
+      this.props.clearReplyContext();
+    }
   }
   handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
