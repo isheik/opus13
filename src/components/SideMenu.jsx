@@ -38,6 +38,9 @@ class SideMenu extends React.Component {
             <li className="app-nav-items">
               <Link to="/test">Test</Link>
             </li>
+            <li className="app-nav-items">
+              <Link to="/favorite">Test</Link>
+            </li>
           </ul>
         </nav>
       </div>
