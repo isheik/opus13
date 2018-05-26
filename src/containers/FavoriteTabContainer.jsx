@@ -1,5 +1,5 @@
 import React from 'react';
-import FavoriteList from '../containers/FavoriteContainer';
+import FavoriteTab from '../components/FavoriteTab';
 
 const mapStateToProps = (state, props) => {
   let tweetData = (state.tweets && state.tweets[(props.account && props.account.user_id)]) || null;
@@ -13,4 +13,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(FavoriteList);
+export default connect(mapStateToProps)(FavoriteTab);
