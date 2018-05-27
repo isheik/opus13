@@ -109,6 +109,28 @@ const mapDispatchToProps = dispatch => (
         });
       }
     },
+    getFavoriteTweets: (account) => {
+      if (account) {
+        const twitterClient = new Twitter({
+          consumer_key: Authentication.APP_KEY,
+          consumer_secret: Authentication.APP_SECRET_KEY,
+          access_token_key: account.oauth_token,
+          access_token_secret: account.oauth_token_secret,
+        });
+
+        twitterClient.get('favorites/list', (error, tweets, response) => {
+          if (!error) {
+            // console.log('test');
+            for (let tweet of tweets) {
+              dispatch(actions.addTweetToTab(account, 'favorite', tweet));
+            }
+            // dispatch(actions.addTweetToTab(tweets, 'home'));
+          } else {
+            console.log(error);
+          }
+        });
+      }
+    },
   }
 );
 

@@ -27,6 +27,10 @@ class SideMenu extends React.Component {
     this.props.getTweets(this.props.accounts[0]);
   }
 
+  handleFavoriteMenuClick() {
+
+  }
+
   render() {
     return (
       <div className="sidebar">
@@ -39,7 +43,7 @@ class SideMenu extends React.Component {
               <Link to="/test">Test</Link>
             </li>
             <li className="app-nav-items">
-              <Link to="/favorite">Favorite</Link>
+              <Link to="/favorite" onClick={this.handleFavoriteMenuClick}>Favorite</Link>
             </li>
           </ul>
         </nav>
