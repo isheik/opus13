@@ -27,6 +27,7 @@ class SideMenu extends React.Component {
     this.props.getTweets(this.props.accounts[0]);
   }
 
+  //MAY27 from here. add click process. Modify FavTabcontainer and update addTweetToTab for Favorite
   handleFavoriteMenuClick() {
 
   }
