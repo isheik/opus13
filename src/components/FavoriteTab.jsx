@@ -1,9 +1,9 @@
 import React from 'react';
 import TweetListContainer from '../containers/TweetListContainer';
 
-const FavoriteTab = () => (
+const FavoriteTab = props => (
   <div>
-    <TweetListContainer  {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="favorite" />
+    <TweetListContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="favorite" />
   </div>
 );
 

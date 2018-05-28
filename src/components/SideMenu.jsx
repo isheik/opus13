@@ -20,6 +20,7 @@ class SideMenu extends React.Component {
     super(props);
     this.state = {};
     this.clicko = this.clicko.bind(this);
+    this.handleFavoriteMenuClick = this.handleFavoriteMenuClick.bind(this);
   }
 
   clicko() {
