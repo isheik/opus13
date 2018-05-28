@@ -34,7 +34,6 @@ const mapDispatchToProps = (dispatch, props) => (
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         });
       } else {
-        // NEXT: fix here cant auth
         twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
           console.log(returnedTweet);
 

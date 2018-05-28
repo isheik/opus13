@@ -31,7 +31,6 @@ const mapStateToProps = state => (
   }
 );
 
-// NEXT: Implement home timeline display
 const mapDispatchToProps = dispatch => (
   {
     init: () => {

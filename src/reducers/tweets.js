@@ -20,7 +20,6 @@ const addTweet = (tweetSet, tweet) => {
   return [...tweetSet, tweet];
 
 
-  //NEXT May 6 from here to update existing tweet
 };
 
 export const tweets = (state = {}, action) => {

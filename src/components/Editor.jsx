@@ -20,7 +20,6 @@ class Editor extends React.Component {
       this.props.postTweet(this.props.text, this.props.replyToID);
       // this.setState({ text: '' });
       this.props.setText('');
-      // NEXT: initialize replyToID?
     }
     console.log(this.props.replyToID);
     // if (event.key === 'Enter' && event.shiftKey) {
