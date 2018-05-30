@@ -7,3 +7,12 @@ export const addTweetToTab = (account, tab, tweet) => (
   }
 );
 
+export const deleteTweetFromTab = (account, tab, tweet) => (
+  {
+    type: 'DELETE_TWEET_FROM_TAB',
+    account,
+    tab,
+    tweet,
+  }
+);
+
