@@ -29,7 +29,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-  BrowserWindow.addDevToolsExtension(`${process.env.HOME}/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/3.2.1_0`);
+  BrowserWindow.addDevToolsExtension(`${process.env.HOME}/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/3.2.3_0`);
   BrowserWindow.addDevToolsExtension(`${process.env.HOME}/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.15.2_0`);
   global.mainWindow = new BrowserWindow({ width: 800, height: 600 });
   global.mainWindow.loadURL(`file://${__dirname}/index.html`);
