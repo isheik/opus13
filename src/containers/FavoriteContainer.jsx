@@ -26,7 +26,8 @@ const mapDispatchToProps = (dispatch, props) => (
         twitterClient.post('favorites/destroy', params, (error, returnedTweet, response) => {
           // TODO: need to add tab info
           dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-          // NEXT: MAY28 Update Favorite tab status too. and you also need to Put fav tab when fav button pressed
+          // dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
+          dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
         });
       } else {
         twitterClient.post('favorites/create', params, (error, returnedTweet, response) => {

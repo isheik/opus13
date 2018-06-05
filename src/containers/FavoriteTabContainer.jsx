@@ -9,6 +9,7 @@ const mapStateToProps = (state, props) => {
 
   return {
     // tweets: (tweetData[props.tab] || []),
+    // NEXT JUNE5 need to sort favorite tweet in descending order (Latest first)
     tweets: tweets,
   };
 };
