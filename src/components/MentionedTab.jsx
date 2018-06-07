@@ -9,4 +9,4 @@ const MentionedTab = props => (
 
 export default MentionedTab;
 
-// NEXT: JUN6 make mention tab
+// NEXT: JUN8 make menu click eventain Appcon
