@@ -20,7 +20,7 @@ let twitterAuthWindow = null;
 class Authentication {
   static APP_KEY = '9kyGvxw2hN6RUwQ2MZ9h3WBtV';
   static APP_SECRET_KEY = 'qfEF4Z89AN9WBn80dO91WpBowmUs8AmMLPTTqhA4s14Fyl1AGz';
-  static CALLBACK_URL = 'https://example.com';
+  static CALLBACK_URL = 'https://github.com/isheik/opus13';
   static REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token';
   static ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token';
   static REQUEST_METHOD = 'POST';
