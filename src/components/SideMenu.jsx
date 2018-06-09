@@ -21,6 +21,7 @@ class SideMenu extends React.Component {
     this.state = {};
     this.clicko = this.clicko.bind(this);
     this.handleFavoriteMenuClick = this.handleFavoriteMenuClick.bind(this);
+    this.handleMentionedMenuClick = this.handleMentionedMenuClick.bind(this);
   }
 
   clicko() {
@@ -31,6 +32,9 @@ class SideMenu extends React.Component {
   //MAY27 from here. add click process. Modify FavTabcontainer and update addTweetToTab for Favorite
   handleFavoriteMenuClick() {
     this.props.getFavoriteTweets(this.props.accounts[0]);
+  }
+  handleMentionedMenuClick() {
+    this.props.getMentionedTweets(this.props.accounts[0]);
   }
 
   render() {

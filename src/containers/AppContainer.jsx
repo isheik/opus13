@@ -141,6 +141,7 @@ const mapDispatchToProps = dispatch => (
 
         twitterClient.get('statuses/mentions_timeline', (error, tweets, response) => {
           if (!error) {
+            console.log(tweets);
             for (let tweet of tweets) {
               dispatch(actions.addTweetToTab(account, 'mentioned', tweet));
             }

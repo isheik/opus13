@@ -34,6 +34,4 @@ class Retweet extends React.Component {
 //     : <FontAwesomeIcon icon="retweet" onClick={this.handleRetweetClick} />
 // }
 
-
-
 export default Retweet;
