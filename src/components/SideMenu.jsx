@@ -48,7 +48,7 @@ class SideMenu extends React.Component {
               <Link to="/favorite" onClick={this.handleFavoriteMenuClick}>Favorite</Link>
             </li>
             <li className="app-nav-items">
-              <Link to="/mentioned" onClick={this.handleMentionedMenuClick}>Favorite</Link>
+              <Link to="/mentioned" onClick={this.handleMentionedMenuClick}>Mentioned</Link>
             </li>
           </ul>
         </nav>
