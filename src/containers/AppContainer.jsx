@@ -130,6 +130,27 @@ const mapDispatchToProps = dispatch => (
         });
       }
     },
+    getMentionedTweets: (account) => {
+      if (account) {
+        const twitterClient = new Twitter({
+          consumer_key: Authentication.APP_KEY,
+          consumer_secret: Authentication.APP_SECRET_KEY,
+          access_token_key: account.oauth_token,
+          access_token_secret: account.oauth_token_secret,
+        });
+
+        twitterClient.get('statuses/mentions_timeline', (error, tweets, response) => {
+          if (!error) {
+            for (let tweet of tweets) {
+              dispatch(actions.addTweetToTab(account, 'mentioned', tweet));
+            }
+            // dispatch(actions.addTweetToTab(tweets, 'home'));
+          } else {
+            console.log(error);
+          }
+        });
+      }
+    },
   }
 );
 
