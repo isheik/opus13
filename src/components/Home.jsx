@@ -6,15 +6,6 @@ import User from './User';
 
 const Home = props => (
   <div>
-    <div className="user-field">
-      <div className="left-div">
-        <User account={props.accounts && props.accounts[props.activeAccountIndex]} />
-      </div>
-      <div className="right-div">
-        <EditorContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} />
-      </div>
-    </div>
-    <hr />
     <TweetListContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="home" />
   </div>
 );
