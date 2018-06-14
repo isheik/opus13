@@ -64,40 +64,17 @@ hr {
     }
   }
   .contents {
-    flex: 2 1 auto;
-    overflow: scroll;
+    flex: 2 1 auto; // overflow: scroll;
     width: 100%;
-    padding: 20px;
+    padding: 0px;
     background-color: $base03;
     color: $base0;
-    .user-field {
-      display: flex;
-      .left-div {
-        @include profile-img-header; // margin-right: 10px;
-        // padding-top: 5px;
-        // .profile-img {
-        //   border-radius: 50%;
-        // }
-      }
-      .right-div {
-        flex: 1 1 auto;
-      }
-      .post-text-area {
-        width: 100%;
-        height: 60px;
-        border: 0;
-        padding: 0;
-        resize: none;
-      }
-    }
-    .tweet-list {
-      margin-top: 20px;
-      padding: 0;
-      list-style-type: none;
-      .tweet-item {
-        display: flex; // white-space: pre-wrap !important;
-        margin-bottom: 20px;
-        white-space: pre-wrap;
+    .header {
+      width: 100%;
+      height: 110px; // position: fixed;
+      .user-field {
+        display: flex;
+        padding: 20px 10px 10px;
         .left-div {
           @include profile-img-header; // margin-right: 10px;
           // padding-top: 5px;
@@ -106,26 +83,63 @@ hr {
           // }
         }
         .right-div {
+          flex: 1 1 auto;
+        }
+        .post-text-area {
           width: 100%;
-          p {
-            margin: 0 0 5px;
-            word-break: break-all;
-            font-size: 14px;
-            color: $base1;
-          }
-          .header-username {
-            margin-right: 10px;
-            color: $base1;
-            font-size: 14px;
-            font-weight: 500;
-          }
-          .header-time {
-            font-size: 12px;
-          }
-          .tweet-footer {
-            display: flex;
-            .tweet-item-icon {
-              margin-right: 8px;
+          height: 60px;
+          border: 0;
+          padding: 0;
+          resize: none;
+        }
+      }
+    }
+    .body {
+      overflow: scroll;
+      height: 100%;
+      width: 100%;
+      .timeline {
+        width: 100%;
+        .tweet-list {
+          height: 100%;
+          padding: 0 10px;
+          list-style-type: none;
+          .tweet-item {
+            display: flex; // white-space: pre-wrap !important;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            .left-div {
+              @include profile-img-header; // margin-right: 10px;
+              // padding-top: 5px;
+              // .profile-img {
+              //   border-radius: 50%;
+              // }
+            }
+            .right-div {
+              // width: 100%;
+              flex: 1 1 auto;
+              padding-right: 20px;
+              p {
+                margin: 0 0 5px;
+                word-break: break-all;
+                font-size: 14px;
+                color: $base1;
+              }
+              .header-username {
+                margin-right: 10px;
+                color: $base1;
+                font-size: 14px;
+                font-weight: 500;
+              }
+              .header-time {
+                font-size: 12px;
+              }
+              .tweet-footer {
+                display: flex;
+                .tweet-item-icon {
+                  margin-right: 8px;
+                }
+              }
             }
           }
         }

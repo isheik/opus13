@@ -9,24 +9,28 @@ import User from './User';
 
 // TODO: check Route component props... how to pass props
 const Main = props => (
-  <div>
-    <div className="user-field">
-      <div className="left-div">
-        <User account={props.accounts && props.accounts[props.activeAccountIndex]} />
+  <div className="contents">
+    <div className="header">
+      <div className="user-field">
+        <div className="left-div">
+          <User account={props.accounts && props.accounts[props.activeAccountIndex]} />
+        </div>
+        <div className="right-div">
+          <EditorContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} />
+        </div>
       </div>
-      <div className="right-div">
-        <EditorContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} />
-      </div>
+      <hr />
     </div>
-    <hr />
-    <div className="contents">
-      <Switch>
-        {window.location.pathname.includes('index.html') && <Redirect to="/" />}
-        <Route exact path="/" render={() => <Home {...props} />} />
-        <Route path="/test" render={() => <Test {...props} />} />
-        <Route path="/favorite" render={() => <FavoriteTab {...props} />} />
-        <Route path="/mentioned" render={() => <MentionedTab {...props} />} />
-      </Switch>
+    <div className="body">
+      <div className="timeline">
+        <Switch>
+          {window.location.pathname.includes('index.html') && <Redirect to="/" />}
+          <Route exact path="/" render={() => <Home {...props} />} />
+          <Route path="/test" render={() => <Test {...props} />} />
+          <Route path="/favorite" render={() => <FavoriteTab {...props} />} />
+          <Route path="/mentioned" render={() => <MentionedTab {...props} />} />
+        </Switch>
+      </div>
     </div>
   </div>
 );
