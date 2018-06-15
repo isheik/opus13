@@ -4,23 +4,12 @@ import Home from './Home';
 import Test from './Test';
 import FavoriteTab from './FavoriteTab';
 import MentionedTab from './MentionedTab';
-import EditorContainer from '../containers/EditorContainer';
-import User from './User';
+import Header from './Header';
 
 // TODO: check Route component props... how to pass props
 const Main = props => (
   <div className="contents">
-    <div className="header">
-      <div className="user-field">
-        <div className="left-div">
-          <User account={props.accounts && props.accounts[props.activeAccountIndex]} />
-        </div>
-        <div className="right-div">
-          <EditorContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} />
-        </div>
-      </div>
-      <hr />
-    </div>
+    <Header {...props} />
     <div className="body">
       <div className="timeline">
         <Switch>

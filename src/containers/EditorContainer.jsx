@@ -33,6 +33,8 @@ const mapDispatchToProps = (dispatch, props) => (
         if (!error) {
           console.log(tweet);
           dispatch(actions.addTweetToTab(props.account, 'home', tweet));
+          // June14 if tweet is to self then, add to mentioned tab too
+
           // twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
           //   if (!error) {
           //     // console.log('test');
