@@ -31,19 +31,13 @@ const mapDispatchToProps = (dispatch, props) => (
 
       twitterClient.post('statuses/update', params, (error, tweet, response) => {
         if (!error) {
-          console.log(tweet);
+          const regex = new RegExp(`.*@${props.account.screen_name}.*`);
           dispatch(actions.addTweetToTab(props.account, 'home', tweet));
-          // June14 if tweet is to self then, add to mentioned tab too
 
-          // twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
-          //   if (!error) {
-          //     // console.log('test');
-          //     for (let tweet of tweets) {
-          //       dispatch(actions.addTweetToTab(props.account, 'home', tweet));
-          //     }
-          //     // dispatch(actions.addTweetToTab(tweets, 'home'));
-          //   }
-          // });
+          // TODO: Improve tweet stock order logic
+          if (regex.test(tweet.text)) {
+            dispatch(actions.addTweetToTab(props.account, 'mentioned', tweet));
+          }
         } else {
           console.log(error);
         }
