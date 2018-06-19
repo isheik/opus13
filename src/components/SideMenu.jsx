@@ -54,6 +54,9 @@ class SideMenu extends React.Component {
             <li className="app-nav-items">
               <Link to="/mentioned" onClick={this.handleMentionedMenuClick}>Mentioned</Link>
             </li>
+            <li className="app-nav-items">
+              <Link to="/search" onClick={this.handleMentionedMenuClick}>Search</Link>
+            </li>
           </ul>
         </nav>
       </div>
