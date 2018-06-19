@@ -10,7 +10,7 @@ import Header from './Header';
 // TODO: check Route component props... how to pass props
 const Main = props => (
   <div className="contents">
-    <Header {...props} />
+    <Header className="header-component" {...props} />
     <div className="body">
       <div className="timeline">
         <Switch>

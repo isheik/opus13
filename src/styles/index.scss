@@ -26,6 +26,7 @@ $green: #859900;
 
 html,
 body {
+  position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -69,9 +70,12 @@ hr {
     padding: 0px;
     background-color: $base03;
     color: $base0;
+    .header-component {
+      height: 100%;
+    }
     .header {
-      width: 100%;
-      height: 110px; // position: fixed;
+      width: 100%; // height: 110px; // position: fixed;
+      // height: 20%; // position: fixed;
       .user-field {
         display: flex;
         padding: 20px 10px 10px;
@@ -100,12 +104,20 @@ hr {
       width: 100%;
       .timeline {
         width: 100%;
+        height: 100%;
+        .tweet-list-wrapper {
+          height: 100%; // height: 95%;
+        }
+        .tweet-list-container {
+          height: 100%;
+        }
         .tweet-list {
           height: 100%;
           padding: 0 10px;
           list-style-type: none;
           .tweet-item {
             display: flex; // white-space: pre-wrap !important;
+            height: 100%;
             margin-bottom: 20px;
             white-space: pre-wrap;
             .left-div {
