@@ -4,6 +4,7 @@ import Home from './Home';
 import Test from './Test';
 import FavoriteTab from './FavoriteTab';
 import MentionedTab from './MentionedTab';
+import SearchTab from './SearchTab';
 import Header from './Header';
 
 // TODO: check Route component props... how to pass props
@@ -18,6 +19,7 @@ const Main = props => (
           <Route path="/test" render={() => <Test {...props} />} />
           <Route path="/favorite" render={() => <FavoriteTab {...props} />} />
           <Route path="/mentioned" render={() => <MentionedTab {...props} />} />
+          <Route path="/search" render={() => <SearchTab {...props} />} />
         </Switch>
       </div>
     </div>
