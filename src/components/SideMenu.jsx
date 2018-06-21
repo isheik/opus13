@@ -19,13 +19,12 @@ class SideMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.clicko = this.clicko.bind(this);
+    this.handleHomeMenuClick = this.handleHomeMenuClick.bind(this);
     this.handleFavoriteMenuClick = this.handleFavoriteMenuClick.bind(this);
     this.handleMentionedMenuClick = this.handleMentionedMenuClick.bind(this);
   }
 
-  clicko() {
-    console.log('test');
+  handleHomeMenuClick() {
     this.props.getTweets(this.props.accounts[0]);
   }
 
@@ -43,7 +42,7 @@ class SideMenu extends React.Component {
         <nav className="app-global-nav">
           <ul className="app-nav-menu">
             <li className="app-nav-items">
-              <Link to="/" onClick={this.clicko} >Home</Link>
+              <Link to="/" onClick={this.handleHomeMenuClick} >Home</Link>
             </li>
             <li className="app-nav-items">
               <Link to="/test">Test</Link>
