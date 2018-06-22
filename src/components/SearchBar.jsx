@@ -4,16 +4,19 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: 'a',
+      searchText: '',
     };
     this.changeText = this.changeText.bind(this);
   }
   changeText = (event) => {
     this.setState({ searchText: event.target.text });
   }
+  handleSearchSubmit = (event) => {
+    // call function from searchBarContainer
+  }
   render() {
     return (
-      <form>
+      <form action={handleSearchSubmit}>
         <input type="text" onChange={this.changeText} />
       </form>
     );

@@ -35,6 +35,8 @@ class SideMenu extends React.Component {
   handleMentionedMenuClick() {
     this.props.getMentionedTweets(this.props.accounts[0]);
   }
+  handleSearchMenuClick() {
+  }
 
   render() {
     return (
@@ -54,7 +56,7 @@ class SideMenu extends React.Component {
               <Link to="/mentioned" onClick={this.handleMentionedMenuClick}>Mentioned</Link>
             </li>
             <li className="app-nav-items">
-              <Link to="/search" onClick={this.handleMentionedMenuClick}>Search</Link>
+              <Link to="/search" onClick={this.handleSearchMenuClick}>Search</Link>
             </li>
           </ul>
         </nav>

@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 
 const SearchTab = props => (
   <div>
-    <SearchBar />
+    <SearchBarContainer {...props} />
     <TweetListContainer {...props} account={props.accounts && props.accounts[props.activeAccountIndex]} tab="search" />
   </div>
 );
