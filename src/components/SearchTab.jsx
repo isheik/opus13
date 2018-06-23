@@ -1,6 +1,6 @@
 import React from 'react';
 import TweetListContainer from '../containers/TweetListContainer';
-import SearchBar from './SearchBar';
+import SearchBarContainer from '../containers/SearchBarContainer';
 
 const SearchTab = props => (
   <div>

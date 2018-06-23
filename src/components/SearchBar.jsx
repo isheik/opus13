@@ -12,11 +12,12 @@ class SearchBar extends React.Component {
     this.setState({ searchText: event.target.text });
   }
   handleSearchSubmit = (event) => {
-    // call function from searchBarContainer
+    event.preventDefault();
+    this.props.searchTwitter(this.state.searchText);
   }
   render() {
     return (
-      <form action={handleSearchSubmit}>
+      <form onSubmit={this.handleSearchSubmit}>
         <input type="text" onChange={this.changeText} />
       </form>
     );

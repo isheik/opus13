@@ -5,8 +5,15 @@ const mapStateToProps = (state, props) => ({
 
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps = props => (
+  {
+    searchTwitter: () => {
+      // do twitter things
+      console.log("search");
 
-};
+
+    },
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
