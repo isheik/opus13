@@ -7,9 +7,10 @@ class SearchBar extends React.Component {
       searchText: '',
     };
     this.changeText = this.changeText.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
   changeText = (event) => {
-    this.setState({ searchText: event.target.text });
+    this.setState({ searchText: event.target.value });
   }
   handleSearchSubmit = (event) => {
     event.preventDefault();

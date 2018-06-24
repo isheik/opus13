@@ -7,11 +7,9 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = props => (
   {
-    searchTwitter: () => {
+    searchTwitter: searchText => {
       // do twitter things
-      console.log("search");
-
-
+      console.log(searchText);
     },
   }
 );
