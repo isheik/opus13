@@ -16,3 +16,11 @@ export const deleteTweetFromTab = (account, tab, tweet) => (
   }
 );
 
+export const clearTab = (account, tab) => (
+  {
+    type: 'DELETE_TWEET_FROM_TAB',
+    account,
+    tab,
+  }
+);
+
