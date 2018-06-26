@@ -50,7 +50,6 @@ export const tweets = (state = {}, action) => {
       };
     case 'DELETE_TWEET_FROM_TAB':
       return {
-        // NEXT: MAY30 HERE implement
         ...state,
         [action.account.user_id]: {
           ...state[action.account.user_id],
@@ -59,6 +58,18 @@ export const tweets = (state = {}, action) => {
             action.tweet,
           ),
         },
+      };
+    case 'CLEAR_TWEETS_FROM_TAB':
+      return {
+        // NEXT: June 25 write here
+        // ...state,
+        // [action.account.user_id]: {
+        //   ...state[action.account.user_id],
+        //   [action.tab]: deleteTweet(
+        //     (state[action.account.user_id] && state[action.account.user_id][action.tab]) || [],
+        //     action.tweet,
+        //   ),
+        // },
       };
     // return Object.assign(
     //   {},
