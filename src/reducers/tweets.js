@@ -62,6 +62,11 @@ export const tweets = (state = {}, action) => {
     case 'CLEAR_TWEETS_FROM_TAB':
       return {
         // NEXT: June 25 write here
+        ...state,
+        [action.account.user_id]: {
+          ...state[action.account.user_id],
+          [action.tab]: [],
+        },
         // ...state,
         // [action.account.user_id]: {
         //   ...state[action.account.user_id],

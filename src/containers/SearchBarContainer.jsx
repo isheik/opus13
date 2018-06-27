@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch, props) => (
         if (!error) {
           console.log(response);
           console.log(error);
+          dispatch(actions.clearTweetsFromTab(props.account, 'search'));
           for (let tweet of response.statuses) {
             // JUNE 25 need to clear state before putting new tweets ;otherwise, tweets are mixed when new queries are issued
             dispatch(actions.addTweetToTab(props.account, 'search', tweet));
