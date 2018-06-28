@@ -18,9 +18,11 @@ class SearchBar extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSearchSubmit}>
-        <input id="search-bar" type="text" onChange={this.changeText} />
-      </form>
+      <div className="search-bar-form-container">
+        <form id="search-bar-form" onSubmit={this.handleSearchSubmit}>
+          <input id="search-bar" type="text" onChange={this.changeText} />
+        </form>
+      </div>
     );
   }
 }

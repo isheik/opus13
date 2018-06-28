@@ -38,3 +38,5 @@ class Editor extends React.Component {
 }
 
 export default Editor;
+
+// JUNE 28 Fix textarea outline
