@@ -25,19 +25,30 @@ const mapDispatchToProps = (dispatch, props) => (
         q: queryString,
       };
 
-      twitterClient.get('search/tweets', params, (error, response) => {
-        if (!error) {
-          console.log(response);
-          console.log(error);
+      // twitterClient.get('search/tweets', params, (error, response) => {
+      //   if (!error) {
+      //     console.log(response);
+      //     console.log(error);
+      //     dispatch(actions.clearTweetsFromTab(props.account, 'search'));
+      //     for (let tweet of response.statuses) {
+      //       // JUNE 25 need to clear state before putting new tweets ;otherwise, tweets are mixed when new queries are issued
+      //       dispatch(actions.addTweetToTab(props.account, 'search', tweet));
+      //     }
+      //   } else {
+      //     console.log(error);
+      //   }
+      // });
+      twitterClient.get('search/tweets', params)
+        .then((response) => {
           dispatch(actions.clearTweetsFromTab(props.account, 'search'));
           for (let tweet of response.statuses) {
             // JUNE 25 need to clear state before putting new tweets ;otherwise, tweets are mixed when new queries are issued
             dispatch(actions.addTweetToTab(props.account, 'search', tweet));
           }
-        } else {
+        })
+        .catch((error) => {
           console.log(error);
-        }
-      });
+        });
     },
   }
 );
