@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    searchTwitter: (searchText) => {
+    searchTwitter: async (searchText) => {
       // do twitter things
       console.log(searchText);
       const twitterClient = new Twitter({
@@ -38,17 +38,33 @@ const mapDispatchToProps = (dispatch, props) => (
       //     console.log(error);
       //   }
       // });
-      twitterClient.get('search/tweets', params)
-        .then((response) => {
-          dispatch(actions.clearTweetsFromTab(props.account, 'search'));
-          for (let tweet of response.statuses) {
-            // JUNE 25 need to clear state before putting new tweets ;otherwise, tweets are mixed when new queries are issued
-            dispatch(actions.addTweetToTab(props.account, 'search', tweet));
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
+      // var startTime = new Date();
+      // twitterClient.get('search/tweets', params)
+      //   .then((response) => {
+      //     dispatch(actions.clearTweetsFromTab(props.account, 'search'));
+      //     for (let tweet of response.statuses) {
+      //       // JUNE 25 need to clear state before putting new tweets ;otherwise, tweets are mixed when new queries are issued
+      //       dispatch(actions.addTweetToTab(props.account, 'search', tweet));
+      //     }
+      //     var endTime = new Date();
+      //     console.log(endTime - startTime + "ms");
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+
+      let response;
+      try {
+        response = await twitterClient.get('search/tweets', params);
+        dispatch(actions.clearTweetsFromTab(props.account, 'search'));
+        for (let tweet of response.statuses) {
+          // JUNE 25 need to clear state before putting new tweets ;otherwise, tweets are mixed when new queries are issued
+          dispatch(actions.addTweetToTab(props.account, 'search', tweet));
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
   }
 );
