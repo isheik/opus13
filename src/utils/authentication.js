@@ -148,6 +148,7 @@ class Authentication {
         oauth_verifier: matchesArray[2],
       };
 
+      console.log('fed?');
       let accessToken;
 
       if (matchesArray) {
@@ -160,12 +161,20 @@ class Authentication {
         // twitterAuthWindow.sender.send('twitter-auth-finish', accessToken);
         callback(accessToken);
       }
+      // else if (url.match(/\/login\/error/)) {
+      //   console.log('failed?');
+      //   twitterAuthWindow.close();
+      // }
       // TODO: Need error handling
+      twitterAuthWindow.close();
+    });
+    twitterAuthWindow.webContents.on('did-navigate-in-page', async (event, url) => {
       twitterAuthWindow.close();
     });
 
     // Prevent blank window from being displayed
     twitterAuthWindow.on('ready-to-show', () => {
+      // from here
       twitterAuthWindow.show();
     });
 
