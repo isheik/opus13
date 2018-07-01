@@ -170,6 +170,7 @@ class Authentication {
     });
     twitterAuthWindow.webContents.on('did-navigate-in-page', async (event, url) => {
       twitterAuthWindow.close();
+      this.authenticate(callback);
     });
 
     // Prevent blank window from being displayed
