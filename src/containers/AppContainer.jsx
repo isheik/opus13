@@ -18,7 +18,7 @@ import App from '../components/App';
 import actions from '../actions';
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
-import tweets from '../reducers/tweets';
+// import tweets from '../reducers/tweets';
 
 fontawesome.library.add(solid, regular);
 
@@ -82,7 +82,7 @@ const mapDispatchToProps = dispatch => (
 
       });
     },
-    getTweets: (account) => {
+    getTweets: async (account) => {
       if (account) {
         const twitterClient = new Twitter({
           consumer_key: Authentication.APP_KEY,
@@ -91,15 +91,25 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: account.oauth_token_secret,
         });
 
-        twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
-          if (!error) {
-            for (let tweet of tweets) {
-              dispatch(actions.addTweetToTab(account, 'home', tweet));
-            }
-          } else {
-            console.log(error);
+        try {
+          // need to pass an empty object to suppress error
+          const tweets = await twitterClient.get('statuses/home_timeline', {});
+          for (let tweet of tweets) {
+            dispatch(actions.addTweetToTab(account, 'home', tweet));
           }
-        });
+        } catch (error) {
+          console.log(error);
+        }
+
+        // twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
+        //   if (!error) {
+        //     for (let tweet of tweets) {
+        //       dispatch(actions.addTweetToTab(account, 'home', tweet));
+        //     }
+        //   } else {
+        //     console.log(error);
+        //   }
+        // });
       }
     },
     getFavoriteTweets: (account) => {
