@@ -134,7 +134,7 @@ const mapDispatchToProps = dispatch => (
         });
       }
     },
-    getMentionedTweets: (account) => {
+    getMentionedTweets: async (account) => {
       if (account) {
         const twitterClient = new Twitter({
           consumer_key: Authentication.APP_KEY,
@@ -143,17 +143,24 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: account.oauth_token_secret,
         });
 
-        twitterClient.get('statuses/mentions_timeline', (error, tweets, response) => {
-          if (!error) {
-            console.log(tweets);
-            for (let tweet of tweets) {
-              dispatch(actions.addTweetToTab(account, 'mentioned', tweet));
-            }
-            // dispatch(actions.addTweetToTab(tweets, 'home'));
-          } else {
-            console.log(error);
+        try {
+          const tweets = await twitterClient.get('statuses/mentions_timeline', {});
+          for (let tweet of tweets) {
+            dispatch(actions.addTweetToTab(account, 'mentioned', tweet));
           }
-        });
+        } catch (error) {
+          console.log(error);
+        }
+        // twitterClient.get('statuses/mentions_timeline', (error, tweets, response) => {
+        //   if (!error) {
+        //     console.log(tweets);
+        //     for (let tweet of tweets) {
+        //       dispatch(actions.addTweetToTab(account, 'mentioned', tweet));
+        //     }
+        //   } else {
+        //     console.log(error);
+        //   }
+        // });
       }
     },
   }
