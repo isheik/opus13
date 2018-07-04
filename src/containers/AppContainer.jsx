@@ -112,7 +112,7 @@ const mapDispatchToProps = dispatch => (
         // });
       }
     },
-    getFavoriteTweets: (account) => {
+    getFavoriteTweets: async (account) => {
       if (account) {
         const twitterClient = new Twitter({
           consumer_key: Authentication.APP_KEY,
@@ -121,17 +121,23 @@ const mapDispatchToProps = dispatch => (
           access_token_secret: account.oauth_token_secret,
         });
 
-        twitterClient.get('favorites/list', (error, tweets, response) => {
-          if (!error) {
-            // console.log('test');
-            for (let tweet of tweets) {
-              dispatch(actions.addTweetToTab(account, 'favorite', tweet));
-            }
-            // dispatch(actions.addTweetToTab(tweets, 'home'));
-          } else {
-            console.log(error);
+        try {
+          const tweets = await twitterClient.get('favorites/list', {});
+          for (let tweet of tweets) {
+            dispatch(actions.addTweetToTab(account, 'favorite', tweet));
           }
-        });
+        } catch (error) {
+          console.log(error);
+        }
+        // twitterClient.get('favorites/list', (error, tweets, response) => {
+        //   if (!error) {
+        //     for (let tweet of tweets) {
+        //       dispatch(actions.addTweetToTab(account, 'favorite', tweet));
+        //     }
+        //   } else {
+        //     console.log(error);
+        //   }
+        // });
       }
     },
     getMentionedTweets: async (account) => {
