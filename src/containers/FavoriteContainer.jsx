@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    toggleFavorited: (tweet) => {
+    toggleFavorited: async (tweet) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
@@ -23,17 +23,26 @@ const mapDispatchToProps = (dispatch, props) => (
       };
 
       if (tweet.favorited) {
-        twitterClient.post('favorites/destroy', params, (error, returnedTweet, response) => {
-          // TODO: need to add tab info
-          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-          // dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
-          dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
-        });
+        const returnedTweet = await twitterClient.post('favorites/destroy', params);
+        // TODO: the order of fav tab is inverse.
+        dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
       } else {
-        twitterClient.post('favorites/create', params, (error, returnedTweet, response) => {
-          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-        });
+        const returnedTweet = await twitterClient.post('favorites/create', params);
+        dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
       }
+      // if (tweet.favorited) {
+      //   twitterClient.post('favorites/destroy', params, (error, returnedTweet, response) => {
+      //     // TODO: need to add tab info
+      //     dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+      //     // dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
+      //     dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
+      //   });
+      // } else {
+      //   twitterClient.post('favorites/create', params, (error, returnedTweet, response) => {
+      //     dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+      //   });
+      // }
     },
   }
 );
