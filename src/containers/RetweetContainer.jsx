@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => (
   {
-    toggleRetweeted: (tweet) => {
+    toggleRetweeted: async (tweet) => {
       const twitterClient = new Twitter({
         consumer_key: Authentication.APP_KEY,
         consumer_secret: Authentication.APP_SECRET_KEY,
@@ -24,29 +24,46 @@ const mapDispatchToProps = (dispatch, props) => (
         id: tweet.id_str,
       };
 
+      // TODO: fix unretweet
       if (tweet.retweeted) {
-        twitterClient.post('statuses/unretweet', params, (error, returnedTweet, response) => {
-          // TODO: need to add tab info
-          // TODO: del unretweetec tweet
+        try {
+          const returnedTweet = await twitterClient.post('statuses/unretweet', params);
           console.log('unret');
           console.log(returnedTweet);
+        }
+        catch (error) {
+        }
+        // twitterClient.post('statuses/unretweet', params, (error, returnedTweet, response) => {
+          // TODO: need to add tab info
+          // TODO: del unretweetec tweet
+          // console.log('unret');
+          // console.log(returnedTweet);
           // TODO: del unretweetec tweet
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-        });
+        // });
       } else {
-        twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
-          console.log(returnedTweet);
+        try {
+          const retweetedTweet = await twitterClient.post('statuses/retweet', params);
+          // twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
+            console.log(retweetedTweet);
+  
+            console.log('client2');
+            console.log(retweetedTweet);
+            // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+            const paramsa = {
+              status: retweetedTweet.text,
+            };
 
-          console.log('client2');
-          console.log(twitterClient);
-          // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-          const paramsa = {
-            status: returnedTweet.text,
-          };
-          twitterClient.post('statuses/update', paramsa, (error, tweet, response) => {
-            if (!error) {
-              console.log(tweet);
-              dispatch(actions.addTweetToTab(props.account, 'home', tweet));
+            const returnedTweet = await twitterClient.post('statuses/update', paramsa);
+            dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        }
+          catch (error) {
+            console.log(error);
+          }
+          // twitterClient.post('statuses/update', paramsa, (error, tweet, response) => {
+            // if (!error) {
+              // console.log(tweet);
+              // dispatch(actions.addTweetToTab(props.account, 'home', tweet));
               // twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
               //   if (!error) {
               //     // console.log('test');
@@ -56,11 +73,11 @@ const mapDispatchToProps = (dispatch, props) => (
               //     // dispatch(actions.addTweetToTab(tweets, 'home'));
               //   }
               // });
-            } else {
-              console.log(error);
-            }
-          });
-        });
+            // } else {
+              // console.log(error);
+            // }
+          // });
+        // });
       }
     },
   }
