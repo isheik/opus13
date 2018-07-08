@@ -3,14 +3,9 @@ import { withRouter } from 'react-router-dom';
 import { ipcRenderer } from 'electron';
 import Twitter from 'twitter';
 
-// import * as accountActions from '../actions/account';
 import ReactDOM from 'react-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import brands from '@fortawesome/fontawesome-free-brands'
-// import faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare'
-// import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
-// import faStar from '@fortawesome/fontawesome-free-solid/faStar'
 import solid from '@fortawesome/fontawesome-free-solid';
 import regular from '@fortawesome/fontawesome-free-regular';
 
@@ -18,7 +13,6 @@ import App from '../components/App';
 import actions from '../actions';
 import FileManager from '../utils/FileManager';
 import Authentication from '../utils/Authentication';
-// import tweets from '../reducers/tweets';
 
 fontawesome.library.add(solid, regular);
 
@@ -71,15 +65,6 @@ const mapDispatchToProps = dispatch => (
             }
           });
         });
-        // dispatch(accountActions.addAccount(token));
-        // dispatch(accountActions.changeActiveAccount());
-        // console.log(accounts.oauth_token);
-        // console.log(token);
-
-        // TODO: Fix here
-        // const params = { screen_name: accounts.screen_name };
-        // twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
-
       });
     },
     getTweets: async (account) => {
@@ -100,16 +85,6 @@ const mapDispatchToProps = dispatch => (
         } catch (error) {
           console.log(error);
         }
-
-        // twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
-        //   if (!error) {
-        //     for (let tweet of tweets) {
-        //       dispatch(actions.addTweetToTab(account, 'home', tweet));
-        //     }
-        //   } else {
-        //     console.log(error);
-        //   }
-        // });
       }
     },
     getFavoriteTweets: async (account) => {
@@ -129,15 +104,6 @@ const mapDispatchToProps = dispatch => (
         } catch (error) {
           console.log(error);
         }
-        // twitterClient.get('favorites/list', (error, tweets, response) => {
-        //   if (!error) {
-        //     for (let tweet of tweets) {
-        //       dispatch(actions.addTweetToTab(account, 'favorite', tweet));
-        //     }
-        //   } else {
-        //     console.log(error);
-        //   }
-        // });
       }
     },
     getMentionedTweets: async (account) => {
@@ -157,16 +123,6 @@ const mapDispatchToProps = dispatch => (
         } catch (error) {
           console.log(error);
         }
-        // twitterClient.get('statuses/mentions_timeline', (error, tweets, response) => {
-        //   if (!error) {
-        //     console.log(tweets);
-        //     for (let tweet of tweets) {
-        //       dispatch(actions.addTweetToTab(account, 'mentioned', tweet));
-        //     }
-        //   } else {
-        //     console.log(error);
-        //   }
-        // });
       }
     },
   }
