@@ -30,54 +30,34 @@ const mapDispatchToProps = (dispatch, props) => (
           const returnedTweet = await twitterClient.post('statuses/unretweet', params);
           console.log('unret');
           console.log(returnedTweet);
-        }
-        catch (error) {
+        } catch (error) {
         }
         // twitterClient.post('statuses/unretweet', params, (error, returnedTweet, response) => {
-          // TODO: need to add tab info
-          // TODO: del unretweetec tweet
-          // console.log('unret');
-          // console.log(returnedTweet);
-          // TODO: del unretweetec tweet
-          // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        // TODO: need to add tab info
+        // TODO: del unretweetec tweet
+        // console.log('unret');
+        // console.log(returnedTweet);
+        // TODO: del unretweetec tweet
+        // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         // });
       } else {
         try {
           const retweetedTweet = await twitterClient.post('statuses/retweet', params);
           // twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
-            console.log(retweetedTweet);
-  
-            console.log('client2');
-            console.log(retweetedTweet);
-            // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-            const paramsa = {
-              status: retweetedTweet.text,
-            };
+          console.log(retweetedTweet);
 
-            const returnedTweet = await twitterClient.post('statuses/update', paramsa);
-            dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+          console.log('client2');
+          console.log(retweetedTweet);
+          // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+          const paramsa = {
+            status: retweetedTweet.text,
+          };
+
+          const returnedTweet = await twitterClient.post('statuses/update', paramsa);
+          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        } catch (error) {
+          console.log(error);
         }
-          catch (error) {
-            console.log(error);
-          }
-          // twitterClient.post('statuses/update', paramsa, (error, tweet, response) => {
-            // if (!error) {
-              // console.log(tweet);
-              // dispatch(actions.addTweetToTab(props.account, 'home', tweet));
-              // twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
-              //   if (!error) {
-              //     // console.log('test');
-              //     for (let tweet of tweets) {
-              //       dispatch(actions.addTweetToTab(props.account, 'home', tweet));
-              //     }
-              //     // dispatch(actions.addTweetToTab(tweets, 'home'));
-              //   }
-              // });
-            // } else {
-              // console.log(error);
-            // }
-          // });
-        // });
       }
     },
   }

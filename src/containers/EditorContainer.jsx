@@ -9,8 +9,6 @@ const mapStateToProps = (state, props) => (
   {
     text: state.editorText,
     replyToID: state.reply,
-    // account: props.account,
-    // activeAccountIndex: props.activeAccountIndex,
   }
 );
 
@@ -38,23 +36,9 @@ const mapDispatchToProps = (dispatch, props) => (
         if (regex.test(tweet.text)) {
           dispatch(actions.addTweetToTab(props.account, 'mentioned', tweet));
         }
-      } 
-      catch (error) {
-          console.log(error);
+      } catch (error) {
+        console.log(error);
       }
-      // twitterClient.post('statuses/update', params, (error, tweet, response) => {
-      //   if (!error) {
-      //     const regex = new RegExp(`.*@${props.account.screen_name}.*`);
-      //     dispatch(actions.addTweetToTab(props.account, 'home', tweet));
-
-      //     // TODO: Improve tweet stock order logic
-      //     if (regex.test(tweet.text)) {
-      //       dispatch(actions.addTweetToTab(props.account, 'mentioned', tweet));
-      //     }
-      //   } else {
-      //     console.log(error);
-      //   }
-      // });
     },
     setText: (text) => {
       dispatch(actions.setText(text));

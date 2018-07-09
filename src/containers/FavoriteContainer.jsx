@@ -31,18 +31,6 @@ const mapDispatchToProps = (dispatch, props) => (
         const returnedTweet = await twitterClient.post('favorites/create', params);
         dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
       }
-      // if (tweet.favorited) {
-      //   twitterClient.post('favorites/destroy', params, (error, returnedTweet, response) => {
-      //     // TODO: need to add tab info
-      //     dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-      //     // dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
-      //     dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
-      //   });
-      // } else {
-      //   twitterClient.post('favorites/create', params, (error, returnedTweet, response) => {
-      //     dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-      //   });
-      // }
     },
   }
 );
