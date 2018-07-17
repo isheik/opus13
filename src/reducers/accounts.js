@@ -7,6 +7,4 @@ const accounts = (state = [], action) => {
   }
 };
 
-// ...state,
-// action.account,
 export default accounts;
