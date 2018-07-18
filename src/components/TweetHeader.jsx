@@ -1,6 +1,6 @@
 import React from 'react'
 
-// TODO: Fix time format
+// TODO: Fix time format do this next July 18
 // TODO: Put some margin between elements
 const TweetHeader = props => (
   <div>
