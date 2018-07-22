@@ -167,7 +167,10 @@ hr {
                 display: flex;
                 .tweet-item-icon {
                   margin-right: 8px;
-                }
+                } // .nothover:hover {
+                //   color: yellow;
+                //   transition: all 1s;
+                // }
               }
             }
           }
