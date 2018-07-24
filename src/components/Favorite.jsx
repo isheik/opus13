@@ -35,25 +35,30 @@ class Favorite extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <Transition in={this.state.hovered} timeout={1000}>
-        <div className="tweet-item-icon">
-          {
-            this.props.tweet.favorited
-              ? <FontAwesomeIcon
-                icon="star"
-                color="#b58900"
-                onClick={this.handleFavClick}
-              />
-              : <FontAwesomeIcon
-                icon={['far', 'star']}
-                color={this.state.hovered ? '#b58900' : ''}
-                onMouseEnter={this.onMouseEnter}
-                onMouseLeave={this.onMouseLeave}
-                onClick={this.handleFavClick}
-              />
-          }
-        </div>
-      </Transition >
+      <div className="tweet-item-icon">
+        {
+          this.props.tweet.favorited
+            ? <FontAwesomeIcon
+              icon="star"
+              color="#b58900"
+              onClick={this.handleFavClick}
+            />
+            :
+            <Transition in={this.state.hovered} timeout={100}>
+              {
+                state => (
+                  (<FontAwesomeIcon
+                    icon={['far', 'star']}
+                    color={state === 'entered' ? '#b58900' : ''}
+                    onMouseEnter={this.onMouseEnter}
+                    onMouseLeave={this.onMouseLeave}
+                    onClick={this.handleFavClick}
+                  />)
+                )
+              }
+            </Transition >
+        }
+      </div>
     );
   }
 }
