@@ -38,30 +38,58 @@ class Favorite extends React.Component {
       <div className="tweet-item-icon">
         {
           this.props.tweet.favorited
-            ? <FontAwesomeIcon
-              icon="star"
-              color="#b58900"
-              onClick={this.handleFavClick}
-            />
-            :
-            <Transition in={this.state.hovered} timeout={100}>
+            ?
+            <Transition in={this.state.favorited} timeout={400}>
               {
                 (state) => {
                   const styles = {
-                    entering: {},
-                    entered: {},
-                    exiting: {},
-                    exited: {},
+                    entering: {
+                      // transform: 'rotate(45deg)',
+                      // transition: 'transform 0.2s linear',
+                      // fontSize: '50px',
+                    },
+                    entered: {
+                      // transform: 'rotate(45deg)',
+                      // transform: 'scale(1.2)',
+                      // transition: 'transform 0.1s linear',
+                      // fontSize: '50px',
+                    },
+                    exiting: {
+                      // transform: 'rotate(70deg)',
+                      transform: 'scale(1.3) rotate(360deg)',
+                      transition: 'transform 0.1s ease-in',
+                      // fontSize: '50px',
+                    },
+                    exited: {
+                      transform: 'scale(1.0)',
+                      // transform: 'rotate(0deg)',
+                      transition: 'transform 0.3s linear',
+                      // fontSize: '50px',
+                    },
                   };
+                  console.log(state);
 
                   return (<FontAwesomeIcon
+                    icon="star"
+                    color="#b58900"
+                    style={styles[state]}
+                    onClick={this.handleFavClick}
+                  />);
+                }
+              }
+            </Transition>
+            :
+            <Transition in={this.state.hovered} timeout={100}>
+              {
+                state => (
+                  (<FontAwesomeIcon
                     icon={['far', 'star']}
                     color={state === 'entered' ? '#b58900' : ''}
                     onMouseEnter={this.onMouseEnter}
                     onMouseLeave={this.onMouseLeave}
                     onClick={this.handleFavClick}
-                  />);
-                }
+                  />)
+                )
               }
             </Transition >
         }
