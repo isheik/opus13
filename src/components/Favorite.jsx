@@ -17,15 +17,15 @@ class Favorite extends React.Component {
   constructor() {
     super();
     this.state = {
-      hovered: false
+      hovered: false,
     };
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
+    // this.onMouseEnter = this.onMouseEnter.bind(this);
+    // this.onMouseLeave = this.onMouseLeave.bind(this);
   }
-  onMouseEnter() {
+  onMouseEnter = () => {
     this.setState({ hovered: true });
   }
-  onMouseLeave() {
+  onMouseLeave = () => {
     this.setState({ hovered: false });
   }
   handleFavClick = () => {
@@ -33,13 +33,13 @@ class Favorite extends React.Component {
     this.props.toggleFavorited(this.props.tweet);
   }
   render() {
-    console.log(this.state);
     return (
       <div className="tweet-item-icon">
         {
+          // July27 Fix here
           this.props.tweet.favorited
             ?
-            <Transition in={this.state.favorited} timeout={400}>
+            <Transition in={this.props.tweet.favorited} timeout={1000}>
               {
                 (state) => {
                   const styles = {
@@ -47,11 +47,15 @@ class Favorite extends React.Component {
                       // transform: 'rotate(45deg)',
                       // transition: 'transform 0.2s linear',
                       // fontSize: '50px',
+                      transform: 'scale(1.3) rotate(360deg)',
+                      transition: 'transform 0.1s ease-in',
                     },
                     entered: {
                       // transform: 'rotate(45deg)',
                       // transform: 'scale(1.2)',
                       // transition: 'transform 0.1s linear',
+                      transform: 'scale(1.0) rotate(0deg)',
+                      transition: 'transform 0.1s ease-in',
                       // fontSize: '50px',
                     },
                     exiting: {
