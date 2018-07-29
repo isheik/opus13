@@ -77,7 +77,7 @@ class Favorite extends React.Component {
                   return (<FontAwesomeIcon
                     icon="star"
                     color="#b58900"
-                    style={{ ...styles[state] }}
+                    style={styles[state]}
                     onClick={this.handleFavClick}
                   />);
                 }

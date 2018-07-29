@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch, props) => (
         dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
       } else {
         const returnedTweet = await twitterClient.post('favorites/create', params);
-        // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-        dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
+        dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        // dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
       }
     },
   }
