@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, props) => (
       } else {
         const returnedTweet = await twitterClient.post('favorites/create', params);
         dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-        // dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
+        dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
       }
     },
   }
