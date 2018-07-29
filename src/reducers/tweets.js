@@ -31,7 +31,6 @@ const deleteTweet = (tweetSet, tweet) => {
     }
   }
 
-  // Append if the given tweet was posted the earlier than others in set
   return [...tweetSet];
 };
 

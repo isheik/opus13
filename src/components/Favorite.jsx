@@ -14,8 +14,8 @@ import { Transition } from 'react-transition-group';
 // );
 
 class Favorite extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hovered: false,
     };
@@ -72,30 +72,25 @@ class Favorite extends React.Component {
                     },
                   };
                   console.log(state);
+                  console.log(this.props.tweet.favorited);
 
                   return (<FontAwesomeIcon
                     icon="star"
                     color="#b58900"
-                    style={styles[state]}
+                    style={{ ...styles[state] }}
                     onClick={this.handleFavClick}
                   />);
                 }
               }
             </Transition>
             :
-            <Transition in={this.state.hovered} timeout={100}>
-              {
-                state => (
-                  (<FontAwesomeIcon
-                    icon={['far', 'star']}
-                    color={state === 'entered' ? '#b58900' : ''}
-                    onMouseEnter={this.onMouseEnter}
-                    onMouseLeave={this.onMouseLeave}
-                    onClick={this.handleFavClick}
-                  />)
-                )
-              }
-            </Transition >
+            <FontAwesomeIcon
+              icon={['far', 'star']}
+              color={this.state.hovered ? '#b58900' : ''}
+              onMouseEnter={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+              onClick={this.handleFavClick}
+            />
         }
       </div>
     );

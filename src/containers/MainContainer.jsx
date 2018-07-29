@@ -4,6 +4,7 @@ import SideMenu from '../components/SideMenu';
 import actions from '../actions/';
 import Authentication from '../utils/Authentication';
 
+// not used
 const mapStateToProps = state => (
   {
     accounts: state.accounts,

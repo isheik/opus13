@@ -25,11 +25,13 @@ const mapDispatchToProps = (dispatch, props) => (
       if (tweet.favorited) {
         const returnedTweet = await twitterClient.post('favorites/destroy', params);
         // TODO: the order of fav tab is inverse.
+        // Make update tweet 
         dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         dispatch(actions.deleteTweetFromTab(props.account, 'favorite', returnedTweet));
       } else {
         const returnedTweet = await twitterClient.post('favorites/create', params);
-        dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+        dispatch(actions.addTweetToTab(props.account, 'favorite', returnedTweet));
       }
     },
   }
