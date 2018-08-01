@@ -19,12 +19,16 @@ const mapDispatchToProps = (dispatch, props) => (
       });
 
       console.log('client1');
-      console.log(twitterClient);
+      console.log(tweet.retweeted);
       const params = {
         id: tweet.id_str,
       };
 
       // TODO: fix unretweet
+      // tweet.retweeted does not become true -> become true if you click added tweet
+      // the retweeted tweet and original tweet seems to have different ID and states(retweeted=true or count etc)
+      // So might have to track the retweeted original tweet ID
+      // something like, RT -> swap original tweet with new returned tweet
       if (tweet.retweeted) {
         try {
           const returnedTweet = await twitterClient.post('statuses/unretweet', params);
@@ -40,21 +44,27 @@ const mapDispatchToProps = (dispatch, props) => (
         // TODO: del unretweetec tweet
         // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         // });
+        // TODO: returnedTweet is unretweet tweet. not sure what to do here yet.
+        // modifying RT count and flag and displaying the tweet is a way to go? Read tweet dev doc more
       } else {
         try {
           const retweetedTweet = await twitterClient.post('statuses/retweet', params);
           // twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
           console.log(retweetedTweet);
 
-          console.log('client2');
-          console.log(retweetedTweet);
+          // console.log('client2');
+          // console.log(retweetedTweet);
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-          const paramsa = {
-            status: retweetedTweet.text,
-          };
+          // const paramsa = {
+          //   status: retweetedTweet.text,
+          // };
 
-          const returnedTweet = await twitterClient.post('statuses/update', paramsa);
-          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+          // No need to post to home, retweeted tweet become visible to other users
+          // const returnedTweet = await twitterClient.post('statuses/update', paramsa);
+          // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
+          // TODO: when RT, save original Tweet ID and replace that tweetID with retweetedTweet 
+          // You don't have to use addTweetToTab but need to use updateTweet or sth
+          dispatch(actions.addTweetToTab(props.account, 'home', retweetedTweet));
         } catch (error) {
           console.log(error);
         }
