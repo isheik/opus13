@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch, props) => (
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
           // TODO: when RT, save original Tweet ID and replace that tweetID with retweetedTweet 
           // You don't have to use addTweetToTab but need to use updateTweet or sth
-          dispatch(actions.addTweetToTab(props.account, 'home', retweetedTweet));
+          // dispatch(actions.addTweetToTab(props.account, 'home', retweetedTweet));
         } catch (error) {
           console.log(error);
         }

@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { Transition } from 'react-transition-group';
 
 // const Favorite = props => (
 //   <div>
@@ -14,15 +15,35 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 class Retweet extends React.Component {
+  state = {
+    hovered: false,
+  }
   handleRetweetClick = () => {
-    console.log('ret');
     // this.props.toggleFavorited(this.props.tweet);
     this.props.toggleRetweeted(this.props.tweet);
   }
+  onMouseEnter = () => {
+    this.setState({ hovered: true });
+  }
+  onMouseLeave = () => {
+    this.setState({ hovered: false });
+  }
   render() {
+    const { hovered } = { ...this.state };
     return (
       <div className="tweet-item-icon">
-        <FontAwesomeIcon icon="retweet" onClick={this.handleRetweetClick} />
+        {
+          <Transition in={hovered} timeout={100}>
+            <FontAwesomeIcon
+              icon="retweet" onClick={this.handleRetweetClick}
+              color={hovered ? '#2aa198' : ''}
+              onClick={this.handleRetweetClick}
+              onMouseEnter={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+            />
+
+          </Transition>
+        }
       </div>
     );
   }
