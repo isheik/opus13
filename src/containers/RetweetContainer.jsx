@@ -33,7 +33,9 @@ const mapDispatchToProps = (dispatch, props) => (
         try {
           const returnedTweet = await twitterClient.post('statuses/unretweet', params);
           console.log('unret');
+          // console.log(returnedTweet.retweeted_status);
           console.log(returnedTweet);
+          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
         } catch (error) {
         }
         // twitterClient.post('statuses/unretweet', params, (error, returnedTweet, response) => {
@@ -48,9 +50,9 @@ const mapDispatchToProps = (dispatch, props) => (
         // modifying RT count and flag and displaying the tweet is a way to go? Read tweet dev doc more
       } else {
         try {
-          const retweetedTweet = await twitterClient.post('statuses/retweet', params);
+          const returnedTweet = await twitterClient.post('statuses/retweet', params);
           // twitterClient.post('statuses/retweet', params, (error, returnedTweet, response) => {
-          console.log(retweetedTweet);
+          console.log(returnedTweet);
 
           // console.log('client2');
           // console.log(retweetedTweet);
@@ -64,7 +66,7 @@ const mapDispatchToProps = (dispatch, props) => (
           // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
           // TODO: when RT, save original Tweet ID and replace that tweetID with retweetedTweet 
           // You don't have to use addTweetToTab but need to use updateTweet or sth
-          // dispatch(actions.addTweetToTab(props.account, 'home', retweetedTweet));
+          dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet.retweeted_status));
         } catch (error) {
           console.log(error);
         }

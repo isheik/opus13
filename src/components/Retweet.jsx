@@ -18,31 +18,40 @@ class Retweet extends React.Component {
   state = {
     hovered: false,
   }
-  handleRetweetClick = () => {
-    // this.props.toggleFavorited(this.props.tweet);
-    this.props.toggleRetweeted(this.props.tweet);
-  }
   onMouseEnter = () => {
     this.setState({ hovered: true });
   }
   onMouseLeave = () => {
     this.setState({ hovered: false });
   }
+  handleRetweetClick = () => {
+    // this.props.toggleFavorited(this.props.tweet);
+    this.props.toggleRetweeted(this.props.tweet);
+  }
   render() {
     const { hovered } = { ...this.state };
     return (
       <div className="tweet-item-icon">
         {
-          <Transition in={hovered} timeout={100}>
+          // <Transition in={hovered} timeout={100}>
+          this.props.tweet.retweeted
+            ?
             <FontAwesomeIcon
-              icon="retweet" onClick={this.handleRetweetClick}
+              icon="retweet"
+              color='#2aa198'
+              onClick={this.handleRetweetClick}
+              onMouseEnter={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+            />
+            :
+            <FontAwesomeIcon
+              icon="retweet"
               color={hovered ? '#2aa198' : ''}
               onClick={this.handleRetweetClick}
               onMouseEnter={this.onMouseEnter}
               onMouseLeave={this.onMouseLeave}
             />
-
-          </Transition>
+          // </Transition>
         }
       </div>
     );
