@@ -32,6 +32,7 @@ const mapDispatchToProps = (dispatch, props) => (
       if (tweet.retweeted) {
         try {
           const returnedTweet = await twitterClient.post('statuses/unretweet', params);
+          returnedTweet.retweeted = false;
           console.log('unret');
           // console.log(returnedTweet.retweeted_status);
           console.log(returnedTweet);
@@ -61,11 +62,7 @@ const mapDispatchToProps = (dispatch, props) => (
           //   status: retweetedTweet.text,
           // };
 
-          // No need to post to home, retweeted tweet become visible to other users
-          // const returnedTweet = await twitterClient.post('statuses/update', paramsa);
-          // dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet));
-          // TODO: when RT, save original Tweet ID and replace that tweetID with retweetedTweet 
-          // You don't have to use addTweetToTab but need to use updateTweet or sth
+          // TODO: check the returned tweet existence on home, if not, do not add.. same as Fav bug fix
           dispatch(actions.addTweetToTab(props.account, 'home', returnedTweet.retweeted_status));
         } catch (error) {
           console.log(error);
