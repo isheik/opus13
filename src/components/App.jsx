@@ -19,6 +19,9 @@ class App extends React.Component {
   // constructor(props) {
   // super(props);
   // }
+  state = {
+    loading: true,
+  }
 
   componentDidMount() {
     this.props.subscribeIpcEvent();
@@ -27,10 +30,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app">
-        <SideMenu {...this.props} />
-        <Main {...this.props} />
-      </div>
+      this.state.loading
+        ?
+        <div>
+          test
+        </div>
+        :
+        <div className="app">
+          <SideMenu {...this.props} />
+          <Main {...this.props} />
+        </div>
     );
   }
 }
