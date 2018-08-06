@@ -22,6 +22,8 @@ const mapStateToProps = state => (
     // tweets: state.tweets['2195738078'],
     accounts: state.accounts,
     activeAccountIndex: state.activeAccountIndex,
+    // TODO: From here, make loading state
+    // loading: true,
   }
 );
 

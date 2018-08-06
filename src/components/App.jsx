@@ -19,10 +19,6 @@ class App extends React.Component {
   // constructor(props) {
   // super(props);
   // }
-  state = {
-    loading: true,
-  }
-
   componentDidMount() {
     this.props.subscribeIpcEvent();
     this.props.init();
@@ -30,7 +26,7 @@ class App extends React.Component {
 
   render() {
     return (
-      this.state.loading
+      this.props.loading
         ?
         <div>
           test
