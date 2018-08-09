@@ -1,7 +1,7 @@
 const updateLoadingState = isLoading => (
   {
-    type: 'updateLoadingState',
-    loading: isLoading,
+    type: 'UPDATE_LOADING_STATE',
+    isLoading,
   }
 );
 
