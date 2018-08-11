@@ -30,9 +30,11 @@ class App extends React.Component {
         ?
         <div>
           test
+          {console.log('loaded')}
         </div>
         :
         <div className="app">
+          {console.log('in app section')}
           <SideMenu {...this.props} />
           <Main {...this.props} />
         </div>
