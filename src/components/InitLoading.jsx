@@ -3,8 +3,8 @@ import React from 'react';
 class InitLoading extends React.Component {
   render() {
     return (
-      <div>
-        test
+      <div className="init-loading-wrapper">
+        loading...
       </div>
     );
   }
