@@ -1,8 +1,7 @@
 import React from 'react';
 import SideMenu from './SideMenu';
 import Main from './Main';
-
-
+import InitLoading from './InitLoading';
 
 // probaably have to bind this, u changed store.js too, so work on it too.
 // If you use this.props inside App module, you have to change this expression
@@ -28,10 +27,7 @@ class App extends React.Component {
     return (
       this.props.loading
         ?
-        <div>
-          test
-          {console.log('loaded')}
-        </div>
+        <InitLoading />
         :
         <div className="app">
           {console.log('in app section')}
