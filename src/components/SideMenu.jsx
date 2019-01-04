@@ -47,9 +47,6 @@ class SideMenu extends React.Component {
               <Link to="/" onClick={this.handleHomeMenuClick} >Home</Link>
             </li>
             <li className="app-nav-items">
-              <Link to="/test">Test</Link>
-            </li>
-            <li className="app-nav-items">
               <Link to="/favorite" onClick={this.handleFavoriteMenuClick}>Favorite</Link>
             </li>
             <li className="app-nav-items">
