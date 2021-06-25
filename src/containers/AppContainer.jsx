@@ -22,6 +22,8 @@ const mapStateToProps = state => (
     // tweets: state.tweets['2195738078'],
     accounts: state.accounts,
     activeAccountIndex: state.activeAccountIndex,
+    // TODO: From here, make loading state
+    loading: state.loading,
   }
 );
 
@@ -56,6 +58,7 @@ const mapDispatchToProps = dispatch => (
           // dispatch(actions.addAccount(token));
           dispatch(actions.addAccount(account));
           dispatch(actions.changeActiveAccount(0));
+          dispatch(actions.updateLoadingState(false));
 
           twitterClient.get('statuses/home_timeline', (error, tweets, response) => {
             if (!error) {

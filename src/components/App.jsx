@@ -1,8 +1,7 @@
 import React from 'react';
 import SideMenu from './SideMenu';
 import Main from './Main';
-
-
+import InitLoading from './InitLoading';
 
 // probaably have to bind this, u changed store.js too, so work on it too.
 // If you use this.props inside App module, you have to change this expression
@@ -19,7 +18,6 @@ class App extends React.Component {
   // constructor(props) {
   // super(props);
   // }
-
   componentDidMount() {
     this.props.subscribeIpcEvent();
     this.props.init();
@@ -27,10 +25,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app">
-        <SideMenu {...this.props} />
-        <Main {...this.props} />
-      </div>
+      this.props.loading
+        ?
+        <InitLoading />
+        :
+        <div className="app">
+          {console.log('in app section')}
+          <SideMenu {...this.props} />
+          <Main {...this.props} />
+        </div>
     );
   }
 }
